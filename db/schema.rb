@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315235659) do
+ActiveRecord::Schema.define(version: 20160317124250) do
 
-  create_table "allport_contacts", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+  create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
     t.string   "contactable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "allport_contacts", ["contactable_type", "contactable_id"], name: "index_allport_contacts_on_contactable_type_and_contactable_id"
+  add_index "allport_contact_cards", ["contactable_type", "contactable_id"], name: "unique_contact_type_and_id"
+
+  create_table "talents", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "gender"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "middle_name"
+    t.string   "email"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
