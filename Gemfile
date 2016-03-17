@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'allport', :path => "../allport"
+gem 'allport', path: '../allport' #:git => "git://github.com/baphomet-berlin/allport.git", :branch => "feature/rails_admin"
 
 
 group :development, :test do
