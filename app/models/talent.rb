@@ -5,5 +5,36 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume, styles: { thumb: "60x60>" }
   validates_attachment_content_type :resume, content_type: "application/pdf"
-  has_many :gallery_pictures
+  has_many :gallery_pictures, inverse_of: :talent
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  rails_admin do
+    list do
+      field :name do
+        searchable [:first_name, :last_name]
+        filterable true
+      end
+      field :gender
+      field :avatar
+    end
+    group :base do
+      label "Basic information"
+      field :first_name
+      field :middle_name
+      field :last_name
+      field :email
+      field :gender
+      field :avatar
+    end
+    group :uploads do
+      label "Uploads"
+      field :resume
+      field :gallery_pictures do
+       inverse_of :talent
+      end
+    end
+  end
 end
