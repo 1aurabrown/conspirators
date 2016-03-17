@@ -1,9 +1,3 @@
-ActiveRecord::Base.descendants.each do |imodel|
-  if imodule.included_modules.includes?(Allport::Concerns::Contactable)
-    config.model "#{imodel.name}" do
-      list do
-        exclude_fields :name
-      end
-    end
-  end
+RailsAdmin.config do |config|
+  config.excluded_models << 'Allport::ContactCard'
 end
