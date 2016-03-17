@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
     field :email
     field :password
     field :password_confirmation
+    field :role
   end
 end
