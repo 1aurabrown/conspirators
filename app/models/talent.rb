@@ -15,10 +15,15 @@ class Talent < ActiveRecord::Base
     list do
       field :name do
         searchable [:first_name, :last_name]
+        queryable true
         filterable true
       end
-      field :gender
-      field :avatar
+      field :gender do
+        filterable true
+      end
+      field :avatar do
+        filterable false
+      end
     end
     group :base do
       label "Basic information"

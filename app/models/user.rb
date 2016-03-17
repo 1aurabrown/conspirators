@@ -16,4 +16,4 @@ class User < ActiveRecord::Base
   def has_role?(role)
    roles.include?(role)
   end
- end
+end
