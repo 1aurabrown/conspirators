@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317142259) do
+ActiveRecord::Schema.define(version: 20160317151003) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20160317142259) do
   end
 
   add_index "allport_contact_cards", ["contactable_type", "contactable_id"], name: "unique_contact_type_and_id"
+
+  create_table "gallery_pictures", force: :cascade do |t|
+    t.integer  "talent_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "gallery_pictures", ["talent_id"], name: "index_gallery_pictures_on_talent_id"
 
   create_table "talents", force: :cascade do |t|
     t.string   "first_name"
