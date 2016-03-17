@@ -49,3 +49,5 @@ end
 
 gem 'devise', '3.5.6'
 gem 'cancancan', '1.13.1'
+gem 'paperclip', '4.3.6'
+gem 'aws-sdk', '2.2.27'
