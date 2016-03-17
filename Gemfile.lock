@@ -1,4 +1,24 @@
 GIT
+  remote: git://github.com/sferik/rails_admin.git
+  revision: c860b2f2de72e74f9ee311d548939124e855d48c
+  ref: c860b2f
+  specs:
+    rails_admin (0.8.1)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.0)
+      safe_yaml (~> 1.0)
+      sass-rails (>= 4.0, < 6)
+
+GIT
   remote: https://github.com/thoughtbot/paperclip
   revision: 523bd46c768226893f23889079a7aa9c73b57d68
   ref: 523bd46c768226893f23889079a7aa9c73b57d68
@@ -152,20 +172,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_admin (0.8.1)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (~> 0.7)
-      rails (~> 4.0)
-      remotipart (~> 1.0)
-      safe_yaml (~> 1.0)
-      sass-rails (>= 4.0, < 6)
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
     railties (4.2.5.2)
@@ -233,7 +239,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.5.2)
   rails_12factor
-  rails_admin (= 0.8.1)
+  rails_admin!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
