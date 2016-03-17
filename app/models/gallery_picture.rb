@@ -8,4 +8,8 @@ class GalleryPicture < ActiveRecord::Base
   def name
     "#{self.talent.first_name} ##{self.id}"
   end
+
+  rails_admin do
+    navigation_label 'Talents'
+  end 
 end

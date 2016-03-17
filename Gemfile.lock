@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/baphomet-berlin/allport.git
+  revision: db5e3ccb7b7cd1c391b140802f5cd2fd834e359e
+  branch: feature/rails_admin
+  specs:
+    allport (0.1.2)
+      rails (~> 4.2.5.2)
+
+GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: c860b2f2de72e74f9ee311d548939124e855d48c
   ref: c860b2f
@@ -29,12 +37,6 @@ GIT
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-
-PATH
-  remote: ../allport
-  specs:
-    allport (0.1.2)
-      rails (~> 4.2.5.2)
 
 GEM
   remote: https://rubygems.org/

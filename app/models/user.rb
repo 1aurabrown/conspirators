@@ -16,4 +16,15 @@ class User < ActiveRecord::Base
   def has_role?(role)
    roles.include?(role)
   end
+
+  rails_admin do
+    navigation_label "Admin"
+    list do
+      field :email
+      field :roles
+    end
+    field :email
+    field :password
+    field :password_confirmation
+  end
 end

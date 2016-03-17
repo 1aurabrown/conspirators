@@ -12,6 +12,8 @@ class Talent < ActiveRecord::Base
   end
 
   rails_admin do
+    navigation_label 'Talents'
+    weight -1
     list do
       field :name do
         searchable [:first_name, :last_name]
