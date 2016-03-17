@@ -22,5 +22,16 @@ module Conspirators
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+        :bucket => 'conspirators',
+        :access_key_id => ENV['CONSPIRATORS_AWS_ID'],
+        :secret_access_key => ENV['CONSPIRATORS_AWS_KEY'],
+        :s3_region => "eu-central-1"
+      },
+      :url => ':s3_domain_url',
+      :path => "/:class/:attachment/:style/:filename"
+    }
   end
 end
