@@ -12,7 +12,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'rails_admin', '0.8.1'
+# Fixes ajax upload
+gem 'rails_admin', :github => 'sferik/rails_admin', :ref => 'c860b2f'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -31,8 +32,6 @@ group :development, :test do
   gem 'byebug'
 end
 
-
-
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -44,8 +43,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'sqlite3'
-
 end
 
 gem 'devise', '3.5.6'
 gem 'cancancan', '1.13.1'
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+gem 'aws-sdk', '2.2.27'
