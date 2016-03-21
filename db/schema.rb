@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321190304) do
+ActiveRecord::Schema.define(version: 20160321201350) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -83,6 +83,10 @@ ActiveRecord::Schema.define(version: 20160321190304) do
     t.datetime "resume_updated_at"
     t.integer  "height"
     t.integer  "age"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

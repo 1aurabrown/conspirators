@@ -6,6 +6,8 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume, styles: { thumb: "60x60>" }
   validates_attachment_content_type :resume, content_type: "application/pdf"
+  has_attached_file :cover, styles: { large: "1600x800#" }
+  validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
   has_many :gallery_pictures, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
@@ -60,6 +62,9 @@ class Talent < ActiveRecord::Base
     group :uploads do
       label "Uploads"
       field :resume
+      field :cover do
+        help "The image will be resized to 1600x800."
+      end
       field :gallery_pictures do
        inverse_of :talent
       end
