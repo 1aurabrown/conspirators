@@ -6,7 +6,11 @@ class GalleryPicture < ActiveRecord::Base
   validates :image, presence: true
 
   def name
-    "#{self.talent.first_name} ##{self.id}"
+    if self.talent
+      "#{self.talent.first_name} ##{self.id}"
+    else
+      "Unassigned ##{self.id}"
+    end
   end
 
   rails_admin do
