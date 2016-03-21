@@ -8,6 +8,7 @@ class Talent < ActiveRecord::Base
   has_many :gallery_pictures, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
+  acts_as_taggable_on :skills, :languages
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -16,6 +17,10 @@ class Talent < ActiveRecord::Base
   rails_admin do
     navigation_label 'Talents'
     weight -1
+      fields_of_type :tag_list do
+        partial 'tag_list_with_suggestions'
+        ratl_max_suggestions -1
+      end
     list do
       field :name do
         searchable [:first_name, :last_name]
@@ -36,6 +41,10 @@ class Talent < ActiveRecord::Base
       field :last_name
       field :email
       field :avatar
+    end
+    group "Skills" do
+      field :skill_list
+      field :language_list
     end
     group "Appearence" do 
       field :gender
