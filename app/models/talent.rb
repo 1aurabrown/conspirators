@@ -6,6 +6,8 @@ class Talent < ActiveRecord::Base
   has_attached_file :resume, styles: { thumb: "60x60>" }
   validates_attachment_content_type :resume, content_type: "application/pdf"
   has_many :gallery_pictures, inverse_of: :talent
+  validates_numericality_of :age, :in => 1..99
+  validates_numericality_of :height, :in => 1..220
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -33,8 +35,14 @@ class Talent < ActiveRecord::Base
       field :middle_name
       field :last_name
       field :email
-      field :gender
       field :avatar
+    end
+    group "Appearence" do 
+      field :gender
+      field :age
+      field :height do
+        help 'Required, in cm'
+      end
     end
     group :uploads do
       label "Uploads"
