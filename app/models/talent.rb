@@ -19,10 +19,44 @@ class Talent < ActiveRecord::Base
   rails_admin do
     navigation_label 'Talents'
     weight -1
-      fields_of_type :tag_list do
-        partial 'tag_list_with_suggestions'
-        ratl_max_suggestions -1
+    fields_of_type :tag_list do
+      partial 'tag_list_with_suggestions'
+      ratl_max_suggestions -1
+    end
+    edit do
+      group :base do
+        label "Basic information"
+        field :first_name
+        field :middle_name
+        field :last_name
+        field :email
+        field :avatar
       end
+      group "Skills and projects" do
+        field :skill_list
+        field :language_list
+        field :projects do
+          inverse_of :talent
+        end
+      end
+      group "Appearence" do 
+        field :gender
+        field :age
+        field :height do
+          help 'Required, in cm'
+        end
+      end
+      group :uploads do
+        label "Uploads"
+        field :resume
+        field :cover do
+          help "The image will be resized to 1600x800."
+        end
+        field :gallery_pictures do
+         inverse_of :talent
+        end
+      end
+    end
     list do
       field :name do
         searchable [:first_name, :last_name]
@@ -34,37 +68,19 @@ class Talent < ActiveRecord::Base
         filterable false
       end
     end
-    group :base do
-      label "Basic information"
-      field :first_name
-      field :middle_name
-      field :last_name
+    show do
+      field :name
       field :email
       field :avatar
-    end
-    group "Skills and projects" do
-      field :skill_list
-      field :language_list
-      field :projects do
-        inverse_of :talent
-      end
-    end
-    group "Appearence" do 
       field :gender
       field :age
-      field :height do
-        help 'Required, in cm'
-      end
-    end
-    group :uploads do
-      label "Uploads"
+      field :height
+      field :skill_list
+      field :language_list
+      field :projects
       field :resume
-      field :cover do
-        help "The image will be resized to 1600x800."
-      end
-      field :gallery_pictures do
-       inverse_of :talent
-      end
+      field :cover
+      field :gallery_pictures
     end
   end
 end
