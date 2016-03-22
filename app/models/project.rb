@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  hasd_and_belongs_to_many :talents
+  has_and_belongs_to_many :talents
   validates :title, presence: true
   validates :description, presence: true
   validates :date, presence: true
@@ -22,8 +22,8 @@ class Project < ActiveRecord::Base
     field :title
     field :description
     field :date
-    field :talent do
-     inverse_of :project
+    field :talents do
+
     end
   end
 end
