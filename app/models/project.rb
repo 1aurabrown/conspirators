@@ -1,9 +1,8 @@
 class Project < ActiveRecord::Base
-  belongs_to :talent
+  hasd_and_belongs_to_many :talents
   validates :title, presence: true
   validates :description, presence: true
   validates :date, presence: true
-
 
   rails_admin do
     navigation_label 'Talents'

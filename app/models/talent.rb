@@ -1,6 +1,6 @@
 class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
-  has_many :projects
+  has_and_belongs_to_many :projects
   has_attached_file :avatar, styles: { large: "600>", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume, styles: { thumb: "60x60>" }
@@ -13,8 +13,12 @@ class Talent < ActiveRecord::Base
   acts_as_taggable_on :skills, :languages, :gender
 
   def name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
   end
+
+  def appearance
+    "#{self.gender.to_sentence} / #{self.age} / #{self.height} cm"
+  end  
 
   rails_admin do
     navigation_label 'Talents'
@@ -70,13 +74,10 @@ class Talent < ActiveRecord::Base
     end
     show do
       field :name
-      field :email
+      field :appearance
       field :avatar
-      field :gender
-      field :age
-      field :height
-      field :skill_list
-      field :language_list
+      field :skills
+      field :languages
       field :projects
       field :resume
       field :cover
