@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322024021) do
+ActiveRecord::Schema.define(version: 20160322025217) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20160322024021) do
     t.string   "title"
     t.text     "description"
     t.date     "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "organised_by_conspirators"
   end
 
   create_table "projects_talents", id: false, force: :cascade do |t|

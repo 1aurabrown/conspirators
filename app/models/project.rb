@@ -18,12 +18,14 @@ class Project < ActiveRecord::Base
         filterable true
       end
       field :date
+      field :organised_by_conspirators
     end
     field :title
     field :description
+    field :organised_by_conspirators
     field :date
     field :talents do
-
+      inverse_of :projects
     end
   end
 end

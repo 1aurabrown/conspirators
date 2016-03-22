@@ -8,6 +8,8 @@ class Talent < ActiveRecord::Base
   has_attached_file :cover, styles: { large: "1600x800#" }
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
   has_many :gallery_pictures, inverse_of: :talent
+  accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
+
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :gender
@@ -40,7 +42,7 @@ class Talent < ActiveRecord::Base
         field :skill_list
         field :language_list
         field :projects do
-          inverse_of :talent
+          inverse_of :talents
         end
       end
       group "Appearence" do 
@@ -56,9 +58,7 @@ class Talent < ActiveRecord::Base
         field :cover do
           help "The image will be resized to 1600x800."
         end
-        field :gallery_pictures do
-         inverse_of :talent
-        end
+        field :gallery_pictures
       end
     end
     list do
