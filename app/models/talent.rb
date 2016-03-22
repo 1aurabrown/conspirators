@@ -1,6 +1,5 @@
 class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
-  enum gender: [ :masculine, :feminine, :unknown ]
   has_many :projects
   has_attached_file :avatar, styles: { large: "600>", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -11,7 +10,7 @@ class Talent < ActiveRecord::Base
   has_many :gallery_pictures, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
-  acts_as_taggable_on :skills, :languages
+  acts_as_taggable_on :skills, :languages, :gender
 
   def name
     "#{self.first_name} #{self.last_name}"
@@ -30,9 +29,7 @@ class Talent < ActiveRecord::Base
         queryable true
         filterable true
       end
-      field :gender do
-        filterable true
-      end
+      field :gender
       field :avatar do
         filterable false
       end
