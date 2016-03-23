@@ -8,7 +8,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<nav id="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="<%= root_path %>">
+      <%= image_tag 'logo-snakes.svg' %>
+    </a>
+  </div>
+</nav>
 <%= yield %>
 
 </body>
