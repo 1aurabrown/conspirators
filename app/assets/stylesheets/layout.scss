@@ -1,0 +1,19 @@
+.cover {
+  @extend .jumbotron;
+  @extend .jumbotron-fluid;
+  background-color: #000;
+  padding: 0; 
+  .cover-content {
+    @extend .container;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    height: 50vw;
+    @include media-breakpoint-up(lg) {
+      height: 400px;
+    }
+    @include media-breakpoint-up(xl) {
+      height: 500px;
+    }
+  }
+}

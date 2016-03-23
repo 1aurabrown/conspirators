@@ -5,7 +5,7 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume, styles: { thumb: "60x60>" }
   validates_attachment_content_type :resume, content_type: "application/pdf"
-  has_attached_file :cover, styles: { large: "1600x800#" }
+  has_attached_file :cover, styles: { large: "x600" }
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
   has_many :gallery_pictures, inverse_of: :talent
   accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
