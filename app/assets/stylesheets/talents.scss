@@ -1,0 +1,19 @@
+article.talent {
+  header {
+    position: relative;
+    top: 50%;    
+    transform: translateY(-50%);
+  }
+  .project-year {
+    @extend .row;
+    .project-year-number {
+      @extend .col-sm-2;
+      @extend .display-4;
+
+    }
+    .project-year-list {
+      @extend .col-sm-10;
+      padding-top: 1em;
+    }
+  }
+} 

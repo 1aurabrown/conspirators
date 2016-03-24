@@ -1,0 +1,50 @@
+#navigation {
+  @extend .navbar;
+  @extend .navbar-fixed-top;
+  .logo {
+    img {
+      height: 1em;
+
+    }
+  }
+}
+
+.cover {
+  @extend .jumbotron;
+  @extend .jumbotron-fluid;
+  background-color: #000;
+  padding: 0; 
+  margin-bottom: 0;
+  .cover-content {
+    @extend .container;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    height: 50vw;
+    h1.page-title {
+      color: white;
+      @extend .display-4;
+      bottom: 0;
+    }
+    h2.page-blurb {
+      @extend .lead;
+    }
+    @include media-breakpoint-up(lg) {
+      height: 400px;
+    }
+    @include media-breakpoint-up(xl) {
+      height: 500px;
+    }
+  }
+}
+
+.section {
+  @extend .container; 
+  padding-top: 2rem;
+  .section-header {
+    @extend .display-2;
+    text-align: right;
+  }
+
+}

@@ -5,7 +5,7 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume, styles: { thumb: "60x60>" }
   validates_attachment_content_type :resume, content_type: "application/pdf"
-  has_attached_file :cover, styles: { large: "1600x800#" }
+  has_attached_file :cover, styles: { large: "x600" }
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
   has_many :gallery_pictures, inverse_of: :talent
   accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
@@ -13,14 +13,30 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :gender
+  before_save :set_slug
 
   def name
     "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
   end
 
+  def set_slug
+    if self.slug.blank?
+      self.slug = self.name.parameterize
+    end
+  end
+
   def appearance
-    "#{self.gender.to_sentence} / #{self.age} / #{self.height} cm"
-  end  
+    [ 
+      self.gender.to_sentence,
+      "#{self.age} years old", 
+      "#{self.height_in}"
+    ].reject!(&:blank?).join(' / ')
+  end
+
+  def height_in(unit=:cm)
+    return nil unless self.height
+    Unit.new("#{self.height} cm").to_s(unit)
+  end
 
   rails_admin do
     navigation_label 'Talents'
