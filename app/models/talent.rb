@@ -13,9 +13,16 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :gender
+  before_save :set_slug
 
   def name
     "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
+  end
+
+  def set_slug
+    if self.slug.blank?
+      self.slug = self.name.parameterize
+    end
   end
 
   def appearance
@@ -26,7 +33,7 @@ class Talent < ActiveRecord::Base
     ].reject!(&:blank?).join(' / ')
   end
 
-  def height_in(unit=:ft)
+  def height_in(unit=:cm)
     return nil unless self.height
     Unit.new("#{self.height} cm").to_s(unit)
   end
