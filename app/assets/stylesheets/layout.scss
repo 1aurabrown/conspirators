@@ -1,6 +1,12 @@
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
+  .logo {
+    img {
+      height: 1em;
+
+    }
+  }
 }
 
 .cover {
