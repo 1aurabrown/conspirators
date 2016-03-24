@@ -19,7 +19,16 @@ class Talent < ActiveRecord::Base
   end
 
   def appearance
-    [ self.gender.to_sentence, self.age, self.height].reject!(&:blank?).join(' / ')
+    [ 
+      self.gender.to_sentence,
+      "#{self.age} years old", 
+      "#{self.height_in}"
+    ].reject!(&:blank?).join(' / ')
+  end
+
+  def height_in(unit=:ft)
+    return nil unless self.height
+    Unit.new("#{self.height} cm").to_s(unit)
   end
 
   rails_admin do

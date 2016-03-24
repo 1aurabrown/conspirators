@@ -52,3 +52,5 @@ gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523b
 gem 'aws-sdk', '2.2.27'
 gem 'rails_admin_tag_list', '0.2.0'
 gem 'acts-as-taggable-on', '3.5.0'
+
+gem 'ruby-units', '2.0.0'
