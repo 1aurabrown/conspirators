@@ -7,4 +7,30 @@
       </header>
     </div>
   </div>
+  <section class="container">
+    <h1 class="internal-header">Projects</h1>
+    <% @talent.projects.by_year.each do |year, year_items| %>
+      <div class="row">
+        <div class="col-sm-2">
+          <h1><%= year %></h1>
+        </div>
+        <div class="col-sm-10">
+          <% year_items.each do |project| %>
+              <h2>
+                <%= project.title %>
+              </h2>
+              <p>
+                <%= project.description %>
+              </p>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </section>
+  <section class="container-fluid">
+    <div class="container">
+      <h1 class="internal-header">Projects</h1>
+    </div>
+  </section>
 </article>

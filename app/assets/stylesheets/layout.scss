@@ -37,3 +37,8 @@
     }
   }
 }
+
+.internal-header {
+  @extend .display-2;
+  text-align: right;
+}
