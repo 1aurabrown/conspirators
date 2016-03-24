@@ -19,8 +19,8 @@ class Talent < ActiveRecord::Base
   end
 
   def appearance
-    "#{self.gender.to_sentence} / #{self.age} / #{self.height} cm"
-  end  
+    [ self.gender.to_sentence, self.age, self.height].reject!(&:blank?).join(' / ')
+  end
 
   rails_admin do
     navigation_label 'Talents'
