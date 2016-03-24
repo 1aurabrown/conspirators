@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324011757) do
+ActiveRecord::Schema.define(version: 20160324090350) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160324011757) do
     t.integer "project_id", null: false
     t.integer "talent_id",  null: false
   end
+
+  create_table "spoken_languages", force: :cascade do |t|
+    t.string   "language"
+    t.integer  "level"
+    t.integer  "talent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "spoken_languages", ["talent_id"], name: "index_spoken_languages_on_talent_id"
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -95,6 +105,7 @@ ActiveRecord::Schema.define(version: 20160324011757) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.string   "slug"
+    t.string   "country_code"
   end
 
   add_index "talents", ["slug"], name: "index_talents_on_slug"
@@ -113,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160324011757) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "role"
+    t.integer  "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

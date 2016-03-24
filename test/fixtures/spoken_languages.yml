@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  language: MyString
+  level: 1
+  talent_id: 
+
+two:
+  language: MyString
+  level: 1
+  talent_id: 

@@ -9,11 +9,15 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
   has_many :gallery_pictures, inverse_of: :talent
   accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
-
+  has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :gender
   before_save :set_slug
+
+  def country_code_enum 
+    Country.all_translated
+  end
 
   def name
     "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
@@ -51,6 +55,9 @@ class Talent < ActiveRecord::Base
         field :first_name
         field :middle_name
         field :last_name
+        field :country_code do
+          label "Country"
+        end
         field :email
         field :avatar
       end

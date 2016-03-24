@@ -54,3 +54,4 @@ gem 'rails_admin_tag_list', '0.2.0'
 gem 'acts-as-taggable-on', '3.5.0'
 
 gem 'ruby-units', '2.0.0'
+gem 'countries', :require => 'countries/global'
