@@ -37,6 +37,14 @@
     </section>
     <section class="section">
       <h1 class="section-header">Gallery</h1>
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        <% @talent.gallery_pictures.each do |picture| %>
+          <div class="grid-item">
+            <img src="<%= image_url picture.image.url(:large) %>">
+          </div>
+        <% end %>
+      </div>
     </section>
     <section class="section">
       <h1 class="section-header">Gallery</h1>

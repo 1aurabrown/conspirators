@@ -27,3 +27,13 @@ $ ->
     .setTween(
       TweenLite.to($('#cover-image')[0], 2, {top: '100px', height: '150%'}))
     .addTo(controller)
+
+  
+  $grid = $('.grid').masonry(
+    itemSelector: '.grid-item'
+    percentPosition: true
+    columnWidth: '.grid-sizer')
+  # layout Isotope after each image loads
+  $grid.imagesLoaded().progress ->
+    $grid.masonry()
+    return
