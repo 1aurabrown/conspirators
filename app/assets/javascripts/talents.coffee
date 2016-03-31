@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 controller = new (ScrollMagic.Controller)
-# Scene Handler
+
 $ ->
 
   new (ScrollMagic.Scene)(
@@ -18,4 +18,12 @@ $ ->
       triggerHook: 0
       reverse: true)
     .setPin('#page-header')
+    .addTo(controller)
+
+  new (ScrollMagic.Scene)(
+      offset: 0
+      duration: 300
+      reverse: true)
+    .setTween(
+      TweenLite.to($('#cover-image')[0], 2, {top: '100px', height: '150%'}))
     .addTo(controller)

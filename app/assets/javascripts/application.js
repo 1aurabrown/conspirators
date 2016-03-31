@@ -16,6 +16,8 @@
 //= require tether
 //= require bootstrap
 //= require scrollmagic
+//= require gsap
+//= require_tree ./vendor
 //= require ./app.coffee
 //= require ./parallax.coffee
 //= require_tree .

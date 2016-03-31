@@ -28,6 +28,7 @@ gem 'allport', :git => "git://github.com/baphomet-berlin/allport.git", :branch =
 source 'https://rails-assets.tenex.tech' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
+  gem 'rails-assets-gsap'
 end
 
 group :development, :test do

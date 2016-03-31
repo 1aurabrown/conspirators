@@ -2,13 +2,20 @@
   position:relative;
   height: 400px;
   width: 100%;
+  overflow: hidden;
   background-color: #000;
   z-index: 2;
-  img {
-    position: absolute;
-    right: 0;
-    top: 0;
+  #cover-image-container {
     height: 100%;
+    position: relative;
+    @extend .container;
+
+    img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
   }
 }
 
@@ -16,16 +23,18 @@
   position: relative;
   z-index: 3;
   margin-top: -160px;
-
   #header-content {
     padding-top: 60px;
     @extend .container;
+
   }
   #page-title {
     color: white;
+
     @extend .display-4;
   }
   #page-blurb {
+
     @extend .lead;
   }
     
