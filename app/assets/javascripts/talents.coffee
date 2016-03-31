@@ -7,15 +7,13 @@ controller = new (ScrollMagic.Controller)
 $ ->
 
   new (ScrollMagic.Scene)(
-      triggerElement: '#page-header'
-      triggerHook: 0
+      offset: 240
       reverse: true)
     .setPin('#page-cover')
     .addTo(controller)
 
   new (ScrollMagic.Scene)(
-      triggerElement: '#page-header'
-      triggerHook: 0
+      offset: 240
       reverse: true)
     .setPin('#page-header')
     .addTo(controller)
