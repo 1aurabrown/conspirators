@@ -25,11 +25,22 @@ body{
       text-align: right;
     }
   }
+  .fullpage-section {
+    @extend .container-fluid; 
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 2rem;
+    background-color:black;
+    .section-header {
+      @extend .display-4;
+      @extend .container;
+      color: $gray-lighter;
+      text-align: right;
+    }
+  }
 }
 
-
 .grid {
-  background: #DDD;
 }
 
 /* clear fix */
@@ -43,7 +54,7 @@ body{
 
 .grid-sizer,
 .grid-item {
-  width: 33.333%;
+  width: 25%;
 }
 
 .grid-item {
@@ -52,5 +63,5 @@ body{
 
 .grid-item img {
   display: block;
-  max-width: 100%;
+  width: 100%;
 }
