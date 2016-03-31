@@ -35,8 +35,19 @@
         <% end %>
       </div>
     </section>
-    <section class="section">
-      <h1 class="section-header">Gallery</h1>
+    <section class="fullpage-section">
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="grid-item grid-item--large">
+          <img src="<%=image_url @talent.avatar.url(:large) %>')" />
+        </div>
+          <% @talent.gallery_pictures.each do |picture| %>
+            <div class="grid-item">
+              <img src="<%= image_url picture.image.url(:large) %>">
+            </div>
+          <% end %>
+        </div>
+      </div>
     </section>
     <section class="section">
       <h1 class="section-header">Gallery</h1>

@@ -17,6 +17,8 @@
 //= require bootstrap
 //= require scrollmagic
 //= require gsap
+//= require masonry/masonry.min
+//= require masonry/jquery.imagesloaded.min
 //= require_tree ./vendor
 //= require ./app.coffee
 //= require ./parallax.coffee
