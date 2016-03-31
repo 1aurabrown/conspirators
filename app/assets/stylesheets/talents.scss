@@ -1,9 +1,4 @@
 article.talent {
-  header {
-    position: relative;
-    top: 50%;    
-    transform: translateY(-50%);
-  }
   .project-year {
     @extend .row;
     .project-year-number {

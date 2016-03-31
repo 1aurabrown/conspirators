@@ -1,39 +1,43 @@
 <article class="talent">
-  <div class="cover">
-    <div class="cover-content" style="background-image:url('<%=image_url @talent.cover.url(:large) %>')">
-      <header>
-        <h1 class="page-title"><%= @talent.name %></h1>
-        <h2 class="page-blurb"><%= @talent.appearance %></h2>
-      </header>
-    </div>
+  <div id="page-cover">
+    <img id="cover-image" src="<%=image_url @talent.cover.url(:large) %>')" />
   </div>
-  <section class="section">
-    <h1 class="section-header">
-      Projects
-    </h1>
-    <div class="section-content">
-      <% @talent.projects.by_year.each do |year, year_items| %>
-        <div class="project-year">
-          <h2 class="project-year-number"><%= year %></h2>
-          <div class="project-year-list">
-            <% year_items.each do |project| %>
-                <h2>
-                  <%= project.title %>
-                </h2>
-                <p>
-                  <%= project.description %>
-                </p>
-              </a>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+  <header id="page-header">
+    <div id="header-content">
+      <h1 id="page-title"><%= @talent.name %></h1>
+      <h2 id="page-blurb"><%= @talent.appearance %></h2>
     </div>
-  </section>
-  <section class="section">
-    <h1 class="section-header">Gallery</h1>
-  </section>
-  <section class="section">
-    <h1 class="section-header">Gallery</h1>
-  </section>
+  </header>
+
+  <div class="page-content">
+    <section class="section">
+      <h1 class="section-header">
+        Projects
+      </h1>
+      <div class="section-content">
+        <% @talent.projects.by_year.each do |year, year_items| %>
+          <div class="project-year">
+            <h2 class="project-year-number"><%= year %></h2>
+            <div class="project-year-list">
+              <% year_items.each do |project| %>
+                  <h2>
+                    <%= project.title %>
+                  </h2>
+                  <p>
+                    <%= project.description %>
+                  </p>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+    <section class="section">
+      <h1 class="section-header">Gallery</h1>
+    </section>
+    <section class="section">
+      <h1 class="section-header">Gallery</h1>
+    </section>
+  </div>
 </article>

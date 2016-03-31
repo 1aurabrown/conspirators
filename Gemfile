@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'allport', :git => "git://github.com/baphomet-berlin/allport.git", :branch => "feature/rails_admin"
 
+source 'https://rails-assets.tenex.tech' do
+  gem 'rails-assets-tether'
+  gem 'rails-assets-scrollmagic'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
