@@ -29,6 +29,7 @@ body{
     @extend .container-fluid; 
     padding: 0;
     background-color:black;
+    margin-top: 1em;
     .section-header {
       @extend .display-4;
       @extend .container;
