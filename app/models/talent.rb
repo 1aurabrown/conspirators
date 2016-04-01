@@ -12,10 +12,10 @@ class Talent < ActiveRecord::Base
   has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
-  acts_as_taggable_on :skills, :languages, :genders
+  acts_as_taggable_on :skills, :languages, :genders, :types
   before_save :set_slug
 
-  def country_code_enum 
+  def country_code_enum
     Country.all_translated
   end
 
@@ -68,7 +68,11 @@ class Talent < ActiveRecord::Base
           inverse_of :talents
         end
       end
-      group "Appearence" do 
+      group "Appearence" do
+        
+        field :type_list do
+          label "Type"
+        end
         field :gender_list do
           label "Gender"
         end
@@ -94,6 +98,9 @@ class Talent < ActiveRecord::Base
       end
       field :gender_list do
         label "Gender"
+      end
+      field :type_list do
+        label "Type"
       end
       field :avatar do
         filterable false
