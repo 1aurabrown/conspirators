@@ -1,6 +1,7 @@
 class GraphWeight < ActiveRecord::Base
   serialize :tag_weights, JSON
   serialize :node_context_weights, JSON
+  before_create :refresh!
   attr_accessor :contextual_taggings
 
   def self.for(taggable_class, context)
