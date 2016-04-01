@@ -12,7 +12,7 @@ class Talent < ActiveRecord::Base
   has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
-  acts_as_taggable_on :skills, :languages, :gender
+  acts_as_taggable_on :skills, :languages, :genders
   before_save :set_slug
 
   def country_code_enum 
@@ -31,7 +31,7 @@ class Talent < ActiveRecord::Base
 
   def appearance
     [ 
-      self.gender.to_sentence,
+      self.genders.to_sentence,
       "#{self.age} years old", 
       "#{self.height_in}"
     ].reject!(&:blank?).join(' / ')
@@ -69,7 +69,9 @@ class Talent < ActiveRecord::Base
         end
       end
       group "Appearence" do 
-        field :gender
+        field :gender_list do
+          label "Gender"
+        end
         field :age
         field :height do
           help 'Required, in cm'
@@ -90,7 +92,9 @@ class Talent < ActiveRecord::Base
         queryable true
         filterable true
       end
-      field :gender
+      field :gender_list do
+        label "Gender"
+      end
       field :avatar do
         filterable false
       end
