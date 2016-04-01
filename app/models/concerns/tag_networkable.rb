@@ -1,31 +1,30 @@
 module TagNetworkable
   extend ActiveSupport::Concern
 
-  included do 
-
-    # TagNetworkable-independent
-    def tag_weight(tag_id, context)
-      total_tagged = ActsAsTaggableOn::Tagging
-        .where(taggable_type: self.class.name)
-        .where(tag_id: tag_id)
-        .distinct
-        .count(:taggable_id)
-      self.class.count / total_tagged 
-    end
-
-    # TagNetworkable-dependant
-    def node_context_weight(context)
-      self.tags_on(context).count / self.most_tags_per_node_in(context)
-    end
-
-    def most_tags_per_node_in(context)
-      max_tuple = ActsAsTaggableOn::Tagging
-        .where(taggable_type: self.class.name)
-        .where(context: :context)
-        .group(:taggable_id)
-        .count
-        .max_by { | taggable_id, nodes | nodes }
-      return max_tuple[1]
+  included do
+    def similarities_by(context)
+      weights = GraphWeight.for(self.class.name, context)
+      tag_weights = {} 
+      sibling_similarities = {}
+      tags = self.tags_on(context)
+      tags.each do |tag|
+        tag_weights[tag.id] = weights.tag_weights[tag.id.to_s].to_r
+      end
+      self.send("find_sibling_on_#{context}").each do |sibling|
+        sibling_tags = sibling.tags_on(context)
+        common_tags = tags & sibling_tags
+        sibling_score_normaliser = sibling_tags.length + tags.length
+        sibling_similarities[sibling.id] = {
+          tags: common_tags.map do |tag|
+            { 
+              id: tag.id,
+              name: tag.name, 
+              score: tag_weights[tag.id]
+            }
+          end
+        }
+      end
+      return sibling_similarities
     end
   end
 end

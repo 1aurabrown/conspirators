@@ -42,8 +42,8 @@ class GraphWeight < ActiveRecord::Base
   def tag_weight(tag_id)
     total_tagged = self.taggings
       .where(tag_id: tag_id)
-      .distinct
-      .count(:taggable_id)
+      .group(:taggable_id)
+      .count()
     self.taggable_class.constantize.count / total_tagged 
   end
 end
