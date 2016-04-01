@@ -1,0 +1,34 @@
+.devise {
+  margin-top: 200px;
+  @include make-row();
+  h2 {
+    @extend .display-4;
+    @include make-col();
+    @include make-col-span(5);
+    @include make-col-offset(1);
+    padding: 0;
+    padding-top: 0.5rem;
+    margin-top:0;
+    text-transform: lowercase;
+    text-align:right;
+  }
+  form {
+    @include make-col();
+    @include make-col-span(3);
+    input[type="email"], input[type="password"] {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    input[type="submit"]{
+      @extend .btn;
+      @extend .btn-primary-outline;
+      max-width: 100%;
+    } 
+  }
+  & > a {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 0.5em 1em;
+  }
+}
