@@ -3,20 +3,14 @@ module TagNetworkable
 
   included do 
 
-    def tag_weights(context)
-
-    end
-
-    def context_tag_weight(tag_id, tag_context)
-      tag_counts_node = self.tag_counts_on(context)
-      most_popular_node = tag_counts_node.maximum(:taggings_count)
-      most_popular_overall = self.most_popular_for_context(context)
-      return most_popular_node / most_popular_overall
-    end
-
     # TagNetworkable-independent
     def tag_weight(tag_id, context)
-
+      total_tagged = ActsAsTaggableOn::Tagging
+        .where(taggable_type: self.class.name)
+        .where(tag_id: tag_id)
+        .distinct
+        .count(:taggable_id)
+      self.class.count / total_tagged 
     end
 
 
@@ -27,7 +21,7 @@ module TagNetworkable
 
     def most_tags_per_node_in(context)
       max_tuple = ActsAsTaggableOn::Tagging
-        .where(taggable_type: "Talent")
+        .where(taggable_type: self.class.name)
         .where(context: :context)
         .group(:taggable_id)
         .count
