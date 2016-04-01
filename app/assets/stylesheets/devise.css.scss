@@ -1,11 +1,11 @@
 .devise {
-  margin-top: 100px;
+  margin-top: 200px;
   @include make-row();
   h2 {
     @extend .display-4;
     @include make-col();
-    @include make-col-span(3);
-    @include make-col-offset(3);
+    @include make-col-span(5);
+    @include make-col-offset(1);
     padding: 0;
     padding-top: 0.5rem;
     margin-top:0;
@@ -22,6 +22,7 @@
     input[type="submit"]{
       @extend .btn;
       @extend .btn-primary-outline;
+      max-width: 100%;
     } 
   }
   & > a {
