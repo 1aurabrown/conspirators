@@ -13,7 +13,6 @@ module TagNetworkable
       self.class.count / total_tagged 
     end
 
-
     # TagNetworkable-dependant
     def node_context_weight(context)
       self.tags_on(context).count / self.most_tags_per_node_in(context)
