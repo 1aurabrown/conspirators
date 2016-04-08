@@ -50,6 +50,9 @@
     </section>
     <section class="section">
       <h1 class="section-header">Similar</h1>
+      <% @talent.get_similar.each do | similar | %>
+        <div><%= similar %></div>
+      <% end %>
     </section>
   </div>
 </article>

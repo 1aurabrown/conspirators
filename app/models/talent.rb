@@ -38,8 +38,9 @@ class Talent < ActiveRecord::Base
     ].reject!(&:blank?).join(' / ')
   end
 
-  def similar
-    self.compute_similarities_by [:skills, :genders, :types]
+  def get_similar
+    similar_obj = self.compute_similarities_by([:skills, :genders, :types])
+    Talent.where(id: similar_obj.keys.first(4))
   end
 
 
@@ -122,10 +123,6 @@ class Talent < ActiveRecord::Base
       field :resume
       field :cover
       field :gallery_pictures
-      field :similar do
-        label "Similar"
-        partial "similar_partial"
-      end
     end
   end
 end
