@@ -3,12 +3,10 @@ module TagNetworkable
 
   included do
     attr_accessor :network_models
-    attr_accessor :similar
     attr_accessor :tag_networkable_contexts
 
     def compute_similarities_by(contexts)
       self.tag_networkable_contexts = contexts
-      self.similar = {}
       contexts.each do |context|
         self.network_model_init(context)
       end
@@ -23,10 +21,8 @@ module TagNetworkable
           end
         end
       end
-      similar_raw.each_pair do |key, value|
-        self.similar[key] = value.reduce(0, :+) / self.tag_networkable_contexts.length
-      end
-      self.similar
+      similar_raw.map { |k, v| [k, (v.reduce(0, :+) / contexts.length)] }
+        .sort_by{ |k, v| v}.reverse.to_h
     end
 
     def network_model_init(context)

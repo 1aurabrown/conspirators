@@ -38,7 +38,7 @@ class Talent < ActiveRecord::Base
     ].reject!(&:blank?).join(' / ')
   end
 
-  def get_similar_talents
+  def similar
     self.compute_similarities_by [:skills, :genders, :types]
   end
 
@@ -122,7 +122,7 @@ class Talent < ActiveRecord::Base
       field :resume
       field :cover
       field :gallery_pictures
-      field :get_similar_talents do
+      field :similar do
         label "Similar"
         partial "similar_partial"
       end
