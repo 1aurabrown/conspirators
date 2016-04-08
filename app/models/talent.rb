@@ -32,10 +32,10 @@ class Talent < ActiveRecord::Base
 
   def appearance
     [ 
-      self.genders.to_sentence,
+      self.genders.pluck(:name).to_sentence,
       "#{self.age} years old", 
       "#{self.height_in}"
-    ].reject!(&:blank?).join(' / ')
+    ].join(' / ')
   end
 
   def get_similar
