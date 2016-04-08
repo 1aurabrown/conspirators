@@ -1,5 +1,14 @@
 body{
   position: relative;
+  font-weight: 300;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 300;
+  }
 }
 
 #navigation {
@@ -15,8 +24,11 @@ body{
 
 .page-content {
   width: 100%;
-  position: absolute;
   top: 400px;
+  margin-bottom: 400px;
+  position: absolute;
+  z-index: 3;
+  background-color: white;
   .section {
     @extend .container; 
     padding-top: 1rem;
@@ -38,6 +50,7 @@ body{
     }
   }
 }
+
 
 .grid {
   &:after {

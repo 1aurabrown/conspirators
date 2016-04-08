@@ -1,0 +1,40 @@
+
+footer {
+  color: white;
+  margin-top: 10rem;
+  height: 400px;
+  padding-top: 100px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: black;
+  #footer-content {
+    @extend .container;
+    h2, h3 {
+      margin-bottom: 0.3rem;
+      margin-top: 1rem;
+    }
+    p {
+      margin-bottom: 0rem;
+    }
+    #conspirators {
+      @include make-col();
+      @include make-col-span(8);
+
+    }
+    #impressum {
+      @include make-col();
+      @include make-col-span(4);
+      h2 {
+        font-size: 1.1rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+      p {
+        font-size: 0.8rem;
+      }
+      z-index: 2;
+    }
+  }
+}

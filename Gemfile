@@ -63,3 +63,5 @@ gem 'acts-as-taggable-on', '3.5.0'
 
 gem 'ruby-units', '2.0.0'
 gem 'countries', :require => 'countries/global'
+
+gem 'redcarpet', '3.3.4'

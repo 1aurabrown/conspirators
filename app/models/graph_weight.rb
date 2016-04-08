@@ -51,4 +51,8 @@ class GraphWeight < ActiveRecord::Base
       .count()
     self.taggable_class.constantize.count / total_tagged 
   end
+
+  rails_admin do 
+    visible false
+  end
 end
