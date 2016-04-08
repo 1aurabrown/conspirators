@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160324090350) do
+ActiveRecord::Schema.define(version: 20160401035943) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20160324090350) do
     t.integer "gallery_picture_id", null: false
     t.integer "talent_id",          null: false
   end
+
+  create_table "graph_weights", force: :cascade do |t|
+    t.string   "context"
+    t.string   "taggable_class"
+    t.string   "max_tags"
+    t.text     "tag_weights"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "graph_weights", ["context", "taggable_class"], name: "index_graph_weights_on_context_and_taggable_class"
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"

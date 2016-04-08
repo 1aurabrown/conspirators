@@ -1,5 +1,6 @@
 class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
+  include TagNetworkable
   has_and_belongs_to_many :projects
   has_attached_file :avatar, styles: { large: "600>", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -12,10 +13,10 @@ class Talent < ActiveRecord::Base
   has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
-  acts_as_taggable_on :skills, :languages, :genders
+  acts_as_taggable_on :skills, :languages, :genders, :types
   before_save :set_slug
 
-  def country_code_enum 
+  def country_code_enum
     Country.all_translated
   end
 
@@ -36,6 +37,12 @@ class Talent < ActiveRecord::Base
       "#{self.height_in}"
     ].reject!(&:blank?).join(' / ')
   end
+
+  def get_similar
+    similar_obj = self.compute_similarities_by([:skills, :genders, :types])
+    Talent.where(id: similar_obj.keys.first(4))
+  end
+
 
   def height_in(unit=:cm)
     return nil unless self.height
@@ -68,7 +75,11 @@ class Talent < ActiveRecord::Base
           inverse_of :talents
         end
       end
-      group "Appearence" do 
+      group "Appearence" do
+
+        field :type_list do
+          label "Type"
+        end
         field :gender_list do
           label "Gender"
         end
@@ -94,6 +105,9 @@ class Talent < ActiveRecord::Base
       end
       field :gender_list do
         label "Gender"
+      end
+      field :type_list do
+        label "Type"
       end
       field :avatar do
         filterable false

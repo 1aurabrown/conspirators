@@ -210,6 +210,7 @@ GEM
       railties (= 4.2.5.2)
       sprockets-rails
     rails-assets-gsap (1.18.2)
+    rails-assets-holderjs (2.9.3)
     rails-assets-scrollmagic (2.0.5)
     rails-assets-tether (1.2.0)
     rails-deprecated_sanitizer (1.0.3)
@@ -304,6 +305,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.5.2)
   rails-assets-gsap!
+  rails-assets-holderjs!
   rails-assets-scrollmagic!
   rails-assets-tether!
   rails_12factor

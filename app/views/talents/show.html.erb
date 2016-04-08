@@ -50,6 +50,11 @@
     </section>
     <section class="section">
       <h1 class="section-header">Similar</h1>
+      <div class="section-content">
+      <% @talent.get_similar.each do | similar | %>
+        <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+      <% end %>
+      </div>
     </section>
   </div>
 </article>

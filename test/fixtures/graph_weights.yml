@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  context: MyString
+  taggable_class: MyString
+  max_tags: MyString
+  tag_weights: 
+
+two:
+  context: MyString
+  taggable_class: MyString
+  max_tags: MyString
+  tag_weights: 
