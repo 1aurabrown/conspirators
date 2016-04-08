@@ -14,6 +14,7 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :genders, :types
+  has_many :notes, as: :contactable, dependent: :destroy
   before_save :set_slug
 
   def country_code_enum
