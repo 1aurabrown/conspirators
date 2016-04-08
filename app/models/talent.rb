@@ -126,7 +126,14 @@ class Talent < ActiveRecord::Base
       field :projects
       field :resume
       field :cover
-      field :gallery_pictures
+      field :gallery_pictures do
+        pretty_value do
+          pics = bindings[:object].gallery_pictures.map do |pic|
+            bindings[:view].tag(:img, { :src => pic.image.url(:thumb) })
+          end
+          pics.reduce(:+).html_safe
+        end
+      end
     end
   end
 end
