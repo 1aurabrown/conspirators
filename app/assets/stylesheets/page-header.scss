@@ -4,7 +4,7 @@
   width: 100%;
   overflow: hidden;
   background-color: #000;
-  z-index: 2;
+  z-index: 4;
   #cover-image-container {
     height: 100%;
     position: relative;
@@ -21,7 +21,7 @@
 
 #page-header {
   position: relative;
-  z-index: 3;
+  z-index: 4;
   margin-top: -160px;
   #header-content {
     padding-top: 60px;
