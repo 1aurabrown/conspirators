@@ -51,7 +51,7 @@
     <section class="section">
       <h1 class="section-header">Similar</h1>
       <% @talent.get_similar.each do | similar | %>
-        <div><%= similar %></div>
+        <div><%= render partial: 'shared/talent_card', talent: similar %></div>
       <% end %>
     </section>
   </div>
