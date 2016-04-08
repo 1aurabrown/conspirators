@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require tether
+//= require holderjs
 //= require bootstrap
 //= require scrollmagic
 //= require gsap

@@ -31,6 +31,7 @@ source 'https://rails-assets.tenex.tech' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
   gem 'rails-assets-gsap'
+  gem 'rails-assets-holderjs'
 end
 
 group :development, :test do
