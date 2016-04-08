@@ -30,6 +30,10 @@ class Talent < ActiveRecord::Base
     end
   end
 
+  def get_similar
+    self.compute_similarities_by [:skills, :genders, :types]
+  end
+
   def appearance
     [ 
       self.genders.to_sentence,

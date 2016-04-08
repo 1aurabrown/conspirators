@@ -1,7 +1,6 @@
 class GraphWeight < ActiveRecord::Base
   serialize :tag_weights, JSON
   serialize :node_context_weights, JSON
-  before_create :refresh!
   attr_accessor :contextual_taggings
 
   def self.for(taggable_class, context)
@@ -10,8 +9,10 @@ class GraphWeight < ActiveRecord::Base
 
   def refresh!
     refresh_max_tags
-    refresh_tag_weights
-    save!
+    if self.max_tags
+      refresh_tag_weights    
+      save!
+    end
   end
 
   def taggings
@@ -27,7 +28,11 @@ class GraphWeight < ActiveRecord::Base
       .group(:taggable_id)
       .count
       .max_by { | taggable_id, nodes | nodes }
-    self.max_tags = max_tuple[1]
+    if max_tuple
+      self.max_tags = max_tuple[1] 
+    else
+      self.max_tags = nil
+    end
   end
 
   def refresh_tag_weights
@@ -43,7 +48,6 @@ class GraphWeight < ActiveRecord::Base
   def tag_weight(tag_id)
     total_tagged = self.taggings
       .where(tag_id: tag_id)
-      .group(:taggable_id)
       .count()
     self.taggable_class.constantize.count / total_tagged 
   end
