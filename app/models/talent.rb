@@ -30,10 +30,6 @@ class Talent < ActiveRecord::Base
     end
   end
 
-  def get_similar
-    self.compute_similarities_by [:skills, :genders, :types]
-  end
-
   def appearance
     [ 
       self.genders.to_sentence,
@@ -41,6 +37,11 @@ class Talent < ActiveRecord::Base
       "#{self.height_in}"
     ].reject!(&:blank?).join(' / ')
   end
+
+  def get_similar_talents
+    self.compute_similarities_by [:skills, :genders, :types]
+  end
+
 
   def height_in(unit=:cm)
     return nil unless self.height
@@ -121,6 +122,10 @@ class Talent < ActiveRecord::Base
       field :resume
       field :cover
       field :gallery_pictures
+      field :get_similar_talents do
+        label "Similar"
+        partial "similar_partial"
+      end
     end
   end
 end
