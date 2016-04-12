@@ -1,0 +1,11 @@
+<article class="home">
+  <div class="page-content">
+    <section class="section">
+      <div class="section-content">
+        <% @talents.each do | talent | %>
+          <%= render partial: 'shared/talent_card', locals: {talent: talent} %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</article>

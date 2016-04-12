@@ -1,6 +1,8 @@
 .card-container {
   @extend .col-sm-6;   
-  @extend .col-md-4;
+  @extend .col-lg-4;  
+  @extend .col-xl-3;
+  padding: 0.3rem;
 }
 figure.talent-card {
   position: relative;
@@ -25,7 +27,6 @@ figure.talent-card {
         transform: translate3d(0,0,0);
       }
     }
-
     .save-button {
       opacity: 1;
     }

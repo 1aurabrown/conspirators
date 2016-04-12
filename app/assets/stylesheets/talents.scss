@@ -26,17 +26,19 @@ article.talent {
       @extend .col-sm-6;
       @extend .col-md-3;
       padding-top: 1rem;
-      h2 {
+      h2  {
         font-size: 18px;
+        display: inline-block;
+        border-bottom: 1px solid white;
       }
       h1 {
         margin-top: 0.5rem;
       }
-      .download {
-        display: block;
-        border: 1px solid gray;
-        border-radius: 0.25rem;
-        max-width: 12rem;
+    }
+    a.talent-att:hover {
+      h2 {
+
+        border-bottom: 1px solid black;
       }
     }
   }

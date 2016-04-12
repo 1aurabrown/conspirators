@@ -5,7 +5,7 @@
 controller = new (ScrollMagic.Controller)
 
 $ ->
-
+  return unless $('body').hasClass 'talents'
   new (ScrollMagic.Scene)(
       offset: 240
       reverse: true)
