@@ -36,7 +36,6 @@ class Talent < ActiveRecord::Base
   def appearance
     [ 
       self.genders.pluck(:name).to_sentence,
-      "#{self.age} years old", 
       "#{self.height_in}"
     ].join(' / ')
   end

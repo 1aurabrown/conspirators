@@ -2,14 +2,14 @@ article.talent {
   .project-year {
     @extend .row;
     .project-year-number {
-      @extend .col-sm-2;
+      @extend .col-sm-1;
       font-size: 24px;
       line-height: 24px;
       line-height: 1.1em;
     }
     .project-year-list {
       @extend .col-sm-8;
-      h2.project-name {
+      h2.project-title {
         margin-bottom: 0;
       }
     }

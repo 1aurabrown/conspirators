@@ -7,7 +7,7 @@
   <header id="page-header">
     <div id="header-content">
       <h1 id="page-title"><%= @talent.name %></h1>
-      <h2 id="page-blurb"><%= @talent.appearance %></h2>
+      <h2 id="page-blurb"><%= @talent.appearance %><span class="lnr lnr-bookmark"></span></h2>
     </div>
   </header>
 
@@ -22,7 +22,7 @@
             <h2 class="project-year-number"><%= year %></h2>
             <div class="project-year-list">
               <% year_items.each do |project| %>
-                  <h2>
+                  <h2 class="project-title">
                     <%= project.title %>
                   </h2>
                   <p>
