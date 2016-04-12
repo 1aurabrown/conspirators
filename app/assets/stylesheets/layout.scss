@@ -40,9 +40,14 @@ body{
   @extend .navbar-fixed-top;
   transition: all 0.5s; 
   .logo {
-    img {
-      height: 1em;
+    h1 {
+      width: 5rem;
+      position: relative;
+      img {
+        width: 100%;
+      }
     }
+
   }
 }
 

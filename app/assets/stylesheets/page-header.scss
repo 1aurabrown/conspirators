@@ -27,10 +27,8 @@
     @extend .container;
     h1 {
       position: relative;
-      .save-talent {
-        position: absolute;
-        right: 0;
-        bottom: 0.5rem;
+      .save-button {
+        float: right;
       }
     }
   }
