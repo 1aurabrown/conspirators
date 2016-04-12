@@ -3,10 +3,14 @@
     <a class="card-link" href="<%= "/#{talent.slug}" %>">
     </a>
     <figcaption class="card-content">
+      <div>
+      <p class="talent-card-subtitle"><%= talent.genders.to_sentence %></p>
+      </div>
+      <div>
+      <p class="talent-card-subtitle"> <%= talent.height_in(:cm) %> / <%= talent.height_in(:ft) %> </p>
+      </div>
       <h1 class="talent-card-title"><%= talent.name %></h1>
 
-      <p class="talent-card-subtitle"><%= talent.genders.to_sentence %></p>
-      <p class="talent-card-subtitle"> <%= talent.height_in(:cm) %> / <%= talent.height_in(:ft) %> </p>
     </figcaption>
     <img class="card-img-bottom" src="<%= talent.avatar.url(:medium)%>">
     <%= render partial: 'shared/save_button', locals: {talent: talent} %>

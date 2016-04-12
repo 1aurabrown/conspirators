@@ -64,12 +64,10 @@ body{
   .fullpage-section {
     @extend .container-fluid; 
     padding: 0;
-    background-color:black;
     margin-top: 1em;
     .section-header {
       @extend .display-4;
       @extend .container;
-      color: $gray-lighter;
       text-align: right;
     }
   }
