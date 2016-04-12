@@ -1,4 +1,5 @@
 .card-container {
+  @extend .col-sm-6;   
   @extend .col-md-4;
 }
 figure.talent-card {

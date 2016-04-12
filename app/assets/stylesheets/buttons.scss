@@ -2,7 +2,6 @@
   @extend .btn;
   @extend .btn-sm; 
   @extend .btn-primary-outline;
-  border-radius: 0;
   color: $gray;
   border-color: $gray;
   border-width: 1px;
@@ -11,8 +10,8 @@
   font-family: 'Julius Sans One', sans-serif;
   transition: all 0.5s;
   &.active {
-    background: rgba(0, 0, 0, 0.5);
     border-color: $gray;
+    background-color: transparent;
     .icon {
       color: white;
     }

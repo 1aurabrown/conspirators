@@ -12,7 +12,6 @@ class Note < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Talents'
-    field :date
     field :contactable do
       label "Note about:"
     end
