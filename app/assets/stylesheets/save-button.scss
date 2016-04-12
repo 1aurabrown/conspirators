@@ -1,0 +1,12 @@
+.save-button {
+  &.saved {
+    &:after {
+      content: 'Saved'
+    }
+  }
+  &.unsaved {
+    &:after {
+      content: 'Save'
+    }
+  }
+}

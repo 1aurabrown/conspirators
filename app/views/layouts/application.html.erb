@@ -8,15 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav id="navigation">
-  <div class="container">
-    <a class="logo" href="<%= root_path %>">
-      <h1>
-      <%= image_tag 'logo-snakes.svg' %>
-      </h1>
-    </a>
-  </div>
-</nav>
+
+<%= render partial: 'navigation' %>
+
 <%= content_for?(:content) ? yield(:content) : yield %>
 <%= render partial: 'footer' %>
 

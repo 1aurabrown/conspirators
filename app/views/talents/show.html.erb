@@ -7,10 +7,7 @@
   <header id="page-header">
     <div id="header-content">
       <h1 id="page-title"><%= @talent.name %>
-      <span class="button active save-talent">
-        <span class="icon lnr lnr-bookmark"></span>
-        Saved
-      </span>
+      <%= render partial: 'shared/save_button', locals: {talent: @talent} %>
       </h1>
 
     </div>
@@ -93,9 +90,9 @@
     <section class="section">
       <h1 class="section-header">Similar</h1>
       <div class="section-content">
-      <% @talent.get_similar.each do | similar | %>
-        <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
-      <% end %>
+        <% @talent.get_similar.each do | similar | %>
+          <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+        <% end %>
       </div>
     </section>
   </div>

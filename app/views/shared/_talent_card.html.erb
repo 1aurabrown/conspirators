@@ -1,9 +1,14 @@
-<div class="col-md-3">
-  <div class="talent-card">
-    <div class="card-block">
-      <h4 class="card-title"><%= talent.name %></h4>
-      <h6 class="card-subtitle text-muted"><%= talent.appearance %></h6>
-    </div>
+<div class="card-container" >
+  <figure class="talent-card">
+    <a class="card-link" href="<%= "/#{talent.slug}" %>">
+    </a>
+    <figcaption class="card-content">
+      <h1 class="talent-card-title"><%= talent.name %></h1>
+
+      <p class="talent-card-subtitle"><%= talent.genders.to_sentence %></p>
+      <p class="talent-card-subtitle"> <%= talent.height_in(:cm) %> / <%= talent.height_in(:ft) %> </p>
+    </figcaption>
     <img class="card-img-bottom" src="<%= talent.avatar.url(:medium)%>">
+    <%= render partial: 'shared/save_button', locals: {talent: talent} %>
   </div>
 </div>
