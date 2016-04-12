@@ -19,14 +19,24 @@ article.talent {
   }
   .talent-atts {
     padding-bottom: 6rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 
     .talent-att {
       text-align: center;
       @extend .col-sm-6;
       @extend .col-md-3;
+      padding-top: 1rem;
       h2 {
         font-size: 18px;
+      }
+      h1 {
+        margin-top: 0.5rem;
+      }
+      .download {
+        display: block;
+        border: 1px solid gray;
+        border-radius: 0.25rem;
+        max-width: 12rem;
       }
     }
   }

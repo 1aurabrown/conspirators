@@ -40,13 +40,15 @@
             <%= @talent.skills.join(' / ') %>
           </h2>
         </div>
-        <a class="talent-att" href="#">
-          <h1>
-            <span class="icon lnr lnr-download"></span>
-          </h1>
-          <h2>
-            Download cv
-          </h2>
+        <div class="talent-att" href="#">
+          <a class="download" href="#">
+            <h1>
+              <span class="icon lnr lnr-download"></span>
+            </h1>
+            <h2>
+              Download cv
+            </h2>
+          </a>
         </a>
       </div>
     </section> 
@@ -87,7 +89,7 @@
         <% end %>
       </div>
     </section>
-    <section class="fullpage-section">
+    <section class="section">
       <h1 class="section-header">Similar</h1>
       <div class="section-content">
         <% @talent.get_similar.each do | similar | %>
