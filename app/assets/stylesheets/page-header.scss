@@ -22,7 +22,7 @@
 #page-header {
   position: relative;
   z-index: 4;
-  margin-top: -120px;
+  margin-top: -100px;
   #header-content {
     padding-top: 60px;
     @extend .container;
@@ -37,7 +37,6 @@
   }
   #page-title {
     color: white;
-    @extend .display-4;
     margin-bottom: 0;
   }
 }

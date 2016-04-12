@@ -1,9 +1,10 @@
-<div class="col-md-3">
+<div class="card-container" >
   <div class="talent-card">
-    <div class="card-block">
+    <a class="card-block" href="<%= "/#{talent.slug}" %>">
       <h4 class="card-title"><%= talent.name %></h4>
       <h6 class="card-subtitle text-muted"><%= talent.appearance %></h6>
-    </div>
+    </a>
     <img class="card-img-bottom" src="<%= talent.avatar.url(:medium)%>">
+    <%= render partial: 'shared/save_button', locals: {talent: talent} %>
   </div>
 </div>
