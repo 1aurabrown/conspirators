@@ -1,4 +1,8 @@
 article.talent {
+  #talent-buttons {
+    position: absolute;
+    top: 0.5rem;
+  } 
   .project-year {
     @extend .row;
     .project-year-number {

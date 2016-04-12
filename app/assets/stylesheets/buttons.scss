@@ -3,7 +3,16 @@
   @extend .btn-sm; 
   @extend .btn-primary-outline;
   border-radius: 0;
-  color: white;
-  border-color: white;
+  color: $gray;
+  border-color: $gray;
   border-width: 1px;
+  background-color: white;
+  font-weight: 400;
+  font-family: 'Julius Sans One', sans-serif;
+  transition: all 0.5s;
+  &:hover {
+    color: white;
+    background-color: black;
+    border-color: black;
+  }
 } 
