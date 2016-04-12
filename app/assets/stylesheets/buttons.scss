@@ -6,13 +6,13 @@
   color: $gray;
   border-color: $gray;
   border-width: 1px;
-  background-color: white;
+  background-color: transparent;
   font-weight: 400;
   font-family: 'Julius Sans One', sans-serif;
   transition: all 0.5s;
   &:hover {
     color: white;
     background-color: black;
-    border-color: black;
+    border-color: white;
   }
 } 
