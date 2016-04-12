@@ -65,3 +65,4 @@ gem 'ruby-units', '2.0.0'
 gem 'countries', :require => 'countries/global'
 
 gem 'redcarpet', '3.3.4'
+gem 'publishable', '1.0.4'

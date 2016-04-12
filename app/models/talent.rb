@@ -1,6 +1,8 @@
 class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
   include TagNetworkable
+  publishable
+  
   has_and_belongs_to_many :projects
   has_attached_file :avatar, styles: { large: "600>", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -15,7 +17,7 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :genders, :types
   has_many :notes, as: :contactable, dependent: :destroy
-  before_save :set_slug
+  before_save :set_slug, :refresh_weights
 
   def country_code_enum
     Country.all_translated
@@ -41,9 +43,15 @@ class Talent < ActiveRecord::Base
 
   def get_similar
     similar_obj = self.compute_similarities_by([:skills, :genders, :types])
-    Talent.where(id: similar_obj.keys.first(4))
+    Talent.where(id: similar_obj.keys.first).where("published < ?", Date.today).limit(4)
   end
 
+  def refresh_weights
+    [:skills, :genders, :types].each do |context|
+      g = GraphWeight.new taggable_class: "Talent", context: context
+      g.refresh!
+    end   
+  end
 
   def height_in(unit=:cm)
     return nil unless self.height
@@ -58,6 +66,9 @@ class Talent < ActiveRecord::Base
       ratl_max_suggestions -1
     end
     edit do
+      field :published do
+        label "Public from"
+      end
       group :base do
         label "Basic information"
         field :first_name
@@ -105,6 +116,11 @@ class Talent < ActiveRecord::Base
         filterable true
         formatted_value do
           bindings[:view].link_to(bindings[:object].name, "/#{bindings[:object].slug}")
+        end
+      end
+      field :published do 
+        pretty_value do
+          bindings[:object].published.blank? ? "No" : "Yes" 
         end
       end
       field :gender_list do
