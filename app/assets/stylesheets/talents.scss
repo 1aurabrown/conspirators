@@ -1,14 +1,33 @@
+#talent-buttons {
+  padding-left: 0.5rem;
+} 
 article.talent {
   .project-year {
     @extend .row;
     .project-year-number {
-      @extend .col-sm-2;
-      @extend .display-4;
-
+      @extend .col-sm-1;
+      font-size: 24px;
+      line-height: 24px;
+      line-height: 1.1em;
     }
     .project-year-list {
-      @extend .col-sm-10;
-      padding-top: 1em;
+      @extend .col-sm-8;
+      h2.project-title {
+        margin-bottom: 0;
+      }
     }
   }
-} 
+  .talent-atts {
+    padding-bottom: 6rem;
+    margin-top: 2rem;
+
+    .talent-att {
+      text-align: center;
+      @extend .col-sm-6;
+      @extend .col-md-3;
+      h2 {
+        font-size: 18px;
+      }
+    }
+  }
+}
