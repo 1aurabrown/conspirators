@@ -2,6 +2,7 @@ class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
   include TagNetworkable
   publishable
+  
   has_and_belongs_to_many :projects
   has_attached_file :avatar, styles: { large: "600>", medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -59,6 +60,9 @@ class Talent < ActiveRecord::Base
       ratl_max_suggestions -1
     end
     edit do
+      field :published do
+        label "Public from"
+      end
       group :base do
         label "Basic information"
         field :first_name
@@ -106,6 +110,11 @@ class Talent < ActiveRecord::Base
         filterable true
         formatted_value do
           bindings[:view].link_to(bindings[:object].name, "/#{bindings[:object].slug}")
+        end
+      end
+      field :published do 
+        pretty_value do
+          bindings[:object].published.blank? ? "No" : "Yes" 
         end
       end
       field :gender_list do
