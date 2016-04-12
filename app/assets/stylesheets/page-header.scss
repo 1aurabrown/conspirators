@@ -30,12 +30,8 @@
   }
   #page-title {
     color: white;
-
     @extend .display-4;
-  }
-  #page-blurb {
-
-    @extend .lead;
+    margin-bottom: 0;
   }
     
 }

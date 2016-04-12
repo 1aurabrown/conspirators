@@ -7,11 +7,22 @@
   <header id="page-header">
     <div id="header-content">
       <h1 id="page-title"><%= @talent.name %></h1>
-      <h2 id="page-blurb"><%= @talent.appearance %><span class="lnr lnr-bookmark"></span></h2>
+      <div id="talent-buttons">
+        <span class="button">
+          <span class="lnr lnr-bookmark"></span>
+          Save
+        </span>
+        <span class="button">
+          <span class="lnr lnr-download"></span>
+          Download CV
+        </span>
+      </div>
     </div>
   </header>
 
   <div class="page-content">
+        <h2 id="page-blurb">
+        <%= @talent.appearance %></h2>
     <section class="section">
       <h1 class="section-header">
         Projects

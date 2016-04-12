@@ -1,0 +1,9 @@
+.button {
+  @extend .btn;
+  @extend .btn-sm; 
+  @extend .btn-primary-outline;
+  border-radius: 0;
+  color: white;
+  border-color: white;
+  border-width: 1px;
+} 
