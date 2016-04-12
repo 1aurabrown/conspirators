@@ -17,7 +17,7 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :genders, :types
   has_many :notes, as: :contactable, dependent: :destroy
-  before_save :set_slug
+  before_save :set_slug, :refresh_weights
 
   def country_code_enum
     Country.all_translated
@@ -43,9 +43,15 @@ class Talent < ActiveRecord::Base
 
   def get_similar
     similar_obj = self.compute_similarities_by([:skills, :genders, :types])
-    Talent.where(id: similar_obj.keys.first(4))
+    Talent.where(id: similar_obj.keys.first).where("published < ?", Date.today).limit(4)
   end
 
+  def refresh_weights
+    [:skills, :genders, :types].each do |context|
+      g = GraphWeight.new taggable_class: "Talent", context: context
+      g.refresh!
+    end   
+  end
 
   def height_in(unit=:cm)
     return nil unless self.height

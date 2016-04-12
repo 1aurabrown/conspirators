@@ -18,7 +18,6 @@ class Ability
     if user.role == "pr"
       can :access, :rails_admin
       can :dashboard
-      can :manage, :all
       can :read, [ User, Talent, GalleryPicture ]
     end
   end
