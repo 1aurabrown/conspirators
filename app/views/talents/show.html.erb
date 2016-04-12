@@ -6,17 +6,13 @@
   </div>
   <header id="page-header">
     <div id="header-content">
-      <h1 id="page-title"><%= @talent.name %></h1>
-      <div id="talent-buttons">
-        <span class="button active">
-          <span class="icon lnr lnr-bookmark"></span>
-          Saved
-        </span>
-        <span class="button">
-          <span class="icon lnr lnr-download"></span>
-          Download CV
-        </span>
-      </div>
+      <h1 id="page-title"><%= @talent.name %>
+      <span class="button active save-talent">
+        <span class="icon lnr lnr-bookmark"></span>
+        Saved
+      </span>
+      </h1>
+
     </div>
   </header>
 
@@ -25,7 +21,7 @@
       <div class="talent-atts">
         <div class="talent-att">
           <h1>
-            Bubu
+            <span class="icon lnr lnr-crop"></span>
           </h1>
           <h2>
             <%= @talent.height_in(:cm) %> / <%=@talent.height_in(:ft) %>
@@ -33,7 +29,7 @@
         </div>
         <div class="talent-att">
           <h1>
-            Bubu
+            <span class="icon lnr lnr-users"></span>
           </h1>
           <h2>
             <%= @talent.genders.join(' / ') %>
@@ -41,20 +37,20 @@
         </div>
         <div class="talent-att">
           <h1>
-            Bubu
+            <span class="icon lnr lnr-star"></span>
           </h1>
           <h2>
             <%= @talent.skills.join(' / ') %>
           </h2>
         </div>
-        <div class="talent-att">
+        <a class="talent-att" href="#">
           <h1>
             <span class="icon lnr lnr-download"></span>
           </h1>
           <h2>
             Download cv
           </h2>
-        </div>
+        </a>
       </div>
     </section> 
 

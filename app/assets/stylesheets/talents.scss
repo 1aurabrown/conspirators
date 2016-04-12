@@ -18,10 +18,16 @@ article.talent {
     }
   }
   .talent-atts {
+    padding-bottom: 6rem;
+    margin-top: 2rem;
+
     .talent-att {
       text-align: center;
       @extend .col-sm-6;
       @extend .col-md-3;
+      h2 {
+        font-size: 18px;
+      }
     }
   }
 }
