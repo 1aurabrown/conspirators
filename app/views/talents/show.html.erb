@@ -8,12 +8,12 @@
     <div id="header-content">
       <h1 id="page-title"><%= @talent.name %></h1>
       <div id="talent-buttons">
-        <span class="button">
-          <span class="lnr lnr-bookmark"></span>
-          Save
+        <span class="button active">
+          <span class="icon lnr lnr-bookmark"></span>
+          Saved
         </span>
         <span class="button">
-          <span class="lnr lnr-download"></span>
+          <span class="icon lnr lnr-download"></span>
           Download CV
         </span>
       </div>
@@ -22,8 +22,39 @@
 
   <div class="page-content">
     <section class="section">
-      <div class="section-content">
-
+      <div class="talent-atts">
+        <div class="talent-att">
+          <h1>
+            Bubu
+          </h1>
+          <h2>
+            <%= @talent.height_in(:cm) %> / <%=@talent.height_in(:ft) %>
+          </h2>
+        </div>
+        <div class="talent-att">
+          <h1>
+            Bubu
+          </h1>
+          <h2>
+            <%= @talent.genders.join(' / ') %>
+          </h2>
+        </div>
+        <div class="talent-att">
+          <h1>
+            Bubu
+          </h1>
+          <h2>
+            <%= @talent.skills.join(' / ') %>
+          </h2>
+        </div>
+        <div class="talent-att">
+          <h1>
+            <span class="icon lnr lnr-download"></span>
+          </h1>
+          <h2>
+            Download cv
+          </h2>
+        </div>
       </div>
     </section> 
 

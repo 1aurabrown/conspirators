@@ -31,7 +31,7 @@ body{
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
-  transition: all 0.5s;
+  transition: all 0.5s; 
   .logo {
     img {
       height: 1em;

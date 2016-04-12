@@ -17,4 +17,11 @@ article.talent {
       }
     }
   }
+  .talent-atts {
+    .talent-att {
+      text-align: center;
+      @extend .col-sm-6;
+      @extend .col-md-3;
+    }
+  }
 }

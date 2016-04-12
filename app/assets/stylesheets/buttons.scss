@@ -10,6 +10,13 @@
   font-weight: 400;
   font-family: 'Julius Sans One', sans-serif;
   transition: all 0.5s;
+  &.active {
+    background-color: black;
+    border-color: $gray;
+    .icon {
+      color: white;
+    }
+  }
   &:hover {
     color: white;
     background-color: black;
