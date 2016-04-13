@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411142434) do
+ActiveRecord::Schema.define(version: 20160413173248) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 20160411142434) do
     t.integer "project_id", null: false
     t.integer "talent_id",  null: false
   end
+
+  create_table "saved_talents", force: :cascade do |t|
+    t.integer "talent_id"
+    t.integer "user_id"
+  end
+
+  add_index "saved_talents", ["talent_id"], name: "index_saved_talents_on_talent_id"
+  add_index "saved_talents", ["user_id"], name: "index_saved_talents_on_user_id"
 
   create_table "spoken_languages", force: :cascade do |t|
     t.string   "language"
