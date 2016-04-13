@@ -22,5 +22,4 @@
 //= require masonry/jquery.imagesloaded.min
 //= require_tree ./vendor
 //= require ./app.coffee
-//= require ./layout_functions.coffee
 //= require_tree .
