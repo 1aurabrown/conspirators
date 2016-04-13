@@ -51,7 +51,9 @@ body{
     }
   }
   .fullpage-section {
+
     @extend .container-fluid; 
+    background-color: black;
     padding: 0;
     margin-top: 1em;
     .section-header {
