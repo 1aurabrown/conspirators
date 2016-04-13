@@ -18,7 +18,7 @@
       <div class="talent-atts">
         <div class="talent-att">
           <h1>
-            <span class="icon lnr lnr-crop"></span>
+            <span class="icon-height"></span>
           </h1>
           <h2>
             <%= @talent.height_in(:cm) %> / <%=@talent.height_in(:ft) %>
@@ -26,7 +26,7 @@
         </div>
         <div class="talent-att">
           <h1>
-            <span class="icon lnr lnr-users"></span>
+            <span class="icon-gender"></span>
           </h1>
           <h2>
             <%= @talent.genders.join(' / ') %>
@@ -34,15 +34,15 @@
         </div>
         <div class="talent-att">
           <h1>
-            <span class="icon lnr lnr-star"></span>
+            <span class="icon-skills"></span>
           </h1>
           <h2>
             <%= @talent.skills.join(' / ') %>
           </h2>
         </div>
-        <a class="talent-att" href="#">
+        <a class="action-button dark talent-att" href="#">
             <h1>
-              <span class="icon lnr lnr-download"></span>
+              <span class="icon icon-download"></span>
             </h1>
             <h2>
               Download cv

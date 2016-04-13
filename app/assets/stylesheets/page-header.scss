@@ -10,6 +10,13 @@
     position: relative;
     @extend .container;
     img {
+      &.conspiring {
+        top: 100px;
+        height: 150%;
+        -webkit-filter: contrast(150%) brightness(110%);
+      }  
+      -webkit-filter: contrast(100%) brightness(80%);
+      transition: -webkit-filter 1s;
       position: absolute;
       right: 0;
       top: 0;

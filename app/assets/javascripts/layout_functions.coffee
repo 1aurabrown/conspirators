@@ -1,0 +1,2 @@
+app.layoutFunctions.navigation = ->
+   

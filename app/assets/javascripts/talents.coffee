@@ -1,30 +1,69 @@
-# Place all the behaviors and hooks related to the matching controller here.
+# Place all the behaviors and hooks related to the matching app.scroll here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-controller = new (ScrollMagic.Controller)
 
-$ ->
+app.controllerInitializers.talents = ->
   return unless $('body').hasClass 'talents'
   new (ScrollMagic.Scene)(
       offset: 240
       reverse: true)
     .setPin('#page-cover')
-    .addTo(controller)
+    .addTo(app.scroll)
 
   new (ScrollMagic.Scene)(
       offset: 240
       reverse: true)
     .setPin('#page-header')
-    .addTo(controller)
+    .addTo(app.scroll)
 
   new (ScrollMagic.Scene)(
       offset: 0
       duration: 300
+      )
+    .setTween(
+      TweenLite.to($('#cover-image')[0], 2, {className: '+=conspiring'}))
+    .addTo(app.scroll)
+  new (ScrollMagic.Scene)(
+      offset: -10
+      duration: 290
+      reverse: true
+      )
+    .setTween(
+      TweenLite.to($('#cover-image')[0], 2, {className: '-=conspiring'}))
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 240
+      duration: 200
       reverse: true)
     .setTween(
-      TweenLite.to($('#cover-image')[0], 2, {top: '100px', height: '150%'}))
-    .addTo(controller)
+      TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 260
+      duration: 180
+      reverse: true)
+    .setTween(
+      TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 260
+      duration: 180
+      reverse: true)
+    .setTween(
+      TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 300
+      duration: 180
+      reverse: true)
+    .setTween(
+      TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
+    .addTo(app.scroll)
 
   grid = $('.grid')
   msnry = undefined
