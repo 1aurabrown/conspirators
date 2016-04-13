@@ -4,7 +4,7 @@
 
 controller = new (ScrollMagic.Controller)
 
-$ ->
+initTalentScroll = ->
   return unless $('body').hasClass 'talents'
   new (ScrollMagic.Scene)(
       offset: 240
@@ -35,3 +35,8 @@ $ ->
       columnWidth: '.grid-sizer'
       percentPosition: true)
     return
+
+
+$ ->
+  initTalentScroll()
+$(document).on 'page:load', initTalentScroll
