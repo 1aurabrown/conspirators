@@ -1,4 +1,12 @@
 .save-button {
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
+  .icon-bookmark {
+    padding: 0.2rem  0.3rem ;
+    border: 1px solid white;
+    border-radius: 0.2rem;
+    font-size: 1.5rem;
+  }
   &.big {
     &.saved {
       &:after {

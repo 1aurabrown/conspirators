@@ -1,24 +1,18 @@
-.button {
-  @extend .btn;
-  @extend .btn-sm; 
-  @extend .btn-primary-outline;
-  color: $gray;
-  border-color: $gray-lighter;
-  border-width: 1px;
-  background-color: transparent;
-  font-weight: 400;
-  font-family: 'Julius Sans One', sans-serif;
-  transition: all 0.5s;
-  &.active {
-    border-color: $gray-lighter;
-    background-color: transparent;
-    .icon {
-      color: white;
-    }
-  }
-  &:hover {
+.action-button {
+  span.icon {
     color: white;
-    background-color: black;
     border-color: white;
+    transition: all 0.5s;
   }
+  &:hover span.icon {
+    color: $gray-lighter;
+    border-color: $gray-lighter;
+  }
+  &.dark {
+    span.icon {
+      border-color:  black;
+      color: black;
+      background-color: $gray-lighter;
+    }
+  } 
 } 
