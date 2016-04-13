@@ -18,28 +18,6 @@ class ApplicationController < ActionController::Base
     '/admin'
   end
 
-  def current_user
-    super || guest_user
-  end
-
-  def user_signed_in?
-    current_user.registered?
-  end
-
-  def saved_talent?(talent)
-    saved_talents.for_talent(talent).exists?
-  end
-
-  def save_talent(talent)
-    saved_talents.create!(talent: talent)
-  end
-
-  private
-
-  def guest_user
-    @guest ||= Guest.new(cookies.signed)
-  end
-
 
   protected
 

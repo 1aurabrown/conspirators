@@ -36,3 +36,4 @@ module Guests
     end
 
   end
+end
