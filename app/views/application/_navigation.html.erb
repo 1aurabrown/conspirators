@@ -2,7 +2,9 @@
   <div class="container">
     <a class="logo" href="<%= root_path %>">
       <h1>
-      <%= image_tag 'logo-snakes.svg' %>
+        <svg>
+          <use xlink:href="<%= image_path 'logo-snakes.svg' %>#g"></use>
+        </svg>
       </h1>
     </a>
   </div>
