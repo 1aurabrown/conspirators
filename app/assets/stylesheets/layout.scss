@@ -35,22 +35,6 @@ body{
   }
 }
 
-#navigation {
-  @extend .navbar;
-  @extend .navbar-fixed-top;
-  transition: all 0.5s; 
-  .logo {
-    h1 {
-      width: 5rem;
-      position: relative;
-      img {
-        width: 100%;
-      }
-    }
-
-  }
-}
-
 .page-content {
   width: 100%;
   top: 380px;
