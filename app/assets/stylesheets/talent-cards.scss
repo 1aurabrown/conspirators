@@ -1,7 +1,7 @@
 .card-container {
-  @extend .col-sm-6;   
-  @extend .col-lg-4;  
-  @extend .col-xl-3;
+  @extend .col-sm-6;
+  @extend .col-md-4;  
+  @extend .col-lg-3;
   padding: 0.3rem;
 }
 figure.talent-card {
@@ -15,7 +15,7 @@ figure.talent-card {
   background-color: black;
   &:hover {
     img {
-      opacity: 0.6;
+      opacity: 0.6;;
       filter: blur(3px);
       -webkit-transform: scale3d(1.1,1.1,1);
       transform: scale3d(1.1,1.1,1);

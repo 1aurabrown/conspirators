@@ -47,7 +47,7 @@ body{
     padding-top: 1rem;
     .section-header {
       @extend .display-4;
-      text-align: right;
+      font-size: 30px;    
     }
   }
   .fullpage-section {
@@ -59,7 +59,7 @@ body{
     .section-header {
       @extend .display-4;
       @extend .container;
-      text-align: right;
+      font-size: 30px;
     }
   }
 }

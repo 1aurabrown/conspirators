@@ -23,6 +23,10 @@ article.talent {
   }
 }
 
+.talent-gallery {
+  position: relative;
+}
+
 .talent-att {
   text-align: center;
   @extend .col-sm-6;
