@@ -28,8 +28,6 @@ class Project < ActiveRecord::Base
     field :description
     field :organised_by_conspirators
     field :date
-    field :talents do
-      inverse_of :projects
-    end
+    field :talents
   end
 end

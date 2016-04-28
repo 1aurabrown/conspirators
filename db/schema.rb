@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413173248) do
+ActiveRecord::Schema.define(version: 20160428180859) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20160413173248) do
   end
 
   add_index "allport_contact_cards", ["contactable_type", "contactable_id"], name: "unique_contact_type_and_id"
+
+  create_table "featured_projects", force: :cascade do |t|
+    t.integer  "talent_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "featured_projects", ["project_id"], name: "index_featured_projects_on_project_id"
+  add_index "featured_projects", ["talent_id"], name: "index_featured_projects_on_talent_id"
 
   create_table "gallery_pictures", force: :cascade do |t|
     t.integer  "talent_id"
@@ -88,6 +98,14 @@ ActiveRecord::Schema.define(version: 20160413173248) do
 
   add_index "saved_talents", ["talent_id"], name: "index_saved_talents_on_talent_id"
   add_index "saved_talents", ["user_id"], name: "index_saved_talents_on_user_id"
+
+  create_table "saved_videos", force: :cascade do |t|
+    t.integer "video_id"
+    t.integer "user_id"
+  end
+
+  add_index "saved_videos", ["user_id"], name: "index_saved_videos_on_user_id"
+  add_index "saved_videos", ["video_id"], name: "index_saved_videos_on_video_id"
 
   create_table "spoken_languages", force: :cascade do |t|
     t.string   "language"
