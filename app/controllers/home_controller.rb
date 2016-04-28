@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @talents = Talent.recent(2)
+    @talents = Talent.recent
   end
 end
