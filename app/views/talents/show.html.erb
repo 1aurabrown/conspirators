@@ -72,21 +72,13 @@
         Featured Projects
       </h1>
       <div class="section-content">
-        <% @talent.projects.by_year.each do |year, year_items| %>
-          <div class="project-year">
-            <h2 class="project-year-number"><%= year %></h2>
-            <div class="project-year-list">
-              <% year_items.each do |project| %>
-                  <h2 class="project-title">
-                    <%= project.title %>
-                  </h2>
-                  <p>
-                    <%= project.description %>
-                  </p>
-                </a>
-              <% end %>
-            </div>
-          </div>
+        <% @talent.featured_projects.each do |project| %>
+          <h2 class="project-title">
+            <%= project.project.title %>
+          </h2>
+          <p>
+            <%= project.project.description %>
+          </p>
         <% end %>
       </div>
     </section>
