@@ -53,7 +53,7 @@
 
     <section id="lightbox" class="fullpage-section talent-gallery">
       <div class="gallery-main">
-        <img src="<%=image_url @talent.avatar.url(:large) %>" />
+        <%= render partial: 'gallery_pic', locals: {image: @talent.avatar} %>
       </div>
       <% col = 0 %>
       <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>

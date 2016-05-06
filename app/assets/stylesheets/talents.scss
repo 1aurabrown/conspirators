@@ -27,13 +27,21 @@ article.talent {
   position: relative;
   height: calc(40vw * 1.618);
   overflow: hidden;
+  
+  .gallery-img-container {
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+  }
+
   .gallery-main {
     width: 40%;
     height: 100%;
     overflow: hidden;
-    text-align: center;
     float: left;
-    img {
+    .gallery-img-container {
       height: 100%;
     }
   }
@@ -66,13 +74,6 @@ article.talent {
       :nth-child(2) {
         height: 30%;
       }
-    }
-    .gallery-img-container {
-      width: 100%;
-      height: 100%;
-      background-position: center center;
-      background-repeat: no-repeat;
-      display: block;
     }
   }
 }
