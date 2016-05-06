@@ -25,8 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'allport', :git => "git://github.com/baphomet-berlin/allport.git", :branch => "feature/rails_admin"
 
-gem 'masonry-rails'
-
 source 'https://rails-assets.tenex.tech' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'

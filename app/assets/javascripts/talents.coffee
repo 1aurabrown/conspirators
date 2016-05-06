@@ -64,13 +64,3 @@ app.controllerInitializers.talents = ->
     .setTween(
       TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
     .addTo(app.scroll)
-
-  grid = $('.grid')
-  msnry = undefined
-  grid.imagesLoaded ->
-    # init Isotope after all images have loaded
-    msnry = new Masonry(grid[0],
-      itemSelector: '.grid-item'
-      columnWidth: '.grid-sizer'
-      percentPosition: true)
-    return

@@ -173,8 +173,6 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    masonry-rails (0.2.4)
-      railties
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -311,7 +309,6 @@ DEPENDENCIES
   guard-rails
   jbuilder (~> 2.0)
   jquery-rails
-  masonry-rails
   paperclip!
   pg
   publishable (= 1.0.4)
