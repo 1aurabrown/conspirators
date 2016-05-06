@@ -122,6 +122,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dropzonejs-rails (0.4.16)
+      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
@@ -227,6 +229,10 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_admin_dropzone (1.0.2)
+      dropzonejs-rails (~> 0.4.16)
+      jquery-rails (>= 3.0, < 5)
+      simple_form (~> 3.2)
     rails_admin_tag_list (0.2.0)
       rails_admin (>= 0.6)
     rails_serve_static_assets (0.0.5)
@@ -259,6 +265,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.6.0)
@@ -313,6 +322,7 @@ DEPENDENCIES
   rails-assets-tether!
   rails_12factor
   rails_admin!
+  rails_admin_dropzone (= 1.0.2)
   rails_admin_tag_list (= 0.2.0)
   redcarpet (= 3.3.4)
   ruby-units (= 2.0.0)

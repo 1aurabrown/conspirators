@@ -66,3 +66,4 @@ gem 'countries', :require => 'countries/global'
 
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
+gem 'rails_admin_dropzone', '1.0.2'

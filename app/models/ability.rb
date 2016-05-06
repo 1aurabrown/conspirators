@@ -7,6 +7,7 @@ class Ability
       can :access, :rails_admin
       can :dashboard
       can :manage, :all
+      can :dropzone, :all
     end
     if user.role == "editor"
       can :access, :rails_admin

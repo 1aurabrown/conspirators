@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428180859) do
+ActiveRecord::Schema.define(version: 20160428235121) do
 
   create_table "allport_contact_cards", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160428180859) do
     t.datetime "image_updated_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "position"
   end
 
   add_index "gallery_pictures", ["talent_id"], name: "index_gallery_pictures_on_talent_id"
