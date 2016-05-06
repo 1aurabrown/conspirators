@@ -64,3 +64,9 @@ app.controllerInitializers.talents = ->
     .setTween(
       TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
     .addTo(app.scroll)
+  $(document).delegate '*[data-toggle="lightbox"]', 'click', (event) ->
+    event.preventDefault()
+    $(this).ekkoLightbox()
+    return
+
+

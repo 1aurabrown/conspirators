@@ -165,6 +165,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    lightbox-bootstrap-rails (3.3.0.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -309,6 +310,7 @@ DEPENDENCIES
   guard-rails
   jbuilder (~> 2.0)
   jquery-rails
+  lightbox-bootstrap-rails
   paperclip!
   pg
   publishable (= 1.0.4)
