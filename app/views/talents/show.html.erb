@@ -58,8 +58,12 @@
       <% col = 0 %>
       <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
         <div class="gallery-col col-<%= col %>">
+          <% if pics.first %>
           <%= render partial: 'gallery_pic', locals: {image: pics.first.image} %>
+          <% end %>
+          <%if pics.second %>
           <%= render partial: 'gallery_pic', locals: {image: pics.second.image} %>
+          <% end %>
         </div>
       <% end %>
     </section>
