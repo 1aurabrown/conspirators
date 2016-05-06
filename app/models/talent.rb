@@ -105,7 +105,10 @@ class Talent < ActiveRecord::Base
         field :cover do
           help "The image will be resized to 1600x800."
         end
-        field :gallery_pictures
+        field :gallery_pictures do
+          visible true
+          active true
+        end
       end
     end
     list do
