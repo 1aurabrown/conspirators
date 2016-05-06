@@ -15,6 +15,10 @@ class GalleryPicture < ActiveRecord::Base
     end
   end
 
+  def col
+    self.position.to_s[3].to_i
+  end
+
   rails_admin do
     navigation_label 'Talents'
   end 

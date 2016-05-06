@@ -52,14 +52,15 @@
     </section> 
 
     <section class="fullpage-section talent-gallery">
-      <div class="grid">
-        <div class="grid-sizer"></div>
-        <div class="grid-item grid-item--large">
-          <img src="<%=image_url @talent.avatar.url(:large) %>')" />
+      <div class="gallery">
+        <div class="gallery-main">
+          <img src="<%=image_url @talent.avatar.url(:large) %>" />
         </div>
-        <% @talent.gallery_pictures.each do |picture| %>
-          <div class="grid-item">
-            <img src="<%= image_url picture.image.url(:large) %>">
+        <% col = 0 %>
+        <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
+          <div class="col_<%= col %>">
+            <img src="<%=image_url pics.first.image.url(:large) %>" />
+            <img src="<%=image_url pics.second.image.url(:large) %>" />
           </div>
         <% end %>
       </div>
