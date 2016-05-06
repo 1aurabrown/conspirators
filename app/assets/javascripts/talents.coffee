@@ -49,13 +49,6 @@ app.controllerInitializers.talents = ->
       TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
     .addTo(app.scroll)
 
-  new (ScrollMagic.Scene)(
-      offset: 260
-      duration: 180
-      reverse: true)
-    .setTween(
-      TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
-    .addTo(app.scroll)
 
   new (ScrollMagic.Scene)(
       offset: 300
