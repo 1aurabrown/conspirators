@@ -25,6 +25,56 @@ article.talent {
 
 .talent-gallery {
   position: relative;
+  height: calc(40vw * 1.618);
+  overflow: hidden;
+  .gallery-main {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+    img {
+      height: 100%;
+    }
+  }
+  .gallery-col {
+    width: 20%;
+    height: 100%;
+    float: left;
+    position: relative;
+    &.col-1 {
+      :first-child {
+        height: 55%;
+      }
+      :nth-child(2) {
+        height: 45%;
+      }
+    }
+    &.col-2 {
+      :first-child {
+        height: 45%;
+      }
+      :nth-child(2) {
+        height: 55%;
+      }
+    }
+
+    &.col-3 {
+      :first-child {
+        height: 70%;
+      }
+      :nth-child(2) {
+        height: 30%;
+      }
+    }
+    .gallery-img-container {
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      display: block;
+    }
+  }
 }
 
 .talent-att {

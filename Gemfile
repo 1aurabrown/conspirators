@@ -25,8 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'allport', :git => "git://github.com/baphomet-berlin/allport.git", :branch => "feature/rails_admin"
 
-gem 'masonry-rails'
-
 source 'https://rails-assets.tenex.tech' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
@@ -66,3 +64,5 @@ gem 'countries', :require => 'countries/global'
 
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
+gem 'rails_admin_dropzone', '1.0.2'
+gem 'lightbox-bootstrap-rails'

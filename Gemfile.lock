@@ -122,6 +122,8 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dropzonejs-rails (0.4.16)
+      rails (> 3.1)
     erubis (2.7.0)
     execjs (2.6.0)
     ffi (1.9.10)
@@ -163,6 +165,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    lightbox-bootstrap-rails (3.3.0.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -171,8 +174,6 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    masonry-rails (0.2.4)
-      railties
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -227,6 +228,10 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_admin_dropzone (1.0.2)
+      dropzonejs-rails (~> 0.4.16)
+      jquery-rails (>= 3.0, < 5)
+      simple_form (~> 3.2)
     rails_admin_tag_list (0.2.0)
       rails_admin (>= 0.6)
     rails_serve_static_assets (0.0.5)
@@ -259,6 +264,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (1.7.1)
     sprockets (3.6.0)
@@ -302,7 +310,7 @@ DEPENDENCIES
   guard-rails
   jbuilder (~> 2.0)
   jquery-rails
-  masonry-rails
+  lightbox-bootstrap-rails
   paperclip!
   pg
   publishable (= 1.0.4)
@@ -313,6 +321,7 @@ DEPENDENCIES
   rails-assets-tether!
   rails_12factor
   rails_admin!
+  rails_admin_dropzone (= 1.0.2)
   rails_admin_tag_list (= 0.2.0)
   redcarpet (= 3.3.4)
   ruby-units (= 2.0.0)

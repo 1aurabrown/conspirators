@@ -11,8 +11,8 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :resume, content_type: "application/pdf"
   has_attached_file :cover, styles: { large: "x600" }
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
-  has_many :gallery_pictures, inverse_of: :talent
-  accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
+  has_many :gallery_pictures
+  accepts_nested_attributes_for :gallery_pictures
   has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
@@ -20,8 +20,6 @@ class Talent < ActiveRecord::Base
   has_many :notes, as: :contactable, dependent: :destroy
   before_save :set_slug, :refresh_weights
   accepts_nested_attributes_for :featured_projects, :allow_destroy => true
-
-
 
   def country_code_enum
     Country.all_translated
@@ -107,7 +105,10 @@ class Talent < ActiveRecord::Base
         field :cover do
           help "The image will be resized to 1600x800."
         end
-        field :gallery_pictures
+        field :gallery_pictures do
+          visible true
+          active true
+        end
       end
     end
     list do

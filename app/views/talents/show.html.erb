@@ -51,18 +51,17 @@
       </div>
     </section> 
 
-    <section class="fullpage-section talent-gallery">
-      <div class="grid">
-        <div class="grid-sizer"></div>
-        <div class="grid-item grid-item--large">
-          <img src="<%=image_url @talent.avatar.url(:large) %>')" />
-        </div>
-        <% @talent.gallery_pictures.each do |picture| %>
-          <div class="grid-item">
-            <img src="<%= image_url picture.image.url(:large) %>">
-          </div>
-        <% end %>
+    <section id="lightbox" class="fullpage-section talent-gallery">
+      <div class="gallery-main">
+        <img src="<%=image_url @talent.avatar.url(:large) %>" />
       </div>
+      <% col = 0 %>
+      <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
+        <div class="gallery-col col-<%= col %>">
+          <%= render partial: 'gallery_pic', locals: {image: pics.first.image} %>
+          <%= render partial: 'gallery_pic', locals: {image: pics.second.image} %>
+        </div>
+      <% end %>
     </section>
     <section class="section">
       <h1 class="section-header">
