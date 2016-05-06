@@ -52,18 +52,20 @@
     </section> 
 
     <section class="fullpage-section talent-gallery">
-      <div class="gallery">
-        <div class="gallery-main">
-          <img src="<%=image_url @talent.avatar.url(:large) %>" />
-        </div>
-        <% col = 0 %>
-        <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
-          <div class="col_<%= col %>">
-            <img src="<%=image_url pics.first.image.url(:large) %>" />
-            <img src="<%=image_url pics.second.image.url(:large) %>" />
-          </div>
-        <% end %>
+      <div class="gallery-main">
+        <img src="<%=image_url @talent.avatar.url(:large) %>" />
       </div>
+      <% col = 0 %>
+      <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
+        <div class="gallery-col col-<%= col %>">
+          <div class="gallery-img-container" 
+            style="background-image: url('<%=image_url pics.first.image.url(:large) %>')">
+          </div>
+          <div class="gallery-img-container" 
+            style="background-image: url('<%=image_url pics.second.image.url(:large) %>')">
+          </div>
+        </div>
+      <% end %>
     </section>
     <section class="section">
       <h1 class="section-header">
