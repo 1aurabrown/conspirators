@@ -10,11 +10,10 @@ class TalentsController < ApplicationController
   end
 
   def add_to_collection
-    talent = Talent.find_by slug: params[:slug]
+    talent = Talent.find_by slug: params[:id]
     current_user.saved_talents << talent
-    current_user.save
     respond_to do |format|
-      format.json talent
+      format.json { render json: talent }
     end
   end
 

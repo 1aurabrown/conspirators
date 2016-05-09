@@ -9,16 +9,15 @@ module Guests
     end
 
     def include?(talent)
-      ids.include?(talent.id)
+      slugs.include?(talent.slug)
     end
 
     def <<(talent)
-      @store[:saved_for_later] = JSON.generate(ids << talent.id)
+      @store[:saved_for_later] = JSON.generate(slugs << talent.slug)
     end
 
-    # Is called by ActionView when rendering a collection
     def to_ary
-      talent.where(id: ids).map do |talent|
+      talent.where(slug: slugs).map do |talent|
         Guests::Savedtalent.new(self, talent)
       end
     end
@@ -29,7 +28,7 @@ module Guests
 
     private
 
-    def ids
+    def slugs
       return [] unless @store[:saved_for_later]
 
       JSON.parse(@store[:saved_for_later])

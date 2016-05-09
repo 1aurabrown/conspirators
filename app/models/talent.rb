@@ -2,7 +2,7 @@ class Talent < ActiveRecord::Base
   include Allport::Concerns::Contactable
   include TagNetworkable
   publishable
-  
+
   has_many :featured_projects, dependent: :destroy, inverse_of: :talent
   has_and_belongs_to_many :projects, inverse_of: :talent
   has_attached_file :avatar, styles: { large: "600>", medium: "200x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"

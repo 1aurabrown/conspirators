@@ -13,11 +13,19 @@ class ApplicationController < ActionController::Base
     PageText.find_by(title: 'Impressum').formatted_text
   end
 
-
   def after_sign_in_path_for(resource)
     '/admin'
   end
 
+  def current_user
+    super || guest_user
+  end
+
+  private
+
+  def guest_user
+    @guest ||= Guest.new(cookies.signed)
+  end
 
   protected
 
