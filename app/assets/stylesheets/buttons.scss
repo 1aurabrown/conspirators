@@ -8,19 +8,4 @@
     color: $gray-lighter;
     border-color: $gray-lighter;
   }
-  &.dark {
-    color: $gray;
-
-    span.icon {
-      border-color: black;
-      color: $gray;
-    }
-    &:hover {
-      color: $gray-lighter;
-      span.icon {
-        border-color: black;
-        background-color: transparent;
-      }
-    }
-  } 
-} 
+}

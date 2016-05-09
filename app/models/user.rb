@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   enum role:  { pr: 0, admin: 1, editor: 2}
   has_many :saved_talents
 
-
   rails_admin do
     navigation_label "Admin"
     list do
