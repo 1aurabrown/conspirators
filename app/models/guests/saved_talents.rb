@@ -23,7 +23,7 @@ module Guests
     end
 
     def delete(talent)
-      @store[:saved_for_later] = JSON.generate(slugs - [slug])
+      @store[:saved_for_later] = JSON.generate(slugs - [talent.slug])
     end
 
     def destroy
