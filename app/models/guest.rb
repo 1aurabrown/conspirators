@@ -21,6 +21,11 @@ class Guest
     return if saved_for_later? talent
     saved_talents << talent
   end
+
+  def remove_from_saved(talent)
+    return unless saved_for_later? talent
+    saved_talents.delete talent
+  end
   
   alias_method :delete, :destroy
 

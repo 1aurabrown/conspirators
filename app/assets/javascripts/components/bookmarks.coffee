@@ -5,5 +5,5 @@ class app.components.Bookmarks
       if talent 
         @handleClick talent
   handleClick: (talent) =>
-    $.post "/api/v1/talents/#{talent}/add_to_collection.json",
-      success: (a) -> console.log a
+    $.post "/api/v1/talents/#{talent}/edit_collection.json", (a, b, c) -> 
+      console.log a,b,c

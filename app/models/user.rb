@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     saved_talents.create!(talent: talent)
   end
 
+  def remove_from_saved(talent)
+    saved_talents.destroy!(talent: talent)
+  end
+
   rails_admin do
     navigation_label "Admin"
     list do

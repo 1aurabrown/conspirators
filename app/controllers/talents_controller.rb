@@ -9,11 +9,20 @@ class TalentsController < ApplicationController
 
   end
 
-  def add_to_collection
+  def edit_collection
     talent = Talent.find_by slug: params[:id]
-    current_user.save_for_later talent
+    if current_user.saved_for_later? talent
+      current_user.remove_from_saved talent
+    else
+      current_user.save_for_later talent
+    end
+
+    response = {
+      talent: talent,
+      saved: current_user.saved_for_later?(talent)
+    }
     respond_to do |format|
-      format.json { render json: talent }
+      format.json { render json: response }
     end
   end
 

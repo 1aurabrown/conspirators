@@ -22,6 +22,10 @@ module Guests
       end
     end
 
+    def delete(talent)
+      @store[:saved_for_later] = JSON.generate(slugs - [slug])
+    end
+
     def destroy
       @store[:saved_for_later] = nil
     end

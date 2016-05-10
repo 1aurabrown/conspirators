@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   scope 'api/v1' do
     resources :talents do 
       member do
-        post :add_to_collection
+        post :edit_collection
       end
     end
   end
