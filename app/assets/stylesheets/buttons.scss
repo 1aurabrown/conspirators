@@ -1,26 +1,19 @@
 .action-button {
+  .icon-bookmark {
+    padding: 0.2rem  0.3rem ;
+    border: 1px solid white;
+    border-radius: 0.2rem;
+    font-size: 1.5rem;
+  }
   span.icon {
     color: white;
     border-color: white;
     transition: all 0.5s;
   }
-  &:hover span.icon {
-    color: $gray-lighter;
-    border-color: $gray-lighter;
-  }
-  &.dark {
-    color: $gray;
-
+  &:hover, &.active {
     span.icon {
-      border-color: black;
-      color: $gray;
-    }
-    &:hover {
       color: $gray-lighter;
-      span.icon {
-        border-color: black;
-        background-color: transparent;
-      }
+      border-color: $gray-lighter;
     }
-  } 
-} 
+  }
+}

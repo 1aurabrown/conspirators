@@ -88,5 +88,8 @@ figure.talent-card {
     opacity: 0;
     top: 0.5em;
     right: 0.5em;
+    &.active {
+      opacity: 1;
+    }
   }
 }

@@ -1,6 +1,5 @@
 module ApplicationHelper
   def saved?(talent)
-    # TODO: Implement logic
-    true
+    current_user.saved_for_later? talent
   end
 end
