@@ -6,7 +6,7 @@ class TalentsController < ApplicationController
   end
 
   def saved
-
+    @saved_talents = current_user.saved_talents
   end
 
   def edit_collection
