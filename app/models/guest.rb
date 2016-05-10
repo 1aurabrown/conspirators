@@ -1,5 +1,5 @@
 class Guest
-  attr_reader :saved_talents
+  attr_reader :saved_talents, :role
 
   def initialize(store)
     @saved_talents = Guests::SavedTalents.new(store)
@@ -14,11 +14,12 @@ class Guest
   end
 
   def saved_for_later?(talent)
-    saved_talents.for_talent?(talent)
+    saved_talents.include?(talent)
   end
 
-  def save_talent(talent)
-    saved_talents.create!(talent)
+  def save_for_later(talent)
+    return if saved_for_later? talent
+    saved_talents << talent
   end
   
   alias_method :delete, :destroy

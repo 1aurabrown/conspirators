@@ -1,5 +1,5 @@
 class TalentsController < ApplicationController
-  skip_before_action :verify_authenticity_token, if: :json_request?
+  skip_before_filter :verify_authenticity_token, only: [:add_to_collection]
   
   def show
     @talent = Talent.find_by slug: params[:slug]
@@ -11,7 +11,7 @@ class TalentsController < ApplicationController
 
   def add_to_collection
     talent = Talent.find_by slug: params[:id]
-    current_user.saved_talents << talent
+    current_user.save_for_later talent
     respond_to do |format|
       format.json { render json: talent }
     end

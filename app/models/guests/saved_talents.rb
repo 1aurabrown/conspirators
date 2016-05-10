@@ -17,8 +17,8 @@ module Guests
     end
 
     def to_ary
-      talent.where(slug: slugs).map do |talent|
-        Guests::Savedtalent.new(self, talent)
+      Talent.where(slug: slugs).map do |talent|
+        Guests::SavedTalent.new(self, talent)
       end
     end
 

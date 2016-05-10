@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
   enum role:  { pr: 0, admin: 1, editor: 2}
   has_many :saved_talents
 
-  def saved_talent?(talent)
-    saved_talents.for_talent(talent).exists?
+  def saved_for_later?(talent)
+    saved_talents.for_talent?(talent)
   end
 
-  def save_talent(talent)
+  def save_for_later(talent)
     saved_talents.create!(talent: talent)
   end
 

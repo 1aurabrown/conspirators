@@ -5,8 +5,10 @@ window.app = {
       app.controllerInitializers[controller]()
   scroll: new (ScrollMagic.Controller)
   controllerInitializers: {}
+  components: {}
 }
 
 $ ->
   app.init()
+  new app.components.Bookmarks()
 $(document).on 'page:load', app.init
