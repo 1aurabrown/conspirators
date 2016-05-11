@@ -16,4 +16,11 @@
       border-color: $gray-lighter;
     }
   }
+  &.dark {
+    color: $gray;
+    span.icon {
+      color: $gray;
+      border-color: $gray;
+    }
+  }
 }
