@@ -58,13 +58,14 @@ figure.talent-card {
     z-index: 2;
     transition: all 1s;
     left: 0;
-    right: 0;    top: 100%;
+    right: 0;
+        top: 100%;
     -webkit-transform: translate3d(0,-2rem,0);
     transform: translate3d(0,-2rem,0);
     h1 {
       font-size: 24px;
       color: white;
-      padding-right: 1rem;
+      padding-left: 1rem;
     }
     div.traits-container {
       padding: 0.5rem 0 0 0;
