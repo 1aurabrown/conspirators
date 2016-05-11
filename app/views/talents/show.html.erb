@@ -1,4 +1,5 @@
 <article class="talent">
+
   <div id="page-cover">
     <div id="cover-image-container">
       <img id="cover-image" src="<%=image_url @talent.cover.url(:large) %>')" />
@@ -6,14 +7,23 @@
   </div>
   <header id="page-header">
     <div id="header-content">
+
       <h1 id="page-title"><%= @talent.name %>
+      
       <%= render partial: 'shared/save_button', locals: {talent: @talent} %>
+      <a href="#" class="action-button close-gallery">&#215;</a>
       </h1>
 
     </div>
+
   </header>
 
   <div class="page-content">
+    <div id="gallery-overlay">
+      <div class="arrow back" data-direction="prev"></div>
+      <div class="arrow fwd" data-direction="next"></div>
+
+    </div>
     <section class="section">
       <div class="talent-atts">
         <div class="talent-att">
@@ -50,8 +60,7 @@
         </a>
       </div>
     </section> 
-
-    <section id="lightbox" class="fullpage-section talent-gallery">
+    <section class="fullpage-section talent-gallery">
       <div class="gallery-main">
         <%= render partial: 'gallery_pic', locals: {image: @talent.avatar} %>
       </div>
@@ -67,27 +76,37 @@
         </div>
       <% end %>
     </section>
-    <section class="section">
-      <h1 class="section-header">
-        Featured Projects
-      </h1>
+    <section class="section projects-and-similar">
       <div class="section-content">
-        <% @talent.featured_projects.each do |project| %>
-          <h2 class="project-title">
-            <%= project.project.title %>
-          </h2>
-          <p>
-            <%= project.project.description %>
-          </p>
-        <% end %>
-      </div>
-    </section>
-    <section class="section">
-      <h1 class="section-header">Similar</h1>
-      <div class="section-content">
-        <% @talent.get_similar.each do | similar | %>
-          <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
-        <% end %>
+
+        <div class="section-projects">
+
+          <h1 class="section-header">
+            Featured Projects
+          </h1>
+          <% @talent.featured_projects.each do |project| %>
+            <h2 class="project-title">
+              <%= project.project.title %>
+            </h2>
+            <p>
+              <%= project.project.description %>
+            </p>
+          <% end %>
+        </div>
+        <div class="section-similar">
+          <div class="row">
+            <h1 class="section-header">
+              Further conspiracies
+            </h1>
+
+            <div class="section-content row">
+              <% @talent.get_similar.each do | similar | %>
+                <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </div>

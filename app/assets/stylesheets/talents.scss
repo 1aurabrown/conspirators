@@ -23,61 +23,6 @@ article.talent {
   }
 }
 
-.talent-gallery {
-  position: relative;
-  height: calc(40vw * 1.618);
-  overflow: hidden;
-  
-  .gallery-img-container {
-    width: 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-  }
-
-  .gallery-main {
-    width: 40%;
-    height: 100%;
-    overflow: hidden;
-    float: left;
-    .gallery-img-container {
-      height: 100%;
-    }
-  }
-  .gallery-col {
-    width: 20%;
-    height: 100%;
-    float: left;
-    position: relative;
-    &.col-1 {
-      :first-child {
-        height: 55%;
-      }
-      :nth-child(2) {
-        height: 45%;
-      }
-    }
-    &.col-2 {
-      :first-child {
-        height: 45%;
-      }
-      :nth-child(2) {
-        height: 55%;
-      }
-    }
-
-    &.col-3 {
-      :first-child {
-        height: 70%;
-      }
-      :nth-child(2) {
-        height: 30%;
-      }
-    }
-  }
-}
-
 .talent-att {
   text-align: center;
   @extend .col-sm-6;
@@ -114,6 +59,36 @@ a.talent-att {
     h2 {
 
       border-bottom: 1px solid black;
+    }
+  }
+}
+.section.projects-and-similar {
+  margin-bottom: 3rem;
+    h1.section-header {
+      text-align: left;
+      font-size: 24px;
+      margin: 2rem 0 1rem 0;
+    }
+    h2 {
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+  .section-projects {
+
+    @extend .col-sm-6;
+    @extend .col-md-3;
+  }
+  .section-similar {
+
+    @extend .col-sm-12;
+    @extend .col-md-9;
+    
+    .card-container {
+
+      @extend .col-sm-6;
+      @extend .col-md-4;
+
     }
   }
 }

@@ -1,7 +1,7 @@
 .card-container {
   @extend .col-sm-6;
   @extend .col-md-4;  
-  @extend .col-lg-3;
+  @extend .col-lg-3;  
   padding: 0.3rem;
 }
 figure.talent-card {
@@ -9,7 +9,6 @@ figure.talent-card {
   float: left;
   overflow: hidden;
   width: 100%;
-  height: auto;
   cursor: pointer;
   border-radius: 0;
   background-color: black;
@@ -17,15 +16,21 @@ figure.talent-card {
     img {
       opacity: 0.6;;
       filter: blur(3px);
-      -webkit-transform: scale3d(1.1,1.1,1);
-      transform: scale3d(1.1,1.1,1);
+      -webkit-transform: scale3d(1.1,1.1,1.1);
+      transform: scale3d(1.1,1.1,1.1);
+    }
+    h1 {
+
     }
     figcaption {
-      p {
-        opacity: 1;
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-      }
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,-100%,0);
+        div.traits-container{
+          transition-delay: 0.2s;
+                  border-color: $gray-lighter;
+
+          p {opacity: 1;}
+        } 
     }
     .save-button {
       opacity: 1;
@@ -50,36 +55,40 @@ figure.talent-card {
   }
   figcaption {
     position: absolute;
-    width: 100%;
     z-index: 2;
     transition: all 1s;
-    bottom: 0.5em;
-    left: 0.5em;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-bottom: -0.4rem;
+    -webkit-transform: translate3d(0,-2rem,0);
+    transform: translate3d(0,-2rem,0);
     h1 {
       font-size: 24px;
       color: white;
-      padding-right: 1rem;
+      padding-left: 0.6rem;
     }
-    p {
-      font-family: 'Julius Sans One', sans-serif;
-      display: inline-block;
-      margin: 0 0 0.5em 0;
-      padding: 0 0.5rem 0 0.5rem;
-      background: rgba(255,255,255,0.9);
-      opacity: 0;
-      -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-      transition: opacity 0.35s, transform 0.35s;
-      -webkit-transform: translate3d(-100%,0,0);
-      transform: translate3d(-100%,0,0);
-      &:first-child {
-        -webkit-transition-delay: 0.15s;
-        transition-delay: 0.15s;
-      }
-      &:nth-of-type(2) {
-        -webkit-transition-delay: 0.1s;
-        transition-delay: 0.1s;
-      }
-    } 
+    div.traits-container {
+      padding: 0.5rem 0 0 0;
+      text-align: right;
+      border-top: 1px solid transparent;
+      transition: border-color 0.3s;
+      width: 100%;
+      margin-left: 0;
+      &:last-child {margin-bottom:1rem;}
+
+      p {
+        padding-right: 1rem;
+        text-transform: lowercase;
+        opacity: 0;
+        transition: opacity 0.5s;
+        color: $gray-lighter;
+        text-align: right;
+        transition-delay:0.2s;
+        margin-bottom: 0.2rem;
+      } 
+    }
+
   }
   .save-button {
     position: absolute;

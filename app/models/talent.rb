@@ -5,7 +5,7 @@ class Talent < ActiveRecord::Base
 
   has_many :featured_projects, dependent: :destroy, inverse_of: :talent
   has_and_belongs_to_many :projects, inverse_of: :talent
-  has_attached_file :avatar, styles: { large: "600>", medium: "200x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { large: "600>",  thumb: "100x100#" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar,  :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   has_attached_file :resume
   validates_attachment_content_type :resume, content_type: "application/pdf"
