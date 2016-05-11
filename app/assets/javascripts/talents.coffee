@@ -57,9 +57,48 @@ app.controllerInitializers.talents = ->
     .setTween(
       TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
     .addTo(app.scroll)
-  $(document).delegate '*[data-toggle="lightbox"]', 'click', (event) ->
-    event.preventDefault()
-    $(this).ekkoLightbox()
-    return
 
 
+  showOverlayImage =  (selector)->
+    $('.overlay-img-container').removeClass('active')
+    $(selector).addClass('active')
+
+    $('.overlay-img-container').removeClass('next')
+    $('.overlay-img-container').removeClass('prev')
+
+    $next = $('.overlay-img-container.active').next('.overlay-img-container')
+    if $next.length
+      $next.addClass 'next'
+    else
+      $('.overlay-img-container:first').addClass 'next'
+    $prev = $('.overlay-img-container.active').prev('.overlay-img-container')
+    if $prev.length
+      $prev.addClass 'prev'
+    else
+      $('.overlay-img-container:last').addClass 'prev'
+
+  app.scroll.scrollTo (newScrollPos) ->
+    $("html, body").animate({scrollTop: newScrollPos})
+  
+  galleryPictures = $('.gallery-img-container').clone()
+    .removeClass('gallery-img-container').addClass('overlay-img-container')
+    .appendTo('#gallery-overlay')
+
+  $('.gallery-img-container').click (e) ->
+    e.preventDefault()
+    window.targ = e.target
+    currentPicture = e.target.dataset.imageId
+    console.log currentPicture
+    app.scroll.scrollTo(440)
+    $('body').addClass('overlaid')
+    showOverlayImage ".overlay-img-container[data-image-id=#{currentPicture}]"
+
+  $('.overlay-img-container').click (e) ->
+    e.preventDefault()
+
+  $('#gallery-overlay .arrow').click (e) ->
+    e.preventDefault()
+    showOverlayImage ".overlay-img-container.#{e.target.dataset.direction}"
+
+  $('.close-gallery').click ->
+    $('body').removeClass('overlaid')

@@ -2,6 +2,6 @@
   class="gallery-img-container" 
   href="<%=image_url image.url(:large) %>" 
   data-gallery="talent"
-  data-toggle="lightbox"
-  style="background-image: url('<%=image_url image.url(:large) %>')">
+  data-image-id="<%= image.name == :avatar ? 10 : image.instance.position %>"
+  style="background-image: url('<%= image_url image.url(:large)%>')">
 </a>
