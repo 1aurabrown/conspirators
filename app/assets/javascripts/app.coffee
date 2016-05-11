@@ -6,6 +6,7 @@ window.app = {
   scroll: new (ScrollMagic.Controller)
   controllerInitializers: {}
   components: {}
+  collectionData: {}
 }
 
 $ ->

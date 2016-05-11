@@ -29,6 +29,11 @@ class Talent < ActiveRecord::Base
     "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
   end
 
+  def acceptable_tags
+    talent_tags = self.taggings.map{|tagging| tagging.tag}
+    acceptable_tags = talent_tags.select{ |tag| tag.acceptable }.map{|tag| tag.id}
+  end
+
   def set_slug
     if self.slug.blank?
       self.slug = self.name.parameterize

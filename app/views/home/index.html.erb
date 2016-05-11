@@ -32,4 +32,8 @@
       </div>
     </section>
   </div>
+  <script type="application/javascript">
+    app.collectionData.talents = <%= raw ActiveSupport::JSON.encode(@talents.map {|talent| {id: talent.id, acceptable_tags: talent.acceptable_tags}}) %>;
+
+  </script>
 </article>
