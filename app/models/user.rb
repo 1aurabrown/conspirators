@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :saved_talents
 
   def saved_for_later?(talent)
-    saved_talents.for_talent?(talent)
+    saved_talents.for_talent(talent)
   end
 
   def save_for_later(talent)

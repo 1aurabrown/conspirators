@@ -1,11 +1,39 @@
 <article class="home">
+  <div id="page-cover">
+    <div id="cover-image-container">
+      <div id="cover-image" class="icon-logo">
+      </div>
+    </div>
+  </div>
+  <header id="page-header">
+    <div id="header-content">
+      <h1 id="page-title">
+        Conspirators
+      </h1>
+    </div>
+  </header>
   <div class="page-content">
-    <section class="section">
+    <section class="section tag-selection">
       <div class="section-content">
+
+        <% @tags.each do |tag| %>
+          <span class="tag-selection-tag" data-tag="<%=tag.id%>">
+            <%= tag.name %>
+          </span>
+        <% end %>
+      </div>
+    </section>
+    <section class="section">
+
+      <div class="section-content talents-section">
         <% @talents.each do | talent | %>
           <%= render partial: 'shared/talent_card', locals: {talent: talent} %>
         <% end %>
       </div>
     </section>
   </div>
+  <script type="application/javascript">
+    app.collectionData.talents = <%= raw ActiveSupport::JSON.encode(@talents.map {|talent| {id: talent.id, acceptable_tags: talent.acceptable_tags}}) %>;
+
+  </script>
 </article>

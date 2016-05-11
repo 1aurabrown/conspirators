@@ -18,6 +18,7 @@
 //= require holderjs
 //= require bootstrap
 //= require scrollmagic
+//= require isotope
 //= require gsap
 //= require_tree ./vendor
 //= require ./app.coffee
