@@ -11,12 +11,12 @@ app.controllerInitializers.home = ->
   compareTags = ->
   $('.tag-selection-tag').click (e) ->
     $(this).toggleClass('active')
-    visibleTags = $('.tag-selection-tag.active').map -> 
-      this.dataset.tag
+    visibleTags = $('.tag-selection-tag.active').toArray().map (el) -> 
+      parseInt(el.dataset.tag)
       
     grid.isotope(
       filter: ->
         return true unless visibleTags.length
         talentTags = getTalentTags($(this).data('talent'))
-        talentTags.filter((el) -> el not in visibleTags).length != talentTags.length
+        talentTags.filter((el) -> el in visibleTags).length
     )
