@@ -3,16 +3,16 @@
     <a class="card-link" href="<%= "/#{talent.slug}" %>">
     </a>
     <figcaption class="card-content">
-      <div>
-      <p class="talent-card-subtitle"><%= talent.genders.join ' / ' %></p>
-      </div>
-      <div>
-      <p class="talent-card-subtitle"> <%= talent.skills.to_sentence %> </p>
-      </div>
       <h1 class="talent-card-title"><%= talent.name %></h1>
 
+
+      <div class="traits-container">
+        <p class="talent-card-subtitle"> <%= talent.skills.join ' | ' %> </p>
+                <p class="talent-card-subtitle"><%= talent.genders.join ' | ' %></p>
+
+      </div>
     </figcaption>
     <img class="card-img-bottom" src="<%= talent.avatar.url(:large)%>">
-    <%= render partial: 'shared/save_button', locals: {talent: talent} %>
+
   </figure>
 </div>
