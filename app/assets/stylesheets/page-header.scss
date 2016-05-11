@@ -9,7 +9,7 @@
     height: 100%;
     position: relative;
     @extend .container;
-    img {
+    #cover-image {
       &.conspiring {
         top: 100px;
         height: 150%;
