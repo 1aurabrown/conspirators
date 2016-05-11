@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   end
 
   def remove_from_saved(talent)
-    saved_talents.destroy!(talent: talent)
+    byebug
+    saved_talents.find(talent)
   end
 
   rails_admin do

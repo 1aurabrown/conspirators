@@ -4,15 +4,15 @@
     </a>
     <figcaption class="card-content">
       <div>
-      <p class="talent-card-subtitle"><%= talent.genders.to_sentence %></p>
+      <p class="talent-card-subtitle"><%= talent.genders.join ' / ' %></p>
       </div>
       <div>
-      <p class="talent-card-subtitle"> <%= talent.height_in(:cm) %> / <%= talent.height_in(:ft) %> </p>
+      <p class="talent-card-subtitle"> <%= talent.skills.to_sentence %> </p>
       </div>
       <h1 class="talent-card-title"><%= talent.name %></h1>
 
     </figcaption>
-    <img class="card-img-bottom" src="<%= talent.avatar.url(:medium)%>">
+    <img class="card-img-bottom" src="<%= talent.avatar.url(:large)%>">
     <%= render partial: 'shared/save_button', locals: {talent: talent} %>
   </figure>
 </div>

@@ -9,7 +9,6 @@ figure.talent-card {
   float: left;
   overflow: hidden;
   width: 100%;
-  height: auto;
   cursor: pointer;
   border-radius: 0;
   background-color: black;
@@ -17,8 +16,8 @@ figure.talent-card {
     img {
       opacity: 0.6;;
       filter: blur(3px);
-      -webkit-transform: scale3d(1.1,1.1,1);
-      transform: scale3d(1.1,1.1,1);
+      -webkit-transform: scale3d(1.1,1.1,2.1);
+      transform: scale3d(1.1,1.1,2.1);
     }
     figcaption {
       p {
