@@ -112,6 +112,12 @@ app.controllerInitializers.talents = ->
     e.preventDefault()
     showOverlayImage prevOrNextSelector e.target.dataset.direction
 
+  $('.overlay-img-container').on 'swipeleft', (e) ->
+    e.preventDefault()
+    showImageByDirection('next')
+  $('.overlay-img-container').on 'swiperight', (e) ->
+    e.preventDefault()
+    showImageByDirection('prev')
 
   key 'left', -> 
     showImageByDirection('prev')
