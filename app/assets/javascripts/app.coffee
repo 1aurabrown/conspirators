@@ -1,4 +1,6 @@
 window.app = {
+  state: {}
+
   init: ->
     controller = $('body').data('controller')
     if (app.controllerInitializers[controller])

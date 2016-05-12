@@ -60,7 +60,10 @@ app.controllerInitializers.talents = ->
 
 
   showOverlayImage =  (selector)->
+    app.state.galleryTransitionActive = true
     $('.overlay-img-container').removeClass('active')
+    $(selector).one 'transitionend', ->
+      app.state.galleryTransitionActive = false
     $(selector).addClass('active')
 
     $('.overlay-img-container').removeClass('next')
@@ -98,6 +101,7 @@ app.controllerInitializers.talents = ->
 
   $('#gallery-overlay .arrow').click (e) ->
     e.preventDefault()
+    return if app.state.galleryTransitionActive
     showOverlayImage ".overlay-img-container.#{e.target.dataset.direction}"
 
   $('.close-gallery').click ->
