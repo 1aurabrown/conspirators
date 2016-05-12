@@ -30,6 +30,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-scrollmagic'
   gem 'rails-assets-gsap'
   gem 'rails-assets-holderjs'
+  gem 'rails-assets-keymaster'
 end
 gem 'isotope-rails'
 

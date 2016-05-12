@@ -58,9 +58,21 @@ app.controllerInitializers.talents = ->
       TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
     .addTo(app.scroll)
 
+  showImageByDirection = (direction) ->
+    showOverlayImage prevOrNextSelector direction
+
+  prevOrNextSelector = (direction) -> 
+    ".overlay-img-container.#{direction}"
+
 
   showOverlayImage =  (selector)->
+    console.log selector, app.state.galleryTransitionActive
+    return if app.state.galleryTransitionActive
+
+    app.state.galleryTransitionActive = true
     $('.overlay-img-container').removeClass('active')
+    $(selector).one 'transitionend', ->
+      app.state.galleryTransitionActive = false
     $(selector).addClass('active')
 
     $('.overlay-img-container').removeClass('next')
@@ -98,7 +110,20 @@ app.controllerInitializers.talents = ->
 
   $('#gallery-overlay .arrow').click (e) ->
     e.preventDefault()
-    showOverlayImage ".overlay-img-container.#{e.target.dataset.direction}"
+    showOverlayImage prevOrNextSelector e.target.dataset.direction
 
-  $('.close-gallery').click ->
-    $('body').removeClass('overlaid')
+  $('.overlay-img-container').on 'swipeleft', (e) ->
+    e.preventDefault()
+    showImageByDirection('next')
+  $('.overlay-img-container').on 'swiperight', (e) ->
+    e.preventDefault()
+    showImageByDirection('prev')
+
+  key 'left', -> 
+    showImageByDirection('prev')
+    off
+  key 'right', -> 
+    showImageByDirection('next')
+    off
+  key 'esc', -> $('body').removeClass('overlaid')
+  $('.close-gallery').click -> $('body').removeClass('overlaid')

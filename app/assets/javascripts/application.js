@@ -20,6 +20,7 @@
 //= require scrollmagic
 //= require isotope
 //= require gsap
+//= require keymaster
 //= require_tree ./vendor
 //= require ./app.coffee
 //= require_tree .
