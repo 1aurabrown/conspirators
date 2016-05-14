@@ -19,6 +19,7 @@
 //= require bootstrap
 //= require scrollmagic
 //= require isotope
+//= require isotope-fit-columns
 //= require gsap
 //= require keymaster
 //= require_tree ./vendor

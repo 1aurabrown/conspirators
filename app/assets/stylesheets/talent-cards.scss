@@ -1,31 +1,28 @@
 .card-container {
-  @extend .col-sm-6;
+  @extend .col-xs-6;
   @extend .col-md-4;  
-  @extend .col-lg-3;  
+  @extend .col-xl-3; 
+  margin-bottom: -1rem;
   padding: 0.3rem;
 }
 figure.talent-card {
   position: relative;
-  float: left;
   overflow: hidden;
   width: 100%;
   cursor: pointer;
   border-radius: 0;
-  background-color: black;
-  margin: 0;
+  margin: 10px;
+
   &:hover {
     img {
-      opacity: 0.6;;
-      filter: blur(3px);
-      -webkit-transform: scale3d(1.1,1.1,1.1);
-      transform: scale3d(1.1,1.1,1.1);
-    }
-    h1 {
-
+      -webkit-filter: brightness(60%);
+      filter: brightness(20%);
+      -webkit-transform: scale3d(1.1,1.1,1);
+      transform: scale3d(1.1,1.1,1);
     }
     figcaption {
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,-100%,0);
+        -webkit-transform: translate3d(0,70px,0);
+        transform: translate3d(0,-70px,0);
         div.traits-container{
           transition-delay: 0.2s;
                   border-color: $gray-lighter;
@@ -60,14 +57,16 @@ figure.talent-card {
     transition: all 1s;
     left: 0;
     right: 0;
-    top: 100%;
+    bottom: 0;
     margin-bottom: -0.4rem;
-    -webkit-transform: translate3d(0,-2rem,0);
-    transform: translate3d(0,-2rem,0);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
     h1 {
       font-size: 24px;
       color: white;
       padding-left: 0.6rem;
+      position: absolute;
+      bottom: 0;
     }
     div.traits-container {
       padding: 0.5rem 0 0 0;
@@ -76,6 +75,7 @@ figure.talent-card {
       transition: border-color 0.3s;
       width: 100%;
       margin-left: 0;
+      position: absolute;
       &:last-child {margin-bottom:1rem;}
 
       p {

@@ -26,11 +26,13 @@ app.controllerInitializers.home = ->
       TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
     .addTo(app.scroll)
 
-  grid = $('.section-content').isotope({
-    itemSelector: '.card-container',
-    percentPosition: true,
-    masonry: {}
-  })
+  grid = $('.section-content').imagesLoaded ->
+    grid.isotope(
+      itemSelector: '.card-container',
+      masonry: {
+        
+      }
+    )
   getTalentTags = (talent) ->
     app.collectionData.talents.find( (t) -> t.id == talent ).acceptable_tags
   compareTags = ->
@@ -39,9 +41,3 @@ app.controllerInitializers.home = ->
     visibleTags = $('.tag-selection-tag.active').toArray().map (el) -> 
       parseInt(el.dataset.tag)
       
-    grid.isotope(
-      filter: ->
-        return true unless visibleTags.length
-        talentTags = getTalentTags($(this).data('talent'))
-        talentTags.filter((el) -> el in visibleTags).length
-    )
