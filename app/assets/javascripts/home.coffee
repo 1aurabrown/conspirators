@@ -5,6 +5,27 @@
 
 app.controllerInitializers.home = ->
   return unless $('body').hasClass 'home'
+
+    new (ScrollMagic.Scene)(
+      offset: 240
+      reverse: true)
+    .setPin('#page-cover')
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 240
+      reverse: true)
+    .setPin('#page-header')
+    .addTo(app.scroll)
+
+  new (ScrollMagic.Scene)(
+      offset: 240
+      duration: 200
+      reverse: true)
+    .setTween(
+      TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
+    .addTo(app.scroll)
+
   grid = $('.section-content').isotope(itemSelector: '.card-container')
   getTalentTags = (talent) ->
     app.collectionData.talents.find( (t) -> t.id == talent ).acceptable_tags

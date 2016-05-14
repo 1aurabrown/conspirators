@@ -1,7 +1,20 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body.home {
+  nav#navigation {
+    background-color:black;
+  }
+}
 article.home {
+  #page-cover {
+
+    #cover-image-container {
+    }
+  }
+  #page-header {
+    background-color: black;
+  }
   .tag-selection {
 
     .tag-selection-tag {
