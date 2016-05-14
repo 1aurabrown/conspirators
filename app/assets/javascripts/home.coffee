@@ -27,11 +27,12 @@ app.controllerInitializers.home = ->
     .addTo(app.scroll)
 
   grid = $('.section-content').imagesLoaded ->
-    itemSelector: '.card-container',
-    percentPosition: true,
-    masonry: {
-    }  
-
+    grid.isotope(
+      itemSelector: '.card-container',
+      masonry: {
+        
+      }
+    )
   getTalentTags = (talent) ->
     app.collectionData.talents.find( (t) -> t.id == talent ).acceptable_tags
   compareTags = ->
