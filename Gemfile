@@ -31,6 +31,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-gsap'
   gem 'rails-assets-holderjs'
   gem 'rails-assets-keymaster'
+  gem 'rails-assets-imagesloaded'
 end
 gem 'isotope-rails'
 
