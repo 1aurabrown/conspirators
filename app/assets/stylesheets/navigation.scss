@@ -11,6 +11,11 @@
         margin-left: -0.6rem;
       }
     }
-
+  }
+  .nav {
+    float:right;
+    a {
+      color: $gray;
+    }
   }
 }
