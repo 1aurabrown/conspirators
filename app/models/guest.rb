@@ -2,7 +2,8 @@ class Guest
   attr_reader :saved_talents, :role
 
   def initialize(store)
-    @saved_talents = Guests::SavedTalents.new(store)
+    @store = store
+    @saved_talents = Guests::SavedTalents.new(@store)
   end
 
   def registered?
@@ -26,7 +27,7 @@ class Guest
     return unless saved_for_later? talent
     saved_talents.delete talent
   end
-  
+
   alias_method :delete, :destroy
 
 end

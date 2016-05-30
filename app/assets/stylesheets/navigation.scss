@@ -5,6 +5,7 @@
   .logo {
     h1 {
       position: relative;
+      float:left;
       span.icon-logo {
         font-size: 4rem;
         margin-top: -0.5rem;
@@ -16,6 +17,27 @@
     float:right;
     a {
       color: $gray;
+      position:relative;
+      padding:0;
+      .label-pill {
+
+        position: absolute;
+        right: -1.3em;
+        top:0.3em;
+        font-weight: normal;
+        width: 1em;
+        height: 1em;
+        border: 1px solid $gray;
+        font-weight: normal;
+        width: 1.2em;
+        height: 1.2em;
+        border: 1px solid #55595c;
+        padding: 0;
+        font-size: 0.6em;
+        display: block;
+        margin-top: -0.2em;
+      }
+
     }
   }
 }

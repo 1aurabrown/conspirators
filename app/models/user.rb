@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
     saved_talents.create!(talent: talent)
   end
 
+
+  def saved_talents_num
+    saved_talents.length
+  end
+
   def remove_from_saved(talent)
     saved_talents.find_by( talent_id: talent.id).delete
   end
