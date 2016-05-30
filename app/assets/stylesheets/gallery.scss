@@ -110,11 +110,16 @@ html body.overlaid {
   .gallery-main {
     width: 40%;
     height: 100%;
+    @media (max-width: map-get($grid-breakpoints, md)) {
+      width: 65%;
+      height: 160%
+    }
     overflow: hidden;
     float: left;
 
     .gallery-img-container { 
       height: 100%;
+
     }
 
   }
@@ -148,5 +153,13 @@ html body.overlaid {
         height: 30%;
       }
     }
+    @media (max-width: map-get($grid-breakpoints, md)) {
+      width: 50%;
+      height: 160%;
+      &.col-1 {
+        width: 35%;
+      }
+    }
+
   }
 }
