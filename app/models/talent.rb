@@ -11,8 +11,8 @@ class Talent < ActiveRecord::Base
   validates_attachment_content_type :resume, content_type: "application/pdf"
   has_attached_file :cover, styles: { large: "x600" }
   validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
-  has_many :gallery_pictures
-  accepts_nested_attributes_for :gallery_pictures
+  has_many :gallery_pictures, :dependent => :destroy, :inverse_of => :talent
+  accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
   has_many :spoken_languages, inverse_of: :talent
   validates_numericality_of :age, :in => 1..99
   validates_numericality_of :height, :in => 1..220
