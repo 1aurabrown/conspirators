@@ -9,22 +9,6 @@ class Project < ActiveRecord::Base
     order(date: :desc).group_by{ |item| item.date.year } 
   }
 
-  def self.dedupe
-    # find all models and group them on keys which should be common
-    grouped = all.group_by{|model| [model.title] }
-    grouped.values.each do |duplicates|
-      # the first one we want to keep right?
-      first_one = duplicates.shift # or pop for last one
-      # if there are any more left, they are duplicates
-      # so delete all of them
-      duplicates.each{|double| 
-        double.featured_projects.delete_all
-        double.destroy
-      } # duplicates can now be destroyed
-    end
-  end
-
-
   rails_admin do
     navigation_label 'Talents'
     weight -1

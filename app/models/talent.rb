@@ -1,5 +1,5 @@
 class Talent < ActiveRecord::Base
-  include Allport::Concerns::Contactable
+  include Contactable
   include TagNetworkable
   publishable
 
@@ -62,6 +62,15 @@ class Talent < ActiveRecord::Base
   def height_in(unit=:cm)
     return nil unless self.height
     Unit.new("#{self.height} cm").to_s(unit)
+  end
+
+  def make_vcard
+    self.vcard = HasVcards::Vcard.create(
+      reference: self, 
+      given_name: self.first_name,
+      family_name: self.last_name,
+      additional_name: self.middle_name
+    )
   end
 
   rails_admin do
