@@ -71,3 +71,6 @@ gem 'countries', :require => 'countries/global'
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
 gem 'lightbox-bootstrap-rails'
+
+gem 'compass', '1.0.3'
+gem 'compass-rails', '3.0.2'

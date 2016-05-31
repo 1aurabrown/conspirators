@@ -1,6 +1,7 @@
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
+  @include background-image(linear-gradient(black, transparent));
   transition: all 0.5s; 
   .logo {
     h1 {
