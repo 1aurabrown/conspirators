@@ -1,5 +1,5 @@
 class Talent < ActiveRecord::Base
-  include Contactable
+  include Cardable
   include TagNetworkable
   publishable
 
@@ -64,17 +64,6 @@ class Talent < ActiveRecord::Base
     Unit.new("#{self.height} cm").to_s(unit)
   end
 
-  def make_vcard
-    debugger
-    self.vcard ||= HasVcards::Vcard.new
-    self.vcard.update(
-      reference: self, 
-      given_name: self.first_name,
-      family_name: self.last_name,
-      additional_name: self.middle_name
-    )
-  end
-
   rails_admin do
     navigation_label 'Talents'
     weight -1
@@ -88,9 +77,9 @@ class Talent < ActiveRecord::Base
       end
       group :base do
         label "Basic information"
-        field :first_name
-        field :middle_name
-        field :last_name
+        field :given_name
+        field :family_name
+        field :additional_name
         field :country_code do
           label "Country"
         end

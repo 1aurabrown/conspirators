@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   rails_admin do
     navigation_label "Admin"
+    navigation_icon "fa-users"
     list do
       field :email
       field :role
