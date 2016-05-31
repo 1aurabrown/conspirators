@@ -146,7 +146,7 @@ class Talent < ActiveRecord::Base
       field :avatar
       field :skills
       field :languages
-      field :projects
+      field :featured_projects
       field :resume
       field :cover
       field :gallery_pictures do
