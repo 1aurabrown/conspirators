@@ -98,7 +98,6 @@ app.controllerInitializers.talents = ->
     e.preventDefault()
     window.targ = e.target
     currentPicture = e.target.dataset.imageId
-    console.log currentPicture
     app.scroll.scrollTo(440)
     showOverlayImage ".overlay-img-container[data-image-id=#{currentPicture}]"
 
