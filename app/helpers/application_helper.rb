@@ -6,4 +6,5 @@ module ApplicationHelper
   def saved_talents_num()
     current_user.saved_talents.to_ary.length
   end
+  
 end

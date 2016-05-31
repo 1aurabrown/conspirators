@@ -1,6 +1,6 @@
 window.app = {
   state: {}
-
+  events: BackboneEvents.mixin({})
   init: ->
     controller = $('body').data('controller')
     if (app.controllerInitializers[controller])
@@ -14,4 +14,5 @@ window.app = {
 $ ->
   app.init()
   new app.components.Bookmarks()
+
 $(document).on 'page:load', app.init

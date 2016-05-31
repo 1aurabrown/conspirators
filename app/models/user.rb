@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :saved_talents
 
   def saved_for_later?(talent)
-    saved_talents.for_talent(talent)
+    !!saved_talents.find_by( talent_id: talent.id)
   end
 
   def save_for_later(talent)
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   end
 
   def remove_from_saved(talent)
+    debugger
     saved_talents.find_by( talent_id: talent.id).delete
   end
 
