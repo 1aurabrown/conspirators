@@ -9,17 +9,18 @@ window.app = {
   controllerInitializers: {}
   components: {}
   collectionData: {}
-  componentViews: {}
+  componentViews: {
+    saveButtons: []
+  }
 }
 
-$ ->
+
+$(document).on 'ready page:load', ->
   app.init()
+  _.each app.componentViews.saveButtons, (saveBtn) ->
+    saveBtn.undelegateEvents()
   app.componentViews.saveButtons = []
   app.componentViews.navigation = new app.components.Navigation()
   $('.save-button').each (i, el) ->
     app.componentViews.saveButtons.push(
       new app.components.Bookmarks({el: el}))
-
-
-
-$(document).on 'page:load', app.init
