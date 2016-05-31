@@ -56,17 +56,21 @@
         font-weight: normal;
         width: 1em;
         height: 1em;
-        border: 1px solid $gray;
         font-weight: normal;
         width: 1.2em;
         height: 1.2em;
-        border: 1px solid #55595c;
         padding: 0;
         font-size: 0.6em;
         display: block;
         margin-top: -0.2em;
         transition: all 0.5s;
         transform: translateY(2em);
+        &:before {
+          content: "[";
+        }
+        &:after {
+          content: "]";
+        }
         &.present {
           opacity: 1;
           transform: translateY(0);
