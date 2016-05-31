@@ -33,6 +33,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-keymaster'
   gem 'rails-assets-imagesloaded'
   gem 'rails-assets-isotope-fit-columns'
+  gem 'rails-assets-backbone'
+  gem 'rails-assets-underscore'
 end
 gem 'isotope-rails'
 
@@ -54,6 +56,7 @@ group :development do
   gem 'sqlite3'
   gem 'guard-rails', require: false
 
+
 end
 
 gem 'devise', '3.5.6'
@@ -69,3 +72,6 @@ gem 'countries', :require => 'countries/global'
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
 gem 'lightbox-bootstrap-rails'
+
+gem 'compass', '1.0.3'
+gem 'compass-rails', '3.0.2'

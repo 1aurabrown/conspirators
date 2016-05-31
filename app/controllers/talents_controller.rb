@@ -19,7 +19,8 @@ class TalentsController < ApplicationController
 
     response = {
       talent: talent,
-      saved: current_user.saved_for_later?(talent)
+      saved: current_user.saved_for_later?(talent),
+      totalSaved: current_user.saved_talents_num
     }
     respond_to do |format|
       format.json { render json: response }

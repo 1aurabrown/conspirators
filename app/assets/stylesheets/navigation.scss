@@ -1,16 +1,85 @@
+.home #navigation .nav-item.home,
+.contact #navigation .nav-item.contact,
+.bookmarks #navigation .nav-item.bookmarks {
+  a {
+    color: $gray-lighter;
+    opacity: 0.6;
+
+  }
+  a:after {
+    content: '';
+    border-top: 1px solid $gray;
+    display:block;
+    margin-bottom: -0.3rem;
+  }
+}
+
+
+
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
+  @include background-image(linear-gradient(black, transparent));
   transition: all 0.5s; 
   .logo {
     h1 {
       position: relative;
+      float:left;
       span.icon-logo {
         font-size: 4rem;
         margin-top: -0.5rem;
         margin-left: -0.6rem;
       }
     }
+  }
+  .nav {
+    float:right;
+    .nav-item {
+      margin-left: 0.4rem;
+    }
+    a {
+      color: $gray;
+      position:relative;
+      padding:0;
+      text-transform: lowercase;
+      transition: all 0.5s;
+      display: inline-block;
+      &:hover {
+        color: $gray-lighter;
+        opacity: 0.8;
+      }
+      .saved-talents {
+        opacity: 0;
+        position: absolute;
+        right: -1.3em;
+        top:0.3em;
+        font-weight: normal;
+        width: 1em;
+        height: 1em;
+        font-weight: normal;
+        width: 1.2em;
+        height: 1.2em;
+        padding: 0;
+        font-size: 0.6em;
+        display: block;
+        margin-top: -0.2em;
+        transition: all 0.5s;
+        transform: translateY(2em);
+        &:before {
+          content: "[";
+        }
+        &:after {
+          content: "]";
+        }
+        &.present {
+          opacity: 1;
+          transform: translateY(0);
+          -webkit-transition-delay: 0.5s; /* Safari */
+          transition-delay: 0.5s;
 
+        }
+      }
+
+    }
   }
 }

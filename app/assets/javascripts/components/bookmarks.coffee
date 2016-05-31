@@ -1,14 +1,19 @@
-class app.components.Bookmarks 
-  constructor: ->
-    $('.save-button').on 'click', (e) =>
-      target = $(e.target).closest('a')
-      @handleClick(target)
+class app.components.Bookmarks extends Backbone.View
 
-  handleClick: (target) =>
-    talent = target.data('talent')
-    if talent 
-      $.post "/api/v1/talents/#{talent}/edit_collection.json", (result) -> 
-        if (result.saved)
-          target.addClass('active')
-        else
-          target.removeClass('active')
+  constructor: (options) ->
+    super(options)
+    @talent = @$el.data('talent')
+    app.events.on 'savedtalents:change', (result) => 
+      @changeState(result.saved)
+
+  handleClick:  =>
+    $.post "/api/v1/talents/#{@talent}/edit_collection.json", (result) -> 
+      app.events.trigger('savedtalents:change', result)
+
+  changeState: (saved) =>
+    action = if saved then 'add' else 'remove'
+    @$el["#{action}Class"] 'active'
+
+  events: {
+    "click": 'handleClick'
+  }

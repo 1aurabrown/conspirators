@@ -18,10 +18,12 @@
 //= require holderjs
 //= require bootstrap
 //= require scrollmagic
+//= require underscore
+//= require backbone
 //= require isotope
 //= require isotope-fit-columns
 //= require gsap
 //= require keymaster
-//= require_tree ./vendor
 //= require ./app.coffee
-//= require_tree .
+//= require_tree ./
+
