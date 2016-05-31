@@ -1,3 +1,19 @@
+.home #navigation .nav-item.home,
+.contact #navigation .nav-item.contact,
+.bookmarks #navigation .nav-item.bookmarks {
+  a {
+    color: $gray-lighter;
+    opacity: 0.6;
+
+  }
+  a:after {
+    content: '';
+    border-top: 1px solid $gray;
+    display:block;
+    margin-bottom: -0.3rem;
+  }
+}
+
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
@@ -18,14 +34,6 @@
     float:right;
     .nav-item {
       margin-left: 0.4rem;
-      &:after {
-        content: '|';
-        margin-left: 0.2rem;
-
-      }
-      &:last-child::after {
-        content: ''
-      }
     }
     a {
       color: $gray;
