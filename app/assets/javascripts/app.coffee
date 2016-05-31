@@ -9,11 +9,16 @@ window.app = {
   controllerInitializers: {}
   components: {}
   collectionData: {}
+  componentViews: {}
 }
 
 $ ->
   app.init()
-  new app.components.Bookmarks()
+  app.componentViews.saveButtons = []
+  $('.save-button').each (i, el) ->
+    console.log el
+    app.componentViews.saveButtons.push(
+      new app.components.Bookmarks({el: el}))
 
 
 
