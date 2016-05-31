@@ -42,7 +42,8 @@
 .icon-bookmark:before {
     content: "\e905";
 }
-.icon-bookmark-dark:before {
-    content: "\e906";
+.active.save-button {
+    .icon-bookmark:before {
+        content: "\e906";
+    }
 }
-

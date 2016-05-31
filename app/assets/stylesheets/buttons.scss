@@ -1,19 +1,24 @@
 .action-button {
+  cursor: pointer;
   .icon-bookmark {
     padding: 0.2rem  0.3rem ;
     border: 1px solid white;
     border-radius: 0.2rem;
     font-size: 1.5rem;
+    overflow: hidden;
   }
 
   span.icon {
     color: white;
     border-color: white;
-    transition: all 0.5s;
+    &:before {
+      transition: all 0.5s;
+
+    }
   }
-  &:hover, &.active {
+
+  &.active {
     span.icon {
-      color: $gray-lighter;
       border-color: $gray-lighter;
     }
   }
