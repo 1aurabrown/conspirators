@@ -65,7 +65,9 @@ class Talent < ActiveRecord::Base
   end
 
   def make_vcard
-    self.vcard = HasVcards::Vcard.create(
+    debugger
+    self.vcard ||= HasVcards::Vcard.new
+    self.vcard.update(
       reference: self, 
       given_name: self.first_name,
       family_name: self.last_name,
