@@ -66,12 +66,12 @@ app.controllerInitializers.talents = ->
 
 
   showOverlayImage =  (selector)->
-    console.log selector, app.state.galleryTransitionActive
     return if app.state.galleryTransitionActive
 
     app.state.galleryTransitionActive = true
     $('.overlay-img-container').removeClass('active')
     $(selector).one 'transitionend', ->
+      $('body').addClass('overlaid')
       app.state.galleryTransitionActive = false
     $(selector).addClass('active')
 
@@ -89,8 +89,6 @@ app.controllerInitializers.talents = ->
     else
       $('.overlay-img-container:last').addClass 'prev'
 
-  app.scroll.scrollTo (newScrollPos) ->
-    $("html, body").animate({scrollTop: newScrollPos})
   
   galleryPictures = $('.gallery-img-container').clone()
     .removeClass('gallery-img-container').addClass('overlay-img-container')
@@ -102,7 +100,6 @@ app.controllerInitializers.talents = ->
     currentPicture = e.target.dataset.imageId
     console.log currentPicture
     app.scroll.scrollTo(440)
-    $('body').addClass('overlaid')
     showOverlayImage ".overlay-img-container[data-image-id=#{currentPicture}]"
 
   $('.overlay-img-container').click (e) ->
@@ -112,10 +109,10 @@ app.controllerInitializers.talents = ->
     e.preventDefault()
     showOverlayImage prevOrNextSelector e.target.dataset.direction
 
-  $('.overlay-img-container').on 'swipeleft', (e) ->
+  $('#gallery-overlay').hammer().on 'swipeleft', (e) ->
     e.preventDefault()
     showImageByDirection('next')
-  $('.overlay-img-container').on 'swiperight', (e) ->
+  $('#gallery-overlay').hammer().on 'swiperight', (e) ->
     e.preventDefault()
     showImageByDirection('prev')
 

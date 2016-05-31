@@ -22,6 +22,8 @@
 //= require backbone
 //= require isotope
 //= require isotope-fit-columns
+//= require hammerjs
+//= require jquery-hammerjs
 //= require gsap
 //= require keymaster
 //= require ./app.coffee

@@ -35,6 +35,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-isotope-fit-columns'
   gem 'rails-assets-backbone'
   gem 'rails-assets-underscore'
+  gem 'rails-assets-hammerjs'
+  gem 'rails-assets-jquery-hammerjs'
+
 end
 gem 'isotope-rails'
 
