@@ -3,9 +3,10 @@ class IndexCard < HasVcards::Vcard
   
 
   def name
-    "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
+    "#{self.given_name} #{self.family_name ? " " : ''}#{self.family_name}"
   end
-  has_many :contacts, class_name: 'HasVcards::PhoneNumber', inverse_of: :IndexCard do
+  has_many :contacts, class_name: 'HasVcards::PhoneNumber'  do
+
     def build_defaults
       ['Phone', 'Mobile', 'Email'].each do |phone_number_type|
         next if select { |contact| contact.phone_number_type == phone_number_type }.present?
@@ -20,5 +21,8 @@ class IndexCard < HasVcards::Vcard
     label "Index Card" 
     label_plural "Index Cards"    
     navigation_icon "icon-fax"
+    field :given_name
+    field :family_name
+    field :address
   end
 end
