@@ -17,7 +17,6 @@ $ ->
   app.componentViews.saveButtons = []
   app.componentViews.navigation = new app.components.Navigation()
   $('.save-button').each (i, el) ->
-    console.log el
     app.componentViews.saveButtons.push(
       new app.components.Bookmarks({el: el}))
 
