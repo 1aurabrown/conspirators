@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   end
 
   def remove_from_saved(talent)
-    debugger
     saved_talents.find_by( talent_id: talent.id).delete
   end
 

@@ -33,7 +33,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-keymaster'
   gem 'rails-assets-imagesloaded'
   gem 'rails-assets-isotope-fit-columns'
-  gem 'rails-assets-backbone-events-standalone'
+  gem 'rails-assets-backbone'
+  gem 'rails-assets-underscore'
 end
 gem 'isotope-rails'
 

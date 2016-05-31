@@ -18,12 +18,12 @@
 //= require holderjs
 //= require bootstrap
 //= require scrollmagic
-//= require backbone-events-standalone
+//= require underscore
+//= require backbone
 //= require isotope
 //= require isotope-fit-columns
 //= require gsap
-//= require backbone-events-standalone
 //= require keymaster
-//= require_tree ./vendor
 //= require ./app.coffee
-//= require_tree .
+//= require_tree ./
+

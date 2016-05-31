@@ -10,6 +10,4 @@ class app.components.Bookmarks
       $.post "/api/v1/talents/#{talent}/edit_collection.json", (result) -> 
         if (result.saved)
           target.addClass('active')
-          app.events.trigger('savedtalents:change')
-        else
-          target.removeClass('savedtalents:change')
+        app.events.trigger('savedtalents:change', result)
