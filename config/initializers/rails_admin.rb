@@ -15,10 +15,4 @@ RailsAdmin.config do |config|
     delete
     toggle
   end
-
-  config.excluded_models << "HasVcards::Vcard"
-  config.excluded_models << "HasVcards::Address"
-
-
-  config.excluded_models << "HasVcards::PhoneNumber"
 end
