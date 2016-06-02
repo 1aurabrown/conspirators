@@ -1,5 +1,5 @@
 .card-container {
-  @extend .col-sm-6;
+  @extend .col-xs-6;
   @extend .col-md-4;  
   @extend .col-lg-3; 
   margin-bottom: -1rem;
@@ -11,8 +11,26 @@ figure.talent-card {
   width: 100%;
   cursor: pointer;
   border-radius: 0;
-  margin: 10px;
+  margin: 0 0 1rem 0;
+  @include media-breakpoint-up(xs) {
+    height: 50vw;
+  }
+  @include media-breakpoint-up(sm) {
 
+    height: 448px;
+
+
+
+
+  }
+  @include media-breakpoint-up(md) {
+    height: 360px;
+
+  }
+  @include media-breakpoint-up(xl) {
+    height: 440px;
+
+  }
   &:hover {
     img {
       -webkit-filter: brightness(60%);
@@ -44,8 +62,9 @@ figure.talent-card {
     z-index: 2;
   }
   img {
-    width: 100%;
-    position: relative;
+    min-width: 100%;
+    height: 100%;
+    position: absolute;
     display: block;
     opacity: 1;
     border-radius: 0;
