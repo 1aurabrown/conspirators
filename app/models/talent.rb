@@ -1,5 +1,4 @@
 class Talent < ActiveRecord::Base
-  include Cardable
   include TagNetworkable
   publishable
 
