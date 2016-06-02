@@ -35,8 +35,8 @@ figure.talent-card {
       transform: scale3d(1.1,1.1,1);
     }
     figcaption {
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,-100%,0);
+        -webkit-transform: translate3d(0,-1rem,0);
+        transform: translate3d(0,-1rem,0);
         div.traits-container{
           transition-delay: 0.2s;
                   border-color: $gray-lighter;
@@ -77,10 +77,10 @@ figure.talent-card {
     transition: all 1s;
     left: 0;
     right: 0;
-    top: 100%;
     margin-bottom: -0.4rem;
-    -webkit-transform: translate3d(0,-2rem,0);
-    transform: translate3d(0,-2rem,0);
+    bottom: 0;
+    -webkit-transform: translate3d(0,3rem,0);
+    transform: translate3d(0,3rem,0);
     h1 {
       font-size: 24px;
       color: white;
@@ -91,12 +91,12 @@ figure.talent-card {
       text-align: right;
       border-top: 1px solid transparent;
       transition: border-color 0.3s;
-      width: 100%;
-      margin-left: 0;
+      margin-left: 0.6rem;
+      margin-right: 0.6rem;
+      height:40px;
       &:last-child {margin-bottom:1rem;}
 
       p {
-        padding-right: 1rem;
         text-transform: lowercase;
         opacity: 0;
         transition: opacity 0.5s;
