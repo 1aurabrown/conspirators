@@ -14,6 +14,10 @@ class Guest
     saved_talents.destroy
   end
 
+  def saved_talents_num
+    saved_talents.to_ary.length
+  end
+
   def saved_for_later?(talent)
     saved_talents.include?(talent)
   end
