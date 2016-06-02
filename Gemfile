@@ -23,7 +23,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'allport', :git => "git://github.com/baphomet-berlin/allport.git", :branch => "feature/rails_admin"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
@@ -78,3 +77,5 @@ gem 'lightbox-bootstrap-rails'
 
 gem 'compass', '1.0.3'
 gem 'compass-rails', '3.0.2'
+gem 'rails_admin_toggleable', '0.6.0'
+gem 'has_vcards', '1.1.1'

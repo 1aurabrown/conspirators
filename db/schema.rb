@@ -11,16 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511002541) do
+ActiveRecord::Schema.define(version: 20160602224518) do
 
-  create_table "allport_contact_cards", force: :cascade do |t|
-    t.integer  "contactable_id"
-    t.string   "contactable_type"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "allport_contact_cards", ["contactable_type", "contactable_id"], name: "unique_contact_type_and_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "talent_id"
@@ -29,8 +23,8 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "featured_projects", ["project_id"], name: "index_featured_projects_on_project_id"
-  add_index "featured_projects", ["talent_id"], name: "index_featured_projects_on_talent_id"
+  add_index "featured_projects", ["project_id"], name: "index_featured_projects_on_project_id", using: :btree
+  add_index "featured_projects", ["talent_id"], name: "index_featured_projects_on_talent_id", using: :btree
 
   create_table "gallery_pictures", force: :cascade do |t|
     t.integer  "talent_id"
@@ -43,12 +37,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.integer  "position"
   end
 
-  add_index "gallery_pictures", ["talent_id"], name: "index_gallery_pictures_on_talent_id"
-
-  create_table "gallery_pictures_talents", id: false, force: :cascade do |t|
-    t.integer "gallery_picture_id", null: false
-    t.integer "talent_id",          null: false
-  end
+  add_index "gallery_pictures", ["talent_id"], name: "index_gallery_pictures_on_talent_id", using: :btree
 
   create_table "graph_weights", force: :cascade do |t|
     t.string   "context"
@@ -59,7 +48,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "graph_weights", ["context", "taggable_class"], name: "index_graph_weights_on_context_and_taggable_class"
+  add_index "graph_weights", ["context", "taggable_class"], name: "index_graph_weights_on_context_and_taggable_class", using: :btree
 
   create_table "notes", force: :cascade do |t|
     t.integer  "contactable_id"
@@ -69,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "updated_at"
   end
 
-  add_index "notes", ["contactable_type", "contactable_id"], name: "index_notes_on_contactable_type_and_contactable_id"
+  add_index "notes", ["contactable_type", "contactable_id"], name: "index_notes_on_contactable_type_and_contactable_id", using: :btree
 
   create_table "page_texts", force: :cascade do |t|
     t.string   "title"
@@ -97,16 +86,8 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.integer "user_id"
   end
 
-  add_index "saved_talents", ["talent_id"], name: "index_saved_talents_on_talent_id"
-  add_index "saved_talents", ["user_id"], name: "index_saved_talents_on_user_id"
-
-  create_table "saved_videos", force: :cascade do |t|
-    t.integer "video_id"
-    t.integer "user_id"
-  end
-
-  add_index "saved_videos", ["user_id"], name: "index_saved_videos_on_user_id"
-  add_index "saved_videos", ["video_id"], name: "index_saved_videos_on_video_id"
+  add_index "saved_talents", ["talent_id"], name: "index_saved_talents_on_talent_id", using: :btree
+  add_index "saved_talents", ["user_id"], name: "index_saved_talents_on_user_id", using: :btree
 
   create_table "spoken_languages", force: :cascade do |t|
     t.string   "language"
@@ -116,7 +97,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "spoken_languages", ["talent_id"], name: "index_spoken_languages_on_talent_id"
+  add_index "spoken_languages", ["talent_id"], name: "index_spoken_languages_on_talent_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -128,8 +109,8 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
@@ -137,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.boolean "acceptable"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "talents", force: :cascade do |t|
     t.string   "first_name"
@@ -165,7 +146,7 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.datetime "published"
   end
 
-  add_index "talents", ["slug"], name: "index_talents_on_slug"
+  add_index "talents", ["slug"], name: "index_talents_on_slug", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
@@ -181,10 +162,14 @@ ActiveRecord::Schema.define(version: 20160511002541) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "role"
-    t.integer  "country"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "featured_projects", "projects"
+  add_foreign_key "featured_projects", "talents"
+  add_foreign_key "saved_talents", "talents"
+  add_foreign_key "saved_talents", "users"
+  add_foreign_key "spoken_languages", "talents"
 end

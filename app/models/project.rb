@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   has_and_belongs_to_many :talents
+  has_many :featured_projects
   validates :title, presence: true
   validates :description, presence: true
   validates :date, presence: true

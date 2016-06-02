@@ -13,5 +13,6 @@ RailsAdmin.config do |config|
     show
     edit
     delete
+    toggle
   end
 end
