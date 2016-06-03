@@ -1,6 +1,7 @@
-<div>
+<div id="tag-selection">
   <% @tags.each do |tag| %>
-    <a class="tag-selector" data-tag="tag.id" ref="/filter/<%= tag.slug %>">
+    <span class="home-selection">Conspirators are</span>
+    <a class="tag-selector home-selection" data-tag="<%= tag.id%>" href="#">
       <%= tag.name %>
     </a>
   <% end %>

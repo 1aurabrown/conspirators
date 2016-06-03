@@ -10,11 +10,10 @@ article.home {
   #page-header {
     background-color: black;
   }
-  .tag-selection {
-
+  #tag-selection {
+    font-family: 'Julius Sans One', sans-serif;
     .tag-selection-tag {
 
-      text-transform: lowercase;
       &:before {
         content: '/ ';
       }
