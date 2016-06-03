@@ -12,14 +12,17 @@ article.home {
   }
   #tag-selection {
     font-family: 'Julius Sans One', sans-serif;
-    .tag-selection-tag {
 
-      &:before {
-        content: '/ ';
+    .tag-selector.home-selection {
+      font-weight: normal;
+      &.active, &:hover {
+        text-decoration: underline;
+
       }
-      &:first-child:before {
-        content: '';
-      }
+
+    }
+    .home-selection {
+      font-weight: bold;
     }
   }
 }

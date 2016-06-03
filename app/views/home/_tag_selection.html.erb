@@ -1,8 +1,9 @@
 <div id="tag-selection">
+  <span class="home-selection">I am a</span>
   <% @tags.each do |tag| %>
-    <span class="home-selection">Conspirators are</span>
     <a class="tag-selector home-selection" data-tag="<%= tag.id%>" href="#">
-      <%= tag.name %>
-    </a>
+      <%= tag.name %></a> /
   <% end %>
+  <span class="home-selection">Conspirator</span>
+
 </div>
