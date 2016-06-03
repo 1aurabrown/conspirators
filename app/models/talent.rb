@@ -129,11 +129,16 @@ class Talent < ActiveRecord::Base
           bindings[:object].published.blank? ? "No" : "Yes" 
         end
       end
+      field :featured_projects do
+        pretty_value do
+          bindings[:object].featured_projects.length
+        end
+      end
       field :gender_list do
         label "Gender"
       end
-      field :type_list do
-        label "Type"
+      field :skill_list do
+        label "Skills"
       end
       field :avatar do
         filterable false
