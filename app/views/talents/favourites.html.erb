@@ -9,13 +9,11 @@
     </div>
   </header>
   <div class="page-content">
-
-
     <section class="section">
       <div class="section-header">
       </div>
       <div class="section-content">
-        <div class="col-md-6">
+        <div class="col-md-8 col-lg-6">
           <h1 id="favourites-list">
             <% @saved_talents.each do | saved_talent | %>
               <%= (@saved_talents.length > 1 )? (saved_talent.last ? 'and ' : ', ' ) : '' %>
@@ -25,12 +23,39 @@
           </h1>
           <h2>Want to know more?</h2>
           <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
+          <form class="form row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <input name="name" type="text"/>
+                <label for="name">Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <input name="email" type="email"/>
+                <label for="name">Email</label>
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button>Get portfolio and booking info</button>
+            </div>
+            <aside class="col-md-6">
+              <p>
+              Your privacy is important to us.
+              </p>
+              <p>
+              We will never share your contact information with third parties or send you unsolicited mail.
+              </p>
+            </aside>
+          </form>
         </div>
         <% @saved_talents.each do | saved_talent | %>
             <%= (@saved_talents.length > 1 )? (saved_talent.last ? 'and ' : ', ' ) : '' %>
             <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
         <%end %>
-
       </div>
     </section>
   </div>
