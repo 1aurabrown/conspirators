@@ -10,7 +10,7 @@ app.controllerInitializers.talents_favourites = ->
     $.ajax
       type: 'POST'
       url: url
-      data: $('#idForm').serialize()
+      data: $('.form').serialize()
       success: (data) ->
         alert data
         # show response from the php script.

@@ -35,7 +35,7 @@
 
               </div>
             </div>
-            <input type="hidden" value="<% @saved_talents.each do | saved_talent | %><%= saved_talent.talent.slug%> <%end  %>">
+            <input type="hidden" name="talents" value="<% @saved_talents.each do | saved_talent | %><%= saved_talent.talent.slug%> <%end  %>">
             <div class="col-md-8">
               <button>Get portfolio and booking info</button>
             </div>
