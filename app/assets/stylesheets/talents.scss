@@ -10,15 +10,22 @@ body.talents.show {
     @include background-image(linear-gradient(black, transparent));
     .nav {
       .nav-item {
+        &.pop {
+          a {
+            color: white;
+            opacity: 1;
+          }
+        }
         a {
-          color: $gray;
+          color: $gray-lighter;
           position:relative;
           padding:0;
           text-transform: lowercase;
           transition: all 0.5s;
           display: inline-block;
+          opacity: 0.6;
           &:hover {
-            color: $gray-lighter;
+            opacity: 1;
           }
         }
       }

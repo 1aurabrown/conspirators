@@ -38,14 +38,16 @@
       margin-left: 0.4rem;
       position:relative;
 
-
+      opacity: 0.8;
       &.faves {
+        &.pop {
+          opacity: 1;
+        }
         &.present {
+
           .saved-talents {
             opacity: 1;
             transform: translateY(0);
-            -webkit-transition-delay: 0.5s; /* Safari */
-            transition-delay: 0.5s;
           }
         }
         .saved-talents {
