@@ -2,8 +2,8 @@
 .contact #navigation .nav-item.contact,
 .faves #navigation .nav-item.faves {
   a {
-    color: $gray-lighter;
-    opacity: 0.6;
+    color: black;
+    opacity: 1;
 
   }
   a:after {
@@ -19,7 +19,6 @@
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
-  @include background-image(linear-gradient(black, transparent));
   transition: all 0.5s; 
   .logo {
     h1 {
@@ -38,18 +37,7 @@
       margin-left: 0.4rem;
       position:relative;
 
-      a {
-        color: $gray;
-        position:relative;
-        padding:0;
-        text-transform: lowercase;
-        transition: all 0.5s;
-        display: inline-block;
-        &:hover {
-          color: $gray-lighter;
-          opacity: 0.8;
-        }
-      }
+
       &.faves {
         &.present {
           .saved-talents {

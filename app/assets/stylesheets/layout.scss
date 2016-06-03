@@ -32,6 +32,10 @@ body{
       color: $gray;
       text-decoration: none;
     }
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
   }
 }
 #page-header {

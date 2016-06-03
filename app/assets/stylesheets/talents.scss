@@ -1,11 +1,30 @@
 #talent-buttons {
   padding-left: 0.5rem;
 } 
-body.talents.show
-article.talent {
+body.talents.show article.talent {
   .talent-atts {
     padding-bottom: 6rem;
     margin-top: 1.5rem;
+  }
+  #navigation {
+    @include background-image(linear-gradient(black, transparent));
+    .nav {
+      .nav-item {
+        a {
+          color: $gray;
+          position:relative;
+          padding:0;
+          text-transform: lowercase;
+          transition: all 0.5s;
+          display: inline-block;
+          &:hover {
+            color: $gray-lighter;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
   }
   #page-cover {
     position:relative;

@@ -1,3 +1,4 @@
+
 <article class="home">
 
   <header id="page-header">
@@ -10,9 +11,10 @@
   </header>
   <div class="page-content">
 
-    <%# partial: 'tag_selection' %> 
     <section class="section">
-
+      <div class="section-header">
+      <%=render partial: 'tag_selection' %> 
+      </div>
       <div class="section-content talents-section">
         <% @talents.each do | talent | %>
           <%= render partial: 'shared/talent_card', locals: {talent: talent} %>
