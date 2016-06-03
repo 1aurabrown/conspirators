@@ -18,21 +18,18 @@
       </div>
       <div class="section-content">
 
-        <% @saved_talents.each do | saved_talent | %>
-            <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
-        <%end %>
         <div class="col-md-8 col-lg-6">
-            <h2>Want to know more?</h2>
-            <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
+          <h2>Want to know more?</h2>
+          <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
           <form class="form row">
 
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="form-group">
                 <input name="name" type="text"/>
                 <label for="name">Name</label>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="form-group">
 
                 <input name="email" type="email"/>
@@ -40,20 +37,26 @@
 
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
               <button>Get portfolio and booking info</button>
             </div>
-            <aside class="col-md-8">
+            <aside class="col-md-12">
               <p>
-              Your privacy is important to us.
-              </p>
-              <p>
+              <b>Your privacy is important to us.</b>
               We will never share your contact information with third parties or send you unsolicited mail.
               </p>
             </aside>
           </form>
+
         </div>
+        <div class="right-align">
+        <% @saved_talents.each do | saved_talent | %>
+            <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
+        <%end %>
+        </div>
+
       </div>
+
     </section>
   </div>
 

@@ -19,7 +19,13 @@ body.home {
     margin-top: 80px;
 
     #header-content {
-      padding-top: 0;
+      padding-top: 0;    
+      @include media-breakpoint-up(lg) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-top:1rem;
+        padding-bottom: 1rem;
+      }
       h1#page-title {
         font-family: 'Julius Sans One', sans-serif;
         padding-top:0;
