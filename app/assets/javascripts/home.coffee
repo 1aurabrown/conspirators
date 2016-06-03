@@ -6,9 +6,6 @@
 app.controllerInitializers.home = ->
   return unless $('body').hasClass 'home'
 
-  getTalentTags = (talent) ->
-    app.collectionData.talents.find( (t) -> t.id == talent ).acceptable_tags
-  compareTags = ->
   $('.tag-selection-tag').click (e) ->
     $(this).toggleClass('active')
     visibleTags = $('.tag-selection-tag.active').toArray().map (el) -> 
@@ -24,17 +21,12 @@ app.controllerInitializers.home = ->
       return parseInt(this.dataset.tag)
     ).get()
     if activeTags.length
-      matchingTalents = _.filter app.collectionData.talents, (t) ->
-        _.intersection(activeTags, t.acceptable_tags).length
-      console.log window.mt = matchingTalents
+      matchingTalents = _.filter gon.tags, (t) ->
+        _.intersection(activeTags, t.tags).length
       matchingIds = _.map( matchingTalents, (t) -> t.id)
-      console.log matchingIds
 
       grid.isotope {
         filter: (item) ->
-          console.log this.dataset.talent 
-          console.log matchingIds
-          console.log (this.dataset.talent in matchingIds )
           parseInt(this.dataset.talent) in matchingIds
       }
     else

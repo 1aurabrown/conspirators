@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'bookmarks/index'
-
+  get 'contact', to: "contact#index"
   root to: 'home#index'
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
