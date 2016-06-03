@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603025329) do
+ActiveRecord::Schema.define(version: 20160603111554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 20160603025329) do
   end
 
   add_index "graph_weights", ["context", "taggable_class"], name: "index_graph_weights_on_context_and_taggable_class", using: :btree
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "talents"
+    t.boolean  "answered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "notes", force: :cascade do |t|
     t.integer  "contactable_id"

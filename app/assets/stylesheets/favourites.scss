@@ -6,7 +6,7 @@ body.talents.favourites {
   @include media-breakpoint-up(md) {
 
     .section-content h2 {
-      padding-top: 4rem;
+      padding-top: 1rem;
     }
     form.form {
 
@@ -18,7 +18,7 @@ body.talents.favourites {
       #page-title {
       color: black;
       } 
-      padding-top: 4rem;
+
       h1 {
 
       }
@@ -27,6 +27,8 @@ body.talents.favourites {
   .page-content {
     position: static;
     min-height: 50vh;
+
+
   }
   footer {
     position: static;

@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-app.controllerInitializers.home = ->
+app.controllerInitializers.home_index = ->
   return unless $('body').hasClass 'home'
   new (ScrollMagic.Scene)(
       offset: 0

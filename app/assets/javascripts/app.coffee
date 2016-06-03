@@ -3,8 +3,9 @@ window.app = {
   events: _.extend({}, Backbone.Events)
   init: ->
     controller = $('body').data('controller')
-    if (app.controllerInitializers[controller])
-      app.controllerInitializers[controller]()
+    action = $('body').data('action')
+    if (app.controllerInitializers["#{controller}_#{action}"])
+      app.controllerInitializers["#{controller}_#{action}"]()
   scroll: new (ScrollMagic.Controller)
   controllerInitializers: {}
   components: {}
