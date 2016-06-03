@@ -5,6 +5,11 @@
 
 app.controllerInitializers.home = ->
   return unless $('body').hasClass 'home'
+  new (ScrollMagic.Scene)(
+      offset: 0
+    )
+    .setPin('#page-header')
+    .addTo(app.scroll)
 
   $('.tag-selection-tag').click (e) ->
     $(this).toggleClass('active')

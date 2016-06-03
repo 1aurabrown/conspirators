@@ -20,6 +20,7 @@
   @extend .navbar;
   @extend .navbar-fixed-top;
   transition: all 0.5s; 
+  padding-bottom: 0;
   .logo {
     h1 {
       position: relative;

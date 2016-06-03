@@ -4,8 +4,12 @@
 
     <div id="header-content">
       <h1 id="page-title">
-        Favourites
-      </h1>
+        <% @saved_talents.each do | saved_talent | %>
+          <%= ((@saved_talents.length > 1) && (saved_talent != @saved_talents.first) )? ((saved_talent == @saved_talents.last) ? 'and ' : ', ' ) : '' %>
+          <%= render partial: 'saved_talent_link', locals: {talent: saved_talent.talent } %>
+        <% end %>
+        <%= "#{'is'.pluralize(@saved_talents.length)} your favourite #{'conspirator'.pluralize(@saved_talents.length)}." %>
+      </h1>      
     </div>
   </header>
   <div class="page-content">
@@ -13,25 +17,22 @@
       <div class="section-header">
       </div>
       <div class="section-content">
+
+        <% @saved_talents.each do | saved_talent | %>
+            <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
+        <%end %>
         <div class="col-md-8 col-lg-6">
-          <h1 id="favourites-list">
-            <% @saved_talents.each do | saved_talent | %>
-              <%= ((@saved_talents.length > 1) && (saved_talent != @saved_talents.first) )? ((saved_talent == @saved_talents.last) ? 'and ' : ', ' ) : '' %>
-              <%= render partial: 'saved_talent_link', locals: {talent: saved_talent.talent } %>
-            <% end %>
-            <%= "#{'is'.pluralize(@saved_talents.length)} your favourite #{'conspirator'.pluralize(@saved_talents.length)}." %>
-          </h1>
-          <h2>Want to know more?</h2>
-          <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
+            <h2>Want to know more?</h2>
+            <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
           <form class="form row">
 
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
                 <input name="name" type="text"/>
                 <label for="name">Name</label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
 
                 <input name="email" type="email"/>
@@ -39,10 +40,10 @@
 
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <button>Get portfolio and booking info</button>
             </div>
-            <aside class="col-md-6">
+            <aside class="col-md-8">
               <p>
               Your privacy is important to us.
               </p>
@@ -52,9 +53,6 @@
             </aside>
           </form>
         </div>
-        <% @saved_talents.each do | saved_talent | %>
-            <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
-        <%end %>
       </div>
     </section>
   </div>
