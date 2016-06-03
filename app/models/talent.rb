@@ -134,11 +134,26 @@ class Talent < ActiveRecord::Base
           bindings[:object].featured_projects.length
         end
       end
-      field :gender_list do
-        label "Gender"
+      field :pictures do 
+        pretty_value do
+          "cover: 
+          #{(bindings[:object].cover.url == "/covers/original/missing.png") ? "No" : "Yes"} 
+          <br/> 
+          gallery: #{bindings[:object].gallery_pictures.count}  of 6".html_safe
+
+        end
       end
-      field :skill_list do
-        label "Skills"
+      field :tags do
+        pretty_value do
+
+          "gender: 
+            #{bindings[:object].gender_list } 
+            <br/> 
+            skills: #{bindings[:object].skill_list.count}
+            <br/> 
+            types: #{bindings[:object].type_list.count}
+            ".html_safe
+          end
       end
       field :avatar do
         filterable false
