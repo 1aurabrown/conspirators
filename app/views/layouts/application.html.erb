@@ -16,7 +16,7 @@
 
 <%= content_for?(:content) ? yield(:content) : yield %>
 <%= render partial: 'footer' %>
-  <aside class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <aside id="no-bookmarks-modal" class="modal fade bd-example-modal-sm" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
