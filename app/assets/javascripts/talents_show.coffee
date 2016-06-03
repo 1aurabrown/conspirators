@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-app.controllerInitializers.talents = ->
+app.controllerInitializers.talents_show = ->
   return unless $('body').hasClass 'talents'
 
   if $('body').data('action') == 'show'

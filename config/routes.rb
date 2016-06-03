@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'contact', to: "contact#index"
   root to: 'home#index'
   devise_for :users
@@ -8,6 +9,11 @@ Rails.application.routes.draw do
     resources :talents do 
       member do
         post :edit_collection
+      end
+    end 
+    resources :inquiries do 
+      member do
+        post :create
       end
     end
   end

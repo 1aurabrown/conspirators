@@ -4,10 +4,8 @@
 
     <div id="header-content">
       <h1 id="page-title">
-        <% @saved_talents.each do | saved_talent | %>
-          <%= ((@saved_talents.length > 1) && (saved_talent != @saved_talents.first) )? ((saved_talent == @saved_talents.last) ? 'and ' : ', ' ) : '' %>
-          <%= render partial: 'saved_talent_link', locals: {talent: saved_talent.talent } %>
-        <% end %>
+        <% @saved_talents.each do | saved_talent |
+           %><%=((@saved_talents.length > 1) && (saved_talent != @saved_talents.first) )? ((saved_talent == @saved_talents.last) ? ' and ' : ', ' ) : '' %><%= render partial: 'saved_talent_link', locals: {talent: saved_talent.talent } %><% end %>
         <%= "#{'is'.pluralize(@saved_talents.length)} your favourite #{'conspirator'.pluralize(@saved_talents.length)}." %>
       </h1>      
     </div>
@@ -18,29 +16,30 @@
       </div>
       <div class="section-content">
 
-        <div class="col-md-8 col-lg-6">
+        <div class="col-md-8 col-lg-6 pull-right">
           <h2>Want to know more?</h2>
           <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
           <form class="form row">
 
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
-                <input name="name" type="text"/>
+                <input name="name" type="text" required/>
                 <label for="name">Name</label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
 
-                <input name="email" type="email"/>
+                <input name="email" type="email" required/>
                 <label for="name">Email</label>
 
               </div>
             </div>
-            <div class="col-md-12">
+            <input type="hidden" name="talents" value="<% @saved_talents.each do | saved_talent | %><%= saved_talent.talent.slug%> <%end  %>">
+            <div class="col-md-8">
               <button>Get portfolio and booking info</button>
             </div>
-            <aside class="col-md-12">
+            <aside class="col-md-8">
               <p>
               <b>Your privacy is important to us.</b>
               We will never share your contact information with third parties or send you unsolicited mail.
