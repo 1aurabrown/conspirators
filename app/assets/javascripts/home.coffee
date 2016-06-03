@@ -5,15 +5,9 @@
 
 app.controllerInitializers.home = ->
   return unless $('body').hasClass 'home'
-
-
-
   grid = $('.section-content').imagesLoaded ->
     grid.isotope(
-      itemSelector: '.card-container',
-      masonry: {
-        
-      }
+      itemSelector: '.card-container'
     )
   getTalentTags = (talent) ->
     app.collectionData.talents.find( (t) -> t.id == talent ).acceptable_tags

@@ -1,0 +1,7 @@
+<div>
+  <% @tags.each do |tag| %>
+    <a class="tag-selector" data-tag="tag.id" ref="/filter/<%= tag.slug %>">
+      <%= tag.name %>
+    </a>
+  <% end %>
+</div>
