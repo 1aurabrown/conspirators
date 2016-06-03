@@ -13,6 +13,11 @@ class app.components.Faves extends Backbone.View
   changeState: (saved) =>
     action = if saved then 'add' else 'remove'
     @$el["#{action}Class"] 'active'
+    if action == 'add'
+      $('.faves').addClass('pop')
+      $('.faves').bind "webkitTransitionEnd mozTransitionEnd oTransitionEnd msTransitionEnd transitionend", =>
+        $('.faves').removeClass("pop");
+
 
   events: {
     "click": 'handleClick'

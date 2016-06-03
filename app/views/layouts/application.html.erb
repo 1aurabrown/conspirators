@@ -11,6 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%=params[:controller]%> <%= params[:action]%>" data-action="<%= params[:action] %>" data-controller="<%=params[:controller]%>">
+  <%= include_gon(:init => true) %>
 
 <%= render partial: 'navigation' %>
 

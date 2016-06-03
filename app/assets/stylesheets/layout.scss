@@ -45,6 +45,8 @@ body{
     padding-top: 54px;
     @extend .container;
     h1 {
+      padding-top:3rem;
+      padding-bottom: 1rem;
       position: relative;
       .save-button {
         float: right;

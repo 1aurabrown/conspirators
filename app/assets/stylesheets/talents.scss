@@ -1,7 +1,7 @@
 #talent-buttons {
   padding-left: 0.5rem;
 } 
-body.talents.show article.talent {
+body.talents.show {
   .talent-atts {
     padding-bottom: 6rem;
     margin-top: 1.5rem;
@@ -10,72 +10,80 @@ body.talents.show article.talent {
     @include background-image(linear-gradient(black, transparent));
     .nav {
       .nav-item {
+        &.pop {
+          a {
+            color: white;
+            opacity: 1;
+          }
+        }
         a {
-          color: $gray;
+          color: $gray-lighter;
           position:relative;
           padding:0;
           text-transform: lowercase;
           transition: all 0.5s;
           display: inline-block;
+          opacity: 0.6;
           &:hover {
-            color: $gray-lighter;
-            opacity: 0.8;
+            opacity: 1;
           }
         }
       }
     }
-
   }
-  #page-cover {
-    position:relative;
-    height: 380px;
-    width: 100%;
-    overflow: hidden;
-    background-color: #000;
-    z-index: 4;
-    #cover-image-container {
-      height: 100%;
-      position: relative;
-      @extend .container;
-      #cover-image {
-        &.conspiring {
-          top: 100px;
-          height: 150%;
-          -webkit-filter: brightness(100%);
-        }  
-        -webkit-filter: brightness(80%);
-        transition: -webkit-filter 1s;
-        position: absolute;
-        right: 0;
-        top: 0;
+  article.talent {
+    #page-cover {
+      position:relative;
+      height: 380px;
+      width: 100%;
+      overflow: hidden;
+      background-color: #000;
+      z-index: 4;
+      #cover-image-container {
         height: 100%;
-      }
-    }
-  }
-
-  #page-header {
-    position: relative;
-    z-index: 4;
-    margin-top: -100px;
-    #header-content {
-      padding-top: 54px;
-      @extend .container;
-      h1 {
         position: relative;
-        .save-button {
-          float: right;
+        @extend .container;
+        #cover-image {
+          &.conspiring {
+            top: 100px;
+            height: 150%;
+            -webkit-filter: brightness(100%);
+          }  
+          -webkit-filter: brightness(80%);
+          transition: -webkit-filter 1s;
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
         }
       }
     }
-    #page-title {
-      color: white;
-      margin-bottom: 0;
-    }
-  }
-  .page-content {
-      top: 380px;
 
-  } 
+    #page-header {
+      position: relative;
+      z-index: 4;
+      margin-top: -100px;
+      #header-content {
+        padding-top: 54px;
+        @extend .container;
+        h1 {
+          padding-top: 0;
+          position: relative;
+          .save-button {
+            float: right;
+          }
+        }
+      }
+      #page-title {
+        color: white;
+        margin-bottom: 0;
+      }
+    }
+    .page-content {
+        top: 380px;
+
+    } 
+  }
 }
 
 .talent-att {

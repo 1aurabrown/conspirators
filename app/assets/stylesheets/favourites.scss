@@ -1,31 +1,53 @@
 body.talents.favourites {
   nav#navigation {
-    background-color:white;
-    .nav-item a {
-      color: $gray;
+    position: fixed;
+    background-color: white;
+  }
+  @include media-breakpoint-up(md) {
+
+    .section-content h2 {
+      padding-top: 4rem;
     }
-    .nav-item a:hover {
-      color: black;
-      opacity: 1;
+    form.form {
+
+      height:100vh;
     }
   }
-  article.favourites {
-    #favourites-list {
-      font-family: 'Julius Sans One', sans-serif;
-      padding-top: 0;
-      padding-bottom: 1rem;
-      .saved-talent-link {
-        font-weight: bold;
-        color: black;
-
-        &:hover {
-          color: $gray;
-
-        }
+  #page-header {
+    #header-content {
+      #page-title {
+      color: black;
+      } 
+      padding-top: 4rem;
+      h1 {
 
       }
     }
-    .section-content {
+  }
+  .page-content {
+    position: static;
+    min-height: 50vh;
+  }
+  footer {
+    position: static;
+  }
+  #page-title {
+    font-family: 'Julius Sans One', sans-serif;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    text-align: center;
+    .saved-talent-link {
+      font-weight: bold;
+      color: black;
+
+      &:hover {
+        color: $gray;
+
+      }
+
     }
+  }
+  .right-align {
+    text-align:right;
   }
 }

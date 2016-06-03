@@ -1,6 +1,6 @@
 .home #navigation .nav-item.home,
 .contact #navigation .nav-item.contact,
-.faves #navigation .nav-item.faves {
+.favourites #navigation .nav-item.faves {
   a {
     color: black;
     opacity: 1;
@@ -20,6 +20,7 @@
   @extend .navbar;
   @extend .navbar-fixed-top;
   transition: all 0.5s; 
+  padding-bottom: 0;
   .logo {
     h1 {
       position: relative;
@@ -37,14 +38,16 @@
       margin-left: 0.4rem;
       position:relative;
 
-
+      opacity: 0.8;
       &.faves {
+        &.pop {
+          opacity: 1;
+        }
         &.present {
+
           .saved-talents {
             opacity: 1;
             transform: translateY(0);
-            -webkit-transition-delay: 0.5s; /* Safari */
-            transition-delay: 0.5s;
           }
         }
         .saved-talents {

@@ -1,0 +1,26 @@
+// Place all the styles related to the contact controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body.contact {
+  nav#navigation {
+    position: static;
+  }
+  #page-header {
+    #header-content {
+      #page-title {
+        text-align: center;
+        color: black;
+        padding-top: 2rem;
+        font-weight: bold;
+      } 
+      padding-top: 0;
+    }
+  }
+  .page-content {
+    position: static;
+    min-height: 50vh;
+  }
+  footer {
+    position: static;
+  }
+}
