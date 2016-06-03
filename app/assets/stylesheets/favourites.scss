@@ -1,10 +1,32 @@
 body.talents.favourites {
   nav#navigation {
-    background-color:black;
+    background-color:white;
+    .nav-item a {
+      color: $gray;
+    }
+    .nav-item a:hover {
+      color: black;
+      opacity: 1;
+    }
   }
-}
-article.talents.favourites {
-  #page-header {
-    background-color: black;
+  article.favourites {
+    #favourites-list {
+      font-family: 'Julius Sans One', sans-serif;
+      padding-top: 0;
+      padding-bottom: 1rem;
+      .saved-talent-link {
+        font-weight: bold;
+        color: black;
+
+        &:hover {
+          color: $gray;
+
+        }
+
+      }
+    }
+    .section-content {
+      text-align: right;
+    }
   }
 }

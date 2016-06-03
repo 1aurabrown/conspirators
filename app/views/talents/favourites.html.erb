@@ -4,19 +4,33 @@
 
     <div id="header-content">
       <h1 id="page-title">
-        Conspirators
+        Favourites
       </h1>
     </div>
   </header>
   <div class="page-content">
 
-    <%# partial: 'tag_selection' %> 
-    <section class="section">
 
-      <div class="section-content talents-section">
+    <section class="section">
+      <div class="section-header">
+      </div>
+      <div class="section-content">
+        <div class="col-md-6">
+          <h1 id="favourites-list">
+            <% @saved_talents.each do | saved_talent | %>
+              <%= (@saved_talents.length > 1 )? (saved_talent.last ? 'and ' : ', ' ) : '' %>
+              <%= render partial: 'saved_talent_link', locals: {talent: saved_talent.talent } %>
+            <% end %>
+            <%= "#{'is'.pluralize(@saved_talents.length)} your favourite #{'conspirator'.pluralize(@saved_talents.length)}." %>
+          </h1>
+          <h2>Want to know more?</h2>
+          <p>Let us take care of sending you their complete portfolio, availability information and personal booking contact.</p>
+        </div>
         <% @saved_talents.each do | saved_talent | %>
-          <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
-        <% end %>
+            <%= (@saved_talents.length > 1 )? (saved_talent.last ? 'and ' : ', ' ) : '' %>
+            <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
+        <%end %>
+
       </div>
     </section>
   </div>
