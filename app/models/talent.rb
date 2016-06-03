@@ -76,9 +76,9 @@ class Talent < ActiveRecord::Base
       end
       group :base do
         label "Basic information"
-        field :given_name
-        field :family_name
-        field :additional_name
+        field :first_name
+        field :last_name
+        field :middle_name
         field :country_code do
           label "Country"
         end
