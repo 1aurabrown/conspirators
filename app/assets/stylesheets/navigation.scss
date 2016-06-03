@@ -36,6 +36,19 @@
     float:right;
     .nav-item {
       margin-left: 0.4rem;
+      position:relative;
+      aside {
+        background-color:white;
+        width: 240px;
+        position:absolute;
+        right: -1rem;
+        padding: 0.5rem;
+        border:1px solid $gray;
+        color: $gray;
+        p {
+          margin-bottom: 0;
+        }
+      }
     }
     a {
       color: $gray;
@@ -65,6 +78,7 @@
         margin-top: -0.2em;
         transition: all 0.5s;
         transform: translateY(2em);
+
         &:before {
           content: "[";
         }
