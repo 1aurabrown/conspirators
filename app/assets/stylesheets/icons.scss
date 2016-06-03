@@ -39,11 +39,11 @@
 .icon-logo:before {
     content: "\e904";
 }
-.icon-bookmark:before {
+.icon-fave:before {
     content: "\e905";
 }
 .active.save-button {
-    .icon-bookmark:before {
+    .icon-fave:before {
         content: "\e906";
     }
 }

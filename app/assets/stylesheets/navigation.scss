@@ -1,6 +1,6 @@
 .home #navigation .nav-item.home,
 .contact #navigation .nav-item.contact,
-.bookmarks #navigation .nav-item.bookmarks {
+.faves #navigation .nav-item.faves {
   a {
     color: $gray-lighter;
     opacity: 0.6;
@@ -50,7 +50,7 @@
           opacity: 0.8;
         }
       }
-      &.bookmarks {
+      &.faves {
         &.present {
           .saved-talents {
             opacity: 1;

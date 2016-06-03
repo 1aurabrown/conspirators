@@ -3,25 +3,25 @@ class app.components.Navigation extends Backbone.View
     super
     @savedBadge = @$('.saved-talents')
     app.events.on 'savedtalents:change', (result) => 
-      @updateBookmarks(result.totalSaved, result.saved)
+      @updateFaves(result.totalSaved, result.saved)
 
   el: '#navigation'
 
-  updateBookmarks: (total, saved) ->
+  updateFaves: (total, saved) ->
     action = if total then 'add' else 'remove'
-    @$('.bookmarks')["#{action}Class"] 'present'
+    @$('.faves')["#{action}Class"] 'present'
     @savedBadge.text(total)
 
-  bookmarkClick: (e) ->
-    if @$('.bookmarks').hasClass('present')
+  favesClick: (e) ->
+    if @$('.faves').hasClass('present')
       return true
     else
       e.preventDefault()
 
-      $('#no-bookmarks-modal').modal('show')
+      $('#no-faves-modal').modal('show')
 
 
 
   events: {
-    'click .bookmarks a': 'bookmarkClick'
+    'click .faves a': 'favesClick'
   }

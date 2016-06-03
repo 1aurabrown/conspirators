@@ -23,4 +23,4 @@ $(document).on 'ready page:load', ->
   app.componentViews.navigation = new app.components.Navigation()
   $('.save-button').each (i, el) ->
     app.componentViews.saveButtons.push(
-      new app.components.Bookmarks({el: el}))
+      new app.components.Faves({el: el}))

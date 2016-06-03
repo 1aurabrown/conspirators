@@ -7,9 +7,9 @@
       <li class="nav-item contact">
         <a class="nav-link" href="/contact">Contact</a>
       </li>
-      <li class="nav-item bookmarks <%= (saved_talents_num.to_i > 0) ? 'present' : '' %>">
-        <a class="nav-link" href="/bookmarks">
-          Bookmarks
+      <li class="nav-item faves <%= (saved_talents_num.to_i > 0) ? 'present' : '' %>">
+        <a class="nav-link" href="/favourites">
+          Favourites
           <span class="saved-talents"><%= saved_talents_num %></span>
         </a>
 

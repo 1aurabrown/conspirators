@@ -1,4 +1,4 @@
-class app.components.Bookmarks extends Backbone.View
+class app.components.Faves extends Backbone.View
 
   constructor: (options) ->
     super(options)
