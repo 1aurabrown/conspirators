@@ -11,13 +11,21 @@ article.home {
     background-color: black;
   }
   #tag-selection {
-    font-family: 'Julius Sans One', sans-serif;
 
+    font-family: 'Julius Sans One', sans-serif;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     .tag-selector.home-selection {
       font-weight: normal;
+      color: $gray;
       &.active, &:hover {
-        text-decoration: underline;
+        color: black;
 
+      }
+      
+      &.active {
+        font-weight: bold;
+        border-bottom: none;
       }
 
     }

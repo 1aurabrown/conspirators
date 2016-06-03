@@ -1,8 +1,10 @@
 <div id="tag-selection">
   <span class="home-selection">I am a</span>
-  <% @tags.each do |tag| %>
+  <% @tags.each.with_index do |tag, index| %>
+    <%= index != 0 ? "/" : '' %>
     <a class="tag-selector home-selection" data-tag="<%= tag.id%>" href="#">
-      <%= tag.name %></a> /
+
+      <%= tag.name %></a> 
   <% end %>
   <span class="home-selection">Conspirator</span>
 
