@@ -7,19 +7,25 @@ form.form {
     }
   }
 
-    button {
-      width: 100%;
-      background-color: white;
-      color: $gray;
-      border: 1px solid $gray;
-      border-radius: 0.1rem;
-      font-family: 'Julius Sans One', sans-serif;
- 
-      &:hover {
-        color:black;
+  button {
+    width: 100%;
+    background-color: white;
+    color: $gray;
+    border: 1px solid $gray;
+    border-radius: 0.1rem;
+    font-family: 'Julius Sans One', sans-serif;
+
+    &:hover {
+      color:black;
+    }
+  }
+  &.submitted {
+    input {
+      &:invalid {
+        border-color: $brand-danger;
       }
     }
-
+  }
   .form-group {
     position:relative;
     height: 2rem;
@@ -28,8 +34,18 @@ form.form {
     label {
       position:absolute;
       top: 0.2rem;
-      transform: translate3d(0,0,0,0);
+      transform: translate3d(0,0,0);
       transition: transform 0.2s;
+    }
+    &.filled {
+      label {
+        transform: translate3d(0,-0.8rem,0) scale3d(0.6, 0.6, 0.6); 
+      }
+      input {
+        &:invalid {
+          border-color: $brand-danger;
+        }
+      }
     }
     input {
       width: 100%;
@@ -45,8 +61,8 @@ form.form {
       }
       &:focus + label {
         transform: translate3d(0,-0.8rem,0) scale3d(0.6, 0.6, 0.6); 
-
       }
+
     }  
 
   }
