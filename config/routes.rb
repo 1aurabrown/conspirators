@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'bookmarks/index'
+
   root to: 'home#index'
   devise_for :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get '/saved', to: "talents#saved"
+  get '/bookmarks', to: "talents#bookmarked"
   scope 'api/v1' do
     resources :talents do 
       member do

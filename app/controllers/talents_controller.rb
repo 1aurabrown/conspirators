@@ -5,7 +5,7 @@ class TalentsController < ApplicationController
     @talent = Talent.find_by slug: params[:slug]
   end
 
-  def saved
+  def bookmarked
     @saved_talents = current_user.saved_talents
   end
 
