@@ -5,58 +5,60 @@
 
 app.controllerInitializers.talents = ->
   return unless $('body').hasClass 'talents'
-  new (ScrollMagic.Scene)(
-      offset: 240
-      reverse: true)
-    .setPin('#page-cover')
-    .addTo(app.scroll)
 
-  new (ScrollMagic.Scene)(
-      offset: 240
-      reverse: true)
-    .setPin('#page-header')
-    .addTo(app.scroll)
+  if $('body').data('action') == 'show'
+    new (ScrollMagic.Scene)(
+        offset: 240
+        reverse: true)
+      .setPin('#page-cover')
+      .addTo(app.scroll)
 
-  new (ScrollMagic.Scene)(
-      offset: 0
-      duration: 300
-      )
-    .setTween(
-      TweenLite.to($('#cover-image')[0], 2, {className: '+=conspiring'}))
-    .addTo(app.scroll)
-  new (ScrollMagic.Scene)(
-      offset: -10
-      duration: 290
-      reverse: true
-      )
-    .setTween(
-      TweenLite.to($('#cover-image')[0], 2, {className: '-=conspiring'}))
-    .addTo(app.scroll)
+    new (ScrollMagic.Scene)(
+        offset: 240
+        reverse: true)
+      .setPin('#page-header')
+      .addTo(app.scroll)
 
-  new (ScrollMagic.Scene)(
-      offset: 240
-      duration: 200
-      reverse: true)
-    .setTween(
-      TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
-    .addTo(app.scroll)
+    new (ScrollMagic.Scene)(
+        offset: 0
+        duration: 300
+        )
+      .setTween(
+        TweenLite.to($('#cover-image')[0], 2, {className: '+=conspiring'}))
+      .addTo(app.scroll)
+    new (ScrollMagic.Scene)(
+        offset: -10
+        duration: 290
+        reverse: true
+        )
+      .setTween(
+        TweenLite.to($('#cover-image')[0], 2, {className: '-=conspiring'}))
+      .addTo(app.scroll)
 
-  new (ScrollMagic.Scene)(
-      offset: 260
-      duration: 180
-      reverse: true)
-    .setTween(
-      TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
-    .addTo(app.scroll)
+    new (ScrollMagic.Scene)(
+        offset: 240
+        duration: 200
+        reverse: true)
+      .setTween(
+        TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
+      .addTo(app.scroll)
+
+    new (ScrollMagic.Scene)(
+        offset: 260
+        duration: 180
+        reverse: true)
+      .setTween(
+        TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
+      .addTo(app.scroll)
 
 
-  new (ScrollMagic.Scene)(
-      offset: 300
-      duration: 180
-      reverse: true)
-    .setTween(
-      TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
-    .addTo(app.scroll)
+    new (ScrollMagic.Scene)(
+        offset: 300
+        duration: 180
+        reverse: true)
+      .setTween(
+        TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
+      .addTo(app.scroll)
 
   showImageByDirection = (direction) ->
     showOverlayImage prevOrNextSelector direction

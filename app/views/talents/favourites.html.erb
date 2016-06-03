@@ -1,4 +1,4 @@
-<article class="home">
+<article class="favourites">
 
   <header id="page-header">
 
@@ -14,8 +14,8 @@
     <section class="section">
 
       <div class="section-content talents-section">
-        <% @talents.each do | talent | %>
-          <%= render partial: 'shared/talent_card', locals: {talent: talent} %>
+        <% @saved_talents.each do | saved_talent | %>
+          <%= render partial: 'shared/talent_card', locals: {talent: saved_talent.talent } %>
         <% end %>
       </div>
     </section>

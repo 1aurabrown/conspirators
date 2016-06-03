@@ -34,15 +34,32 @@ body{
     }
   }
 }
-
+#page-header {
+  position: relative;
+  z-index: 4;
+  #header-content {
+    padding-top: 54px;
+    @extend .container;
+    h1 {
+      position: relative;
+      .save-button {
+        float: right;
+      }
+    }
+  }
+  #page-title {
+    color: white;
+    margin-bottom: 0;
+  }
+}
 .page-content {
   width: 100%;
-  top: 380px;
   margin-bottom: 400px;
   position: absolute;
   z-index: 3;
   background-color: white;
   min-height: 100vh;
+
   .section {
     @extend .container; 
     padding: 1rem 0 1rem 0;
