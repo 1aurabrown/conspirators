@@ -125,33 +125,17 @@ a.talent-att {
     }
   }
 }
-.section.projects-and-similar {
+.section-projects, .section-similar {
   margin-bottom: 3rem;
-    h1.section-header {
-      text-align: left;
-      font-size: 24px;
-      margin: 2rem 0 1rem 0;
-    }
-    h2 {
-      font-family: "Helvetica Neue", sans-serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-  .section-projects {
-
-    @extend .col-sm-6;
-    @extend .col-md-3;
+  h1.section-header {
+    text-align: left;
+    font-size: 24px;
+    margin: 2rem 0 1rem 0;
   }
-  .section-similar {
-
-    @extend .col-sm-12;
-    @extend .col-md-9;
-    
-    .card-container {
-
-      @extend .col-sm-6;
-      @extend .col-md-4;
-
-    }
+  h2 {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
   }
+
 }

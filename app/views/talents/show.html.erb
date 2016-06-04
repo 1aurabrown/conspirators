@@ -76,24 +76,23 @@
         </div>
       <% end %>
     </section>
-    <section class="section projects-and-similar">
+    <section class="section section-similar">
+      <h1 class="section-header">
+        Selected works
+      </h1>
       <div class="section-content">
+      kakaka
+      </div>
+    </section>
+    <section class="section section-similar">
 
-
-        <div class="section-similar">
-          <div class="row">
-            <h1 class="section-header">
-              Our suggestions
-            </h1>
-
-            <div class="section-content row">
-              <% @talent.get_similar.each do | similar | %>
-                <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
+      <h1 class="section-header">
+        Our suggestions
+      </h1>
+      <div class="section-content">
+        <% @talent.get_similar.each do | similar | %>
+          <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+        <% end %>
       </div>
     </section>
   </div>
