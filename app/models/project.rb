@@ -13,8 +13,22 @@ class Project < ActiveRecord::Base
     :art_film,
     :performance,
     :installation,
-    :tv_series
+    :tv_series,
+    :commercial
   ]
+
+  def display_title
+    case self.project_type.to_sym
+    when [:editorial, :fashion_shoot]
+      "#{self.title} x #{self.for}"
+    when :music_video
+      "#{self.for} - \"#{self.title}\""
+    when :commercial
+      "#{self.for}: #{self.title}"
+    else
+      self.title
+    end
+  end
   
   scope :by_year, -> {
     order(date: :desc).group_by{ |item| item.date.year } 
