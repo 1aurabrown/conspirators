@@ -132,23 +132,43 @@ a.talent-att {
     font-size: 24px;
     margin: 2rem 0 1rem 0;
   }
-  h2 {
-    font-size: 1rem;
-    font-weight: 400;
-    font-family: sans-serif;
-  }
 }
 .section-projects {
   .project-card {
     @include make-row();
     .project-metadata {
 
-      @extend .col-md-4;  
-      @extend .col-lg-3;
-      text-align:right;
-      padding: 0.3rem;
-      padding-top: 0.9rem;
 
+      @include make-col();
+      @include make-col-span(12);
+      h2 {
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: sans-serif;
+        display: inline-block;
+        &:last-child {
+          &:before {
+            content: "|";
+          }
+        }
+      }
+      @include media-breakpoint-up(md) {
+        @include make-col-span(4);
+        h2 {
+          display: block;
+          &:last-child {
+            &:before {
+              content: "";
+            }
+          }
+        }
+        text-align:right;
+        padding: 0.3rem;
+        padding-top: 0.9rem;
+      }
+      @include media-breakpoint-up(lg) {
+        @include make-col-span(3);
+      }
 
     }
     .project-content {
@@ -156,7 +176,11 @@ a.talent-att {
       @extend .col-md-8;  
       @extend .col-lg-9; 
       h1 {
-
+        margin-bottom: 0.1rem;
+      }
+      a {
+        text-decoration: underline;
+        color: $gray;
       }
 
     }
