@@ -133,9 +133,33 @@ a.talent-att {
     margin: 2rem 0 1rem 0;
   }
   h2 {
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: sans-serif;
   }
+}
+.section-projects {
+  .project-card {
+    @include make-row();
+    .project-metadata {
 
+      @extend .col-md-4;  
+      @extend .col-lg-3;
+      text-align:right;
+      padding: 0.3rem;
+      padding-top: 0.9rem;
+
+
+    }
+    .project-content {
+
+      @extend .col-md-8;  
+      @extend .col-lg-9; 
+      h1 {
+
+      }
+
+    }
+
+  }
 }
