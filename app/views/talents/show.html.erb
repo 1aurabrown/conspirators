@@ -76,12 +76,17 @@
         </div>
       <% end %>
     </section>
-    <section class="section section-similar">
+    <section class="section section-projects">
       <h1 class="section-header">
         Selected works
       </h1>
       <div class="section-content">
-      kakaka
+        <% @talent.featured_projects.each do | f_p | %>
+          <% project = f_p.project %>
+          <%= project.title %>(<%= project.date.year %>)
+          <%= project.description %>
+
+        <% end %>
       </div>
     </section>
     <section class="section section-similar">
