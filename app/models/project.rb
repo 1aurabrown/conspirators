@@ -12,9 +12,9 @@ class Project < ActiveRecord::Base
     :editorial,
     :art_film,
     :performance,
-    :installation,
+    :commercial,
     :tv_series,
-    :commercial
+    :project
   ]
 
   def display_title
