@@ -4,6 +4,31 @@ class Project < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :date, presence: true
+  enum project_type: [
+    :music_video, 
+    :short_film, 
+    :feature_film, 
+    :fashion_shoot,
+    :editorial,
+    :art_film,
+    :performance,
+    :commercial,
+    :tv_series,
+    :project
+  ]
+
+  def display_title
+    case self.project_type.to_sym
+    when [:editorial, :fashion_shoot]
+      "#{self.title} x #{self.for}"
+    when :music_video
+      "#{self.for} - \"#{self.title}\""
+    when :commercial
+      "#{self.for}: #{self.title}"
+    else
+      self.title
+    end
+  end
   
   scope :by_year, -> {
     order(date: :desc).group_by{ |item| item.date.year } 
@@ -22,13 +47,22 @@ class Project < ActiveRecord::Base
         queryable true
         filterable true
       end
-      field :date
+      field :project_type
+      field :date do 
+        label "Year"
+        pretty_value do 
+          value.year
+        end
+      end 
       field :organised_by_conspirators
     end
     field :title
     field :description
+    field :project_type
+    field :for
+    field :director
+    field :link
     field :organised_by_conspirators
     field :date
-    field :talents
   end
 end

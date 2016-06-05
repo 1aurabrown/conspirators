@@ -76,24 +76,46 @@
         </div>
       <% end %>
     </section>
-    <section class="section projects-and-similar">
+    <section class="section section-projects">
+      <h1 class="section-header">
+        Selected works
+      </h1>
       <div class="section-content">
-
-
-        <div class="section-similar">
-          <div class="row">
-            <h1 class="section-header">
-              Our suggestions
-            </h1>
-
-            <div class="section-content row">
-              <% @talent.get_similar.each do | similar | %>
-                <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+        <% @talent.featured_projects.each do | f_p | %>
+          <% project = f_p.project %>
+          <article class="project-card">
+            <div class="project-metadata">
+              <h2>
+                 <%= project.project_type.titleize %> | <%= project.date.year %><br/>
+              </h2>
+              <% if project.director %>
+                <h2> 
+                <%= "Directed by #{project.director.strip}" %>
+                </h2> 
               <% end %>
-            </div>
-          </div>
-        </div>
 
+              </h3>
+            </div>
+            <div class="project-content">
+
+            <h1><%= project.display_title %></h1>
+            <p><%= project.description %>
+                <%= project.link ? "(#{link_to("Visit website", project.link)})".html_safe : "" %></p>
+            </div>
+          </article>
+
+        <% end %>
+      </div>
+    </section>
+    <section class="section section-similar">
+
+      <h1 class="section-header">
+        Our suggestions
+      </h1>
+      <div class="section-content">
+        <% @talent.get_similar.each do | similar | %>
+          <%= render partial: 'shared/talent_card', locals: {talent: similar} %>
+        <% end %>
       </div>
     </section>
   </div>
