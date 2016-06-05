@@ -83,8 +83,32 @@
       <div class="section-content">
         <% @talent.featured_projects.each do | f_p | %>
           <% project = f_p.project %>
-          <%= project.title %>(<%= project.date.year %>)
-          <%= project.description %>
+          <article class="project-card">
+            <div class="project-metadata">
+              <h2>
+                <%= project.date.year %>
+              </h2>
+              <h2>
+                <%= project.project_type.titleize %><br/>
+              </h2>
+              <% if project.link %>
+                <h2> 
+                <%= project.link ? "#{link_to("Visit website", project.link)}".html_safe : "" %>
+                </h2> 
+              <% end %>
+              </h3>
+            </div>
+          </article>
+          <div class="project-content">
+
+          <h1><%= project.title %></h1>
+          <% if project.director %>
+            <h2> 
+            <%= "Directed by #{project.director.strip}" %>
+            </h2> 
+          <% end %>
+          <p><%= project.description %></p>
+          </div>
 
         <% end %>
       </div>

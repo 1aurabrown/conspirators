@@ -34,6 +34,12 @@ class Project < ActiveRecord::Base
         filterable true
       end
       field :project_type
+      field :date do 
+        label "Year"
+        pretty_value do 
+          value.year
+        end
+      end 
       field :organised_by_conspirators
     end
     field :title
