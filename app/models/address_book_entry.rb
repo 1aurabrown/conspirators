@@ -4,4 +4,7 @@ class AddressBookEntry < ActiveRecord::Base
   delegate :last_name, to: :person
   delegate :middle_name, to: :person
   delegate :email, to: :person
+  rails_admin do 
+    hide
+  end
 end
