@@ -19,6 +19,7 @@ class Talent < ActiveRecord::Base
   has_many :notes, as: :contactable, dependent: :destroy
   before_save :set_slug, :refresh_weights
   accepts_nested_attributes_for :featured_projects, :allow_destroy => true
+  has_one :address_book_entry, as: :person
 
   def country_code_enum
     Country.all_translated
