@@ -83,6 +83,10 @@ class Talent < ActiveRecord::Base
         field :country_code do
           label "Country"
         end
+        field :slug do
+          help "Allows you to change the URL for a talent. Not good for SEO, so use judiciously."          
+        end
+
         field :email
         field :avatar
       end
