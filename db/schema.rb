@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608174648) do
+ActiveRecord::Schema.define(version: 20160611043349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -174,6 +174,8 @@ ActiveRecord::Schema.define(version: 20160608174648) do
     t.string   "slug"
     t.string   "country_code"
     t.datetime "published"
+    t.text     "country_info"
+    t.integer  "popularity"
   end
 
   add_index "talents", ["slug"], name: "index_talents_on_slug", using: :btree

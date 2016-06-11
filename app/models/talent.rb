@@ -1,7 +1,7 @@
 class Talent < ActiveRecord::Base
   include TagNetworkable
   publishable
-
+  enum popularity: [:debutante, :promise, :so_hot_right_now, :hall_of_fame]
   has_many :featured_projects, dependent: :destroy, inverse_of: :talent
   has_and_belongs_to_many :projects, inverse_of: :talent
   has_attached_file :avatar, styles: { large: "600>",  thumb: "100x100#" }, default_url: "/images/:style/missing.png"
@@ -17,7 +17,7 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :genders, :types
   has_many :notes, as: :contactable, dependent: :destroy
-  before_save :set_slug, :refresh_weights
+  before_save :set_slug, :refresh_weights, :set_country_info
   accepts_nested_attributes_for :featured_projects, :allow_destroy => true
   #has_one :address_book_entry, as: :person
 
@@ -38,6 +38,10 @@ class Talent < ActiveRecord::Base
     if self.slug.blank?
       self.slug = self.name.parameterize
     end
+  end
+
+  def set_country_info
+    self.country_info = "#{self.country_code} / #{self.language_list}"
   end
 
   def appearance
@@ -75,6 +79,7 @@ class Talent < ActiveRecord::Base
       field :published do
         label "Public from"
       end
+      field :popularity
       group :base do
         label "Basic information"
         field :first_name
@@ -129,6 +134,7 @@ class Talent < ActiveRecord::Base
           bindings[:view].link_to(bindings[:object].name, "/#{bindings[:object].slug}")
         end
       end
+      field :popularity
       field :published do 
         pretty_value do
           bindings[:object].published.blank? ? "No" : "Yes" 
@@ -150,7 +156,6 @@ class Talent < ActiveRecord::Base
       end
       field :tags do
         pretty_value do
-
           "gender: 
             #{bindings[:object].gender_list } 
             <br/> 
@@ -160,9 +165,15 @@ class Talent < ActiveRecord::Base
             ".html_safe
           end
       end
+      field :country_info do
+        filterable true
+        queryable true
+      end
       field :avatar do
         filterable false
+
       end
+
     end
     show do
       field :name
