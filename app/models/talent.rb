@@ -1,7 +1,7 @@
 class Talent < ActiveRecord::Base
   include TagNetworkable
   publishable
-
+  enum popularity: [:debutante, :promise, :so_hot_right_now, :hall_of_fame]
   has_many :featured_projects, dependent: :destroy, inverse_of: :talent
   has_and_belongs_to_many :projects, inverse_of: :talent
   has_attached_file :avatar, styles: { large: "600>",  thumb: "100x100#" }, default_url: "/images/:style/missing.png"
@@ -79,6 +79,7 @@ class Talent < ActiveRecord::Base
       field :published do
         label "Public from"
       end
+      field :popularity
       group :base do
         label "Basic information"
         field :first_name
@@ -133,6 +134,7 @@ class Talent < ActiveRecord::Base
           bindings[:view].link_to(bindings[:object].name, "/#{bindings[:object].slug}")
         end
       end
+      field :popularity
       field :published do 
         pretty_value do
           bindings[:object].published.blank? ? "No" : "Yes" 
