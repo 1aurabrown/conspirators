@@ -17,7 +17,7 @@ class Talent < ActiveRecord::Base
   validates_numericality_of :height, :in => 1..220
   acts_as_taggable_on :skills, :languages, :genders, :types
   has_many :notes, as: :contactable, dependent: :destroy
-  before_save :set_slug, :refresh_weights
+  before_save :set_slug, :refresh_weights, :set_country_info
   accepts_nested_attributes_for :featured_projects, :allow_destroy => true
   #has_one :address_book_entry, as: :person
 
@@ -38,6 +38,10 @@ class Talent < ActiveRecord::Base
     if self.slug.blank?
       self.slug = self.name.parameterize
     end
+  end
+
+  def set_country_info
+    self.country_info = "#{self.country_code} / #{self.language_list}"
   end
 
   def appearance
@@ -150,7 +154,6 @@ class Talent < ActiveRecord::Base
       end
       field :tags do
         pretty_value do
-
           "gender: 
             #{bindings[:object].gender_list } 
             <br/> 
@@ -160,9 +163,15 @@ class Talent < ActiveRecord::Base
             ".html_safe
           end
       end
+      field :country_info do
+        filterable true
+        queryable true
+      end
       field :avatar do
         filterable false
+
       end
+
     end
     show do
       field :name
