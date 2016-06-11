@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def impressum
-    PageText.find_by(title: 'Impressum').formatted_text
+    PageText.find_by(page: :footer).formatted_text
   end
 
   def after_sign_in_path_for(resource)
