@@ -11,7 +11,7 @@ class PageText < ActiveRecord::Base
     navigation_icon "fa-edit"
 
     edit do
-      field :title
+      field :page
       field :text do 
 
         partial 'markdown_partial'
