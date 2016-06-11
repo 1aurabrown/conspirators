@@ -1,6 +1,6 @@
 class PageText < ActiveRecord::Base
   validates_presence_of [:title, :text]
-
+  enum page: [:footer, :contact_talents, :contact_business, :favourites]
   def formatted_text
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(self.text).html_safe
 
@@ -10,7 +10,7 @@ class PageText < ActiveRecord::Base
     navigation_label 'Admin'
     navigation_icon "fa-edit"
     show do
-      field :title
+      field :page
       field :text do
         formatted_value do 
           bindings[:object].formatted_text
