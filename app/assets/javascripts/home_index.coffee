@@ -11,25 +11,17 @@ app.controllerInitializers.home_index = ->
     .setPin('#page-header')
     .addTo(app.scroll)
 
-  $('.tag-selection-tag').click (e) ->
-    $(this).toggleClass('active')
-    visibleTags = $('.tag-selection-tag.active').toArray().map (el) -> 
-      parseInt(el.dataset.tag)
-        
   grid = $('.section-content').imagesLoaded ->
     grid.isotope(
       itemSelector: '.card-container'
     )
 
   refresh = ->
-    activeTags = $('.tag-selector.active').map( ->
-      return parseInt(this.dataset.tag)
-    ).get()
-    if activeTags.length
+    activeTag = $('.tag-selector.active').data('tag')
+    if activeTag
       matchingTalents = _.filter gon.tags, (t) ->
-        _.intersection(activeTags, t.tags).length
+        _.contains(t.tags, activeTag)
       matchingIds = _.map( matchingTalents, (t) -> t.id)
-
       grid.isotope {
         filter: (item) ->
           parseInt(this.dataset.talent) in matchingIds
@@ -42,8 +34,11 @@ app.controllerInitializers.home_index = ->
 
 
   $('#tag-selection').on 'click', '.tag-selector', (e) ->
-    e.preventDefault()
-    $(e.target).toggleClass 'active'
+    if ($(e.target).hasClass('active'))
+      $(e.target).removeClass('active')
+    else
+      $('.tag-selector').removeClass('active')
+      $(e.target).addClass('active')
     refresh()
   # $('.button-group').each (i, buttonGroup) ->
   #   $buttonGroup = $(buttonGroup)
