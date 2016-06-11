@@ -7,6 +7,7 @@ class TalentsController < ApplicationController
 
   def favourites
     @saved_talents = current_user.saved_talents
+    @page_text = PageText.faves.first.formatted_text
   end
 
   def edit_collection
