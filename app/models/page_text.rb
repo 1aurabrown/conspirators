@@ -1,6 +1,6 @@
 class PageText < ActiveRecord::Base
   validates_presence_of [:text]
-  enum page: [:footer, :faves]
+  enum page: [:footer, :faves, :home, :contact_agencies, :contact_talents]
 
   def formatted_text
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(self.text).html_safe
