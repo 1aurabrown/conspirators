@@ -13,27 +13,7 @@ body.talents.favourites {
       height:100vh;
     }
   }
-  form.form button {
-    overflow: hidden;
-    position: relative;
-    height: 1.8rem;
-    transition: color 0.5s;
-    .success {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0.2rem;
-      color: black;
-      margin-top: 1.2rem;
-      transition: margin-top 0.5s;
-    }
-    &.done {
-      color: white;
-      .success {
-        margin-top: 0;
-      }
-    }
-  }
+  
   #page-header {
     #header-content {
       #page-title {

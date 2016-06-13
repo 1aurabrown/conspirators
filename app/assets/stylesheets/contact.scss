@@ -24,6 +24,14 @@ body.contact {
       text-align: center;
     }
   }
+  .contact-button {
+    text-align: center;
+    .action-button {
+      padding: 0.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  }
   footer {
     position: static;
   }

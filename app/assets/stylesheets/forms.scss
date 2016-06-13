@@ -8,16 +8,7 @@ form.form {
   }
 
   button {
-    width: 100%;
-    background-color: white;
-    color: $gray;
-    border: 1px solid $gray;
-    border-radius: 0.1rem;
-    font-family: 'Julius Sans One', sans-serif;
 
-    &:hover {
-      color:black;
-    }
   }
   &.submitted {
     input {
