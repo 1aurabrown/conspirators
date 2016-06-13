@@ -2,7 +2,6 @@ class Project < ActiveRecord::Base
   has_and_belongs_to_many :talents
   has_many :featured_projects
   validates :title, presence: true
-  validates :description, presence: true
   validates :date, presence: true
   enum project_type: [
     :music_video, 
@@ -14,12 +13,13 @@ class Project < ActiveRecord::Base
     :performance,
     :commercial,
     :tv_series,
-    :project
+    :project,
+    :fashion_film
   ]
 
   def display_title
     case self.project_type.to_sym
-    when [:editorial, :fashion_shoot]
+    when [:editorial, :fashion_shoot, :fashion_film]
       "#{self.title} x #{self.for}"
     when :music_video
       "#{self.for} - \"#{self.title}\""
