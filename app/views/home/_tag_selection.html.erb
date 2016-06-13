@@ -1,11 +1,11 @@
 <div id="tag-selection">
-  <span class="home-selection">I am a</span>
+  <span class="home-selection">We are</span>
   <% @tags.each.with_index do |tag, index| %>
     <%= index != 0 ? "/" : '' %>
     <a class="tag-selector home-selection" data-tag="<%= tag.id%>" href="#">
 
-      <%= tag.name %></a> 
+      <%= tag.pluralize_in_home_page ? tag.name.pluralize(2) : tag.name %></a> 
   <% end %>
-  <span class="home-selection">Conspirator</span>
+  <span class="home-selection">Conspirators</span>
 
 </div>

@@ -15,5 +15,6 @@ class Tag < ActiveRecord::Base
     end
 
     field :acceptable, :toggle
+    field :pluralize_in_home_page, :toggle
   end
 end
