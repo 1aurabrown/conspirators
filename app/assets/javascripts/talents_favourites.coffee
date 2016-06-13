@@ -12,8 +12,7 @@ app.controllerInitializers.talents_favourites = ->
       url: url
       data: $('.form').serialize()
       success: (data) ->
-        alert data
-        # show response from the php script.
+        $('form.form button').addClass 'done'
         return
     e.preventDefault()
     # avoid to execute the actual submit of the form.
