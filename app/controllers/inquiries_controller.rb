@@ -1,7 +1,5 @@
 class InquiriesController < ApplicationController
   def create
-
-
     permitted = params.permit(:name, :email, :talents)
     inquiry = Inquiry.create!(permitted) 
     respond_to do |format|
