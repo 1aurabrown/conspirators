@@ -3,13 +3,23 @@
   <header id="page-header">
 
     <div id="header-content">
-      <h1 id="page-title">
-        Contact Us
-      </h1>
+      <%= @general %>
     </div>
   </header>
   <div class="page-content">
     <section class="section">
+      <div class="col-md-6">
+        <%= @agencies %>
+        <div class="contact-button">
+        <a class="action-button" href="mailto:contact@conspirators.com">Contact us</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= @talents %>
+        <div class="contact-button">
+        <a class="action-button" href="mailto:contact@conspirators.com">Contact us</a>
+        </div>
+      </div>
     </section>
   </div>
 

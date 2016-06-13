@@ -7,8 +7,9 @@ body.contact {
   }
   #page-header {
     #header-content {
+      text-align: center;
+
       #page-title {
-        text-align: center;
         color: black;
         padding-top: 2rem;
         font-weight: bold;
@@ -19,6 +20,17 @@ body.contact {
   .page-content {
     position: static;
     min-height: 50vh;
+    h1 {
+      text-align: center;
+    }
+  }
+  .contact-button {
+    text-align: center;
+    .action-button {
+      padding: 0.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
   }
   footer {
     position: static;
