@@ -20,13 +20,13 @@
           <%= @page_text %>
           <form class="form row">
 
-            <div class="col-md-8">
+            <div class="col-lg-8">
               <div class="form-group">
                 <input name="name" type="text" required/>
                 <label for="name">Name</label>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-lg-8">
               <div class="form-group">
 
                 <input name="email" type="email" required/>
@@ -35,10 +35,14 @@
               </div>
             </div>
             <input type="hidden" name="talents" value="<% @saved_talents.each do | saved_talent | %><%= saved_talent.talent.slug%> <%end  %>">
-            <div class="col-md-8">
-              <button>Get portfolio and booking info</button>
+            <div class="col-lg-8">
+              <button>Get portfolio and booking info
+                <div class="success">
+                  We'll be in touch soon.
+                </div>
+              </button>
             </div>
-            <aside class="col-md-8">
+            <aside class="col-lg-8">
               <p>
               <b>Your privacy is important to us.</b>
               We will never share your contact information with third parties or send you unsolicited mail.
