@@ -5,7 +5,7 @@ app.controllerInitializers.talents_favourites = ->
     else
       $(e.target).closest('.form-group').removeClass('filled')
   $('form.form').submit (e) ->
-    url = '/api/v1/inquiries'
+    url = '/api/v1/inquiries/'
     # the script where you handle the form input.
     $.ajax
       type: 'POST'

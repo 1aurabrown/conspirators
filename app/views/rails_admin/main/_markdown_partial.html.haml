@@ -1,0 +1,15 @@
+:sass 
+  #page_text_wrapper
+    position: relative
+    height: 400px
+    .figures-list
+      float: right
+      width: 40%
+      height: 100%
+      padding: 1rem
+    #page_text_text
+      float: left
+      width: 60%
+      height: 100%
+#page_text_wrapper
+  %textarea#page_text_text.form-control{:cols => "48", "data-options" => "{}", "data-richtext" => "false", :name => "page_text[text]", :required => "required", :rows => "3"}= field.value
