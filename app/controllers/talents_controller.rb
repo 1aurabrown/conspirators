@@ -3,6 +3,8 @@ class TalentsController < ApplicationController
   
   def show
     @talent = Talent.find_by slug: params[:slug]
+    @title = "#{@talent.name} / #{@talent.genders.join(' / ')} / #{@talent.skills.join(' / ')} "
+    @og_image = @talent.avatar.url
   end
 
   def favourites
