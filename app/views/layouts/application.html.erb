@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Conspirators</title>
+  <title><%= @title ? "#{@title} // " : "" %>Conspirators / Talent Agency / Berlin</title>
   <%= favicon_link_tag "/assets/logo-snakes.svg" %>
   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="<%= @description || seo_description %>">
+  <meta property="og:title" content="<%= @title ? @title : "Conspirators / Talent Agency / Berlin"%>" />
+  <meta property="og:description" 
+  content="<%= @description || seo_description %>" />
+  <meta property="og:site_name" content="Conspirators / Talent Agency / Berlin" />
+  <% if @og_image %>
+    <meta property="og:image" content="<%= @og_image %>" />
+  <% end %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
