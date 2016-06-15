@@ -129,7 +129,6 @@ class Talent < ActiveRecord::Base
       field :name do
         searchable [:first_name, :last_name]
         queryable true
-        filterable true
         formatted_value do
           bindings[:view].link_to(bindings[:object].name, "/#{bindings[:object].slug}")
         end
