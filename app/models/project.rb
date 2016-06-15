@@ -43,7 +43,7 @@ class Project < ActiveRecord::Base
     end
     list do
       field :title do
-        searchable [:first_name, :last_name]
+        searchable :title
         queryable true
         filterable true
       end

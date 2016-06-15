@@ -41,6 +41,9 @@
       font-size: 0.8rem;
       opacity: 0.96;
       color: black;
+      .nav-link {
+        font-weight: bold;
+      }
       &.faves {
         &.pop {
           opacity: 1;
