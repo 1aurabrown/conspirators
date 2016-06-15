@@ -100,7 +100,9 @@
 
             <h1><%= project.display_title %></h1>
             <p><%= project.description %>
-                <%= project.link ? "(#{link_to("Visit website", project.link)})".html_safe : "" %></p>
+                <%= (project.link.nil? || project.link.empty?) ? "" : "(#{link_to("Visit website", project.link)})".html_safe %>
+                
+                </p>
             </div>
           </article>
 
