@@ -15,6 +15,7 @@ class Tag < ActiveRecord::Base
     end
 
     field :acceptable, :toggle
+    field :visible_on_mobile, :toggle
     field :pluralize_in_home_page, :toggle
   end
 end

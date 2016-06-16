@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613232757) do
+ActiveRecord::Schema.define(version: 20160616163539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20160613232757) do
     t.boolean "acceptable"
     t.string  "slug"
     t.boolean "pluralize_in_home_page"
+    t.boolean "visible_on_mobile"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
