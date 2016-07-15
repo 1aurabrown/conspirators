@@ -38,6 +38,13 @@ body{
     }
   }
 }
+
+body.new {
+  footer {
+    display: none;
+  }
+}
+
 #page-header {
   position: relative;
   z-index: 4;
