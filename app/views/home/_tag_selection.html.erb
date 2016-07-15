@@ -1,10 +1,12 @@
 <div id="tag-selection">
   <span class="home-selection">We are</span>
   <% @tags.each.with_index do |tag, index| %>
+    <span class="<%=tag.visible_on_mobile ? '' : 'hidden-sm-down'%>">
     <%= (index != 0) ? "/" : '' %>
-    <a class="tag-selector home-selection <%=tag.visible_on_mobile ? '' : 'hidden-sm-down'%>" data-tag="<%= tag.id%>" href="#">
+    <a class="tag-selector home-selection" data-tag="<%= tag.id%>" href="#">
 
       <%= tag.pluralize_in_home_page ? tag.name.pluralize(2) : tag.name %></a> 
+      </span>
   <% end %>
   <span class="home-selection">Conspirators</span>
 
