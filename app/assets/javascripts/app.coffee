@@ -15,7 +15,8 @@ window.app = {
   }
 }
 
-
+$ ->
+  new FastClick(document.body)
 $(document).on 'ready page:load', ->
   app.init()
   _.each app.componentViews.saveButtons, (saveBtn) ->

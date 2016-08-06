@@ -72,8 +72,9 @@ app.controllerInitializers.talents_show = ->
 
     app.state.galleryTransitionActive = true
     $('.overlay-img-container').removeClass('active')
+    $('body').addClass('overlaid')
+
     $(selector).one 'transitionend', ->
-      $('body').addClass('overlaid')
       app.state.galleryTransitionActive = false
     $(selector).addClass('active')
 
@@ -100,7 +101,6 @@ app.controllerInitializers.talents_show = ->
     e.preventDefault()
     window.targ = e.target
     currentPicture = e.target.dataset.imageId
-    app.scroll.scrollTo(440)
     showOverlayImage ".overlay-img-container[data-image-id=#{currentPicture}]"
 
   $('.overlay-img-container').click (e) ->

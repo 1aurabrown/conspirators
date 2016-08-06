@@ -25,6 +25,7 @@
 //= require hammerjs
 //= require jquery-hammerjs
 //= require gsap
+//= require fastclick
 //= require keymaster
 //= require ./app.coffee
 //= require_tree ./
