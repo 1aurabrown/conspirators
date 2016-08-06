@@ -21,3 +21,11 @@
 @import "gallery";
 @import "modal";
 @import "favourites";
+
+.modal-backdrop {
+  z-index: 20000;
+
+}
+.modal {
+  z-index: 20001;
+}
