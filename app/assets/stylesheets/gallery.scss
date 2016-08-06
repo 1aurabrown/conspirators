@@ -82,7 +82,7 @@ html body.overlaid {
   }
   .overlay-img-container {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     bottom: 0;
     position: absolute;
     background-position: center center;
@@ -90,7 +90,6 @@ html body.overlaid {
     background-color: black;
     background-repeat: no-repeat;
     opacity: 0;
-    top: 10vh;  
     cursor: default;
     &.active {
       transform: translate3d(0, 0, 0);
