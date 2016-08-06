@@ -48,18 +48,36 @@ html body.overlaid {
     z-index: 10000;
   }
   .arrow {
-    content: ' ';
     width: 50vw;
     height: 90vw;
     cursor: pointer;
     position: absolute;
     top: 0;
     z-index: 4;
+    &:before {
+      color: $gray-lightest;
+      font-size: 3em;
+      padding: 1em;
+      top: calc(50% - 1.5em);
+      position: absolute;
+      opacity: 0.2;
+      transition: opacity 0.5s;
+    }
+    &:hover:before {
+      opacity: 1;
+    }
     &.back {
       left:0;
+      &:before {
+        content: '⟨'
+      }
     }
     &.fwd {
-      right:0;
+      right:0;   
+      &:before {
+        right: 0;
+        content: '⟩'
+      }
     }
   }
   .overlay-img-container {

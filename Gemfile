@@ -22,8 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-
+gem 'fastclick-rails', '~> 1.0', '>= 1.0.1'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
