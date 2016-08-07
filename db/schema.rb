@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616163539) do
+ActiveRecord::Schema.define(version: 20160806235206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20160616163539) do
   end
 
   add_index "address_book_entries", ["person_type", "person_id"], name: "index_address_book_entries_on_person_type_and_person_id", using: :btree
+
+  create_table "agents", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "email"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id"
+  end
+
+  add_index "agents", ["organization_id"], name: "index_agents_on_organization_id", using: :btree
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "talent_id"
@@ -84,6 +95,15 @@ ActiveRecord::Schema.define(version: 20160616163539) do
   end
 
   add_index "notes", ["contactable_type", "contactable_id"], name: "index_notes_on_contactable_type_and_contactable_id", using: :btree
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "main_contact_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "organizations", ["main_contact_id"], name: "index_organizations_on_main_contact_id", using: :btree
 
   create_table "page_texts", force: :cascade do |t|
     t.text     "text"
@@ -204,6 +224,7 @@ ActiveRecord::Schema.define(version: 20160616163539) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "agents", "organizations"
   add_foreign_key "featured_projects", "projects"
   add_foreign_key "featured_projects", "talents"
   add_foreign_key "saved_talents", "talents"
