@@ -20,5 +20,6 @@ class Ability
       can :dashboard
       can :read, [ User, Talent, GalleryPicture ]
     end
+
   end
 end

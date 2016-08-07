@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806235206) do
+ActiveRecord::Schema.define(version: 20160807001420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,7 @@ ActiveRecord::Schema.define(version: 20160806235206) do
   create_table "address_book_entries", force: :cascade do |t|
     t.integer  "person_id"
     t.string   "person_type"
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
     t.string   "phone_number"
-    t.string   "email"
     t.string   "city"
     t.string   "country"
     t.datetime "created_at",   null: false
@@ -34,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160806235206) do
 
   create_table "agents", force: :cascade do |t|
     t.string   "first_name"
-    t.string   "middle_name"
+    t.string   "last_name"
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
