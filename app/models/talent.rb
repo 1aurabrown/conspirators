@@ -25,6 +25,10 @@ class Talent < ActiveRecord::Base
     Country.all_translated
   end
 
+  def organization
+    'Conspirators'
+  end
+
   def name
     "#{self.first_name} #{self.last_name ? " " : ''}#{self.last_name}"
   end
