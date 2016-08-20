@@ -80,7 +80,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => 'conspirators',
+      :bucket => 'conspirators-berlin',
       :access_key_id => ENV['CONSPIRATORS_AWS_ID'],
       :secret_access_key => ENV['CONSPIRATORS_AWS_KEY'],
       :s3_region => "eu-central-1"
