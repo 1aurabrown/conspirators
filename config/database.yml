@@ -12,7 +12,6 @@ default: &default
 development:
   adapter: postgresql
   host: localhost
-  username: claudiobrandolino
   database: conspirators
 
 # Warning: The database defined as "test" will be erased and
