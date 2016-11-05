@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Lines::Engine => "/blog"
 
   get 'contact', to: "contact#index"
   root to: 'home#index'
