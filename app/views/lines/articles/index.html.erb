@@ -3,6 +3,7 @@
 </div>
 
 <div id="articles">
+  <%= render partial: 'article_collection', collection: [@first_article] if @first_article %>
   <%= render partial: 'article_collection', collection: @articles %>
 </div>
 
