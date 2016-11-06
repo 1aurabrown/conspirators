@@ -32,6 +32,9 @@ class Guest
     saved_talents.delete talent
   end
 
-  alias_method :delete, :destroy
+  def admin?
+    false
+  end
 
+  alias_method :delete, :destroy
 end

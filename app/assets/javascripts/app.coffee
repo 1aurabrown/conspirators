@@ -17,6 +17,9 @@ window.app = {
 
 $ ->
   new FastClick(document.body)
+  $("a[href='/blog/logout']").attr('data-method': 'delete', href: '/users/sign_out')
+
+
 $(document).on 'ready page:load', ->
   app.init()
   _.each app.componentViews.saveButtons, (saveBtn) ->
@@ -26,3 +29,5 @@ $(document).on 'ready page:load', ->
   $('.save-button').each (i, el) ->
     app.componentViews.saveButtons.push(
       new app.components.Faves({el: el}))
+
+

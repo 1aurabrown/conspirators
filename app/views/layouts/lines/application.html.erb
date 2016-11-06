@@ -10,22 +10,22 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <div class="blog-page">
+<body class="<%=params[:controller].parameterize%> <%= params[:action]%>" data-action="<%= params[:action] %>" data-controller="<%=params[:controller]%>">
+
+  <div class="blog-page" style="margin-top: 83px;">
     <%= render partial: 'application/navigation' %>
 
-    <div class="page-content">
-      <% if current_lines_user %>
-        <%= render_navbar do %>
-          <%= link_to t('lines.buttons.new_article').html_safe, new_admin_article_path, class: "btn btn-new-article highlight" %>  
-          <%= link_to t('lines.buttons.dashboard').html_safe, admin_articles_path, class: "btn btn-view-blog" %>
-        <% end %>
-        <div class="spacer"></div>
+    <% if current_lines_user %>
+      <%= render_navbar do %>
+        <%= link_to t('lines.buttons.new_article').html_safe, new_admin_article_path, class: "btn btn-new-article highlight" %>
+        <%= link_to t('lines.buttons.dashboard').html_safe, admin_articles_path, class: "btn btn-view-blog" %>
       <% end %>
-      <%= render 'layouts/lines/markdown_cheatsheet' %>
+    <% end %>
+    <%= render 'layouts/lines/markdown_cheatsheet' %>
 
+    <article class="page-content">
       <%= yield %>
-    </div>
+    </article>
 
     <%= render partial: 'application/footer' %>
     <%= render 'application/aside' %>

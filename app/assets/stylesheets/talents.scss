@@ -1,11 +1,8 @@
 #talent-buttons {
   padding-left: 0.5rem;
 } 
-body.talents.show {
-  .talent-atts {
-    padding-bottom: 6rem;
-    margin-top: 1.5rem;
-  }
+
+body.talents.show, .blog-page {
   #navigation {
     @include background-image(linear-gradient(black, transparent));
     .nav {
@@ -30,6 +27,13 @@ body.talents.show {
         }
       }
     }
+  }
+}
+
+body.talents.show {
+  .talent-atts {
+    padding-bottom: 6rem;
+    margin-top: 1.5rem;
   }
   article.talent {
     #page-cover {

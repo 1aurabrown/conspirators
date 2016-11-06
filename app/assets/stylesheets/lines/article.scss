@@ -296,3 +296,24 @@
     .article_googleplus, .article_footer, .article_content { display:none; }
   }
 }
+
+.article.article-preview {
+  float: left;
+  display: inline-block !important;
+  box-sizing: border-box;
+  width: 50%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+
+  .talent-card {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  h1 {
+    font-size: 3.75rem !important;
+  }
+}

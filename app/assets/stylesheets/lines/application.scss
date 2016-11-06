@@ -12,16 +12,14 @@
 
 .blog-page {
   #navigation {
-    background-color: black;
-
-    a {
-      color: #eceeef;
-      position: relative;
-      padding: 0;
-      text-transform: lowercase;
-      transition: all 0.5s;
-      display: inline-block;
-      opacity: 0.6; 
-    }
+    background-color: #100719;
   }
+
+  margin: auto;
+  max-width: 1600px;
+}
+
+body.lines-articles.index {
+  background-color: #100719;
+  html, .page-content { background-color: #100719 }
 }
