@@ -17,7 +17,8 @@ Lines::ApplicationController.class_eval do
   end
 end
 
-storage = Rails.env.production? :fog : :file
+storage = Rails.env.production?? :fog : :file
+
 DocumentUploader.storage storage
-ImageUploader.storage storage
+HeroImageUploader.storage storage
 PictureUploader.storage storage
