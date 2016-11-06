@@ -2,7 +2,6 @@
 <html class="no-js">
 <head>
   <%= render 'application/head' %>
-  <%= favicon_link_tag %>
   <%= yield :head %>
   <%= auto_discovery_link_tag(:atom, articles_url(format: "atom"), {title: CONFIG[:feed_title]}) %>
   <%= stylesheet_link_tag    "lines/application", media: "all" %>

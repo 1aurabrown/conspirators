@@ -1,23 +1,21 @@
 <div class="article article-preview">
-  <% cache "#{article_small}_small" do %>
-    <figure class="talent-card">
-      <a class="card-link" href="<%= article_path(article_small) %>">
-        <img class="card-img-bottom"
-             src="<%= article_small.image_url %>"
-             alt="<%= article_small.title %>"/>
+  <figure class="talent-card">
+    <a class="card-link" href="<%= article_path(article_small) %>">
+      <img class="card-img-bottom"
+           src="<%= article_small.image_url %>"
+           alt="<%= article_small.title %>"/>
 
-         <figcaption class="card-content">
-           <h1><%= article_small.title %></h1>
+       <figcaption class="card-content">
+         <h1><%= article_small.title %></h1>
 
-           <div class="traits-container">
-             <p class="talent-card-subtitle">
-             Written on <span class="published_at">
-               <%= article_small.published_at.to_date %></span> by
-             <%= display_article_authors(article_small, false) %>
-             </p>
-           </div>
-         </figcaption>
-      </a>
-    </figure>
-  <% end %>
+         <div class="traits-container">
+           <p class="talent-card-subtitle">
+           Written on <span class="published_at">
+             <%= article_small.published_at.to_date %></span> by
+           <%= display_article_authors(article_small, false) %>
+           </p>
+         </div>
+       </figcaption>
+    </a>
+  </figure>
 </div>
