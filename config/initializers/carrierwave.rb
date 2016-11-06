@@ -4,8 +4,7 @@ CarrierWave.configure do |config|
       provider:              'AWS',
       aws_access_key_id:     ENV['CONSPIRATORS_AWS_ID'],
       aws_secret_access_key: ENV['CONSPIRATORS_AWS_KEY'],
-      region:                'eu-central-1',
-      endpoint:              'https://eu-central-1.amazonaws.com'
+      region:                'eu-central-1'
     }
 
     config.storage        = :fog
