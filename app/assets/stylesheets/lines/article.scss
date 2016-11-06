@@ -1,13 +1,10 @@
 .article {
-  max-width: $max-width;
-  font-family: $Merriweather;
-  line-height: 1.5em;
+  // line-height: 1.5em;
   color: $black;
 
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: $SourceSansPro;
-  }
+  // h1, h2, h3, h4, h5, h6 {
+  //   font-family: $SourceSansPro;
+  // }
 
   .article_header, .article_teaser, .article_content {
     margin: 0 auto;
@@ -31,14 +28,15 @@
       a { color: $black; }
       a:hover { color:$red; }        
     }
+
     h2 {
       font-size: 1.5em;
       font-weight: 400;
       color: $grey;
       line-height: 120%;
     }
+
     .author_name {
-      font-family: $MerriweatherSans;
       font-size: 0.8em;
       text-transform: uppercase;
     }

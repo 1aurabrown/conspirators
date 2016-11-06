@@ -1,4 +1,6 @@
 Lines::ApplicationController.class_eval do
+  helper ApplicationHelper
+
   def current_lines_user
     current_user
   end

@@ -1,45 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @title ? "#{@title} // " : "" %>Conspirators / Talent Agency / Berlin</title>
-  <%= favicon_link_tag "/assets/favicon.png" %>
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="<%= @description || seo_description %>">
-  <meta property="og:title" content="<%= @title ? @title : "Conspirators / Talent Agency / Berlin"%>" />
-  <meta property="og:description" 
-  content="<%= @description || seo_description %>" />
-  <meta property="og:site_name" content="Conspirators / Talent Agency / Berlin" />
-  <% if @og_image %>
-    <meta property="og:image" content="<%= @og_image %>" />
-  <% end %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-
-  <meta name="google-site-verification" content="z-REkvBCC03PBZmbPB9M7ZItuliHNXpU5B77UzeG75Q" />
-  <%= csrf_meta_tags %>
+  <%= render 'head' %>
 </head>
+
 <body class="<%=params[:controller]%> <%= params[:action]%>" data-action="<%= params[:action] %>" data-controller="<%=params[:controller]%>">
   <%= include_gon(:init => true) %>
-
-<%= render partial: 'navigation' %>
-
-<%= content_for?(:content) ? yield(:content) : yield %>
-<%= render partial: 'footer' %>
-  <aside id="no-faves-modal" class="modal fade bd-example-modal-sm" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title">No favourites yet</h4>
-        </div>
-        <div class="modal-body">
-<p>Click on the bookmark icon <span class="icon icon-fave"></span> on a conspirator's page to save it for later.</p>        </div>
-      </div>
-
-    </div>
-  </aside>
+  <%= render partial: 'navigation' %>
+  <%= content_for?(:content) ? yield(:content) : yield %>
+  <%= render partial: 'footer' %>
+  <%= render 'aside' %>
 </body>
 </html>

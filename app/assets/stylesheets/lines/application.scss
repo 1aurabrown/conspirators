@@ -1,5 +1,5 @@
 @import 'pygments.css';
-@import 'fonts';
+// @import 'fonts';
 @import 'variables_and_mixins';
 @import 'navbar';
 @import 'general';
@@ -9,3 +9,19 @@
 @import 'media_queries';
 @import 'lines_overrides';
 @import 'messages';
+
+.blog-page {
+  #navigation {
+    background-color: black;
+
+    a {
+      color: #eceeef;
+      position: relative;
+      padding: 0;
+      text-transform: lowercase;
+      transition: all 0.5s;
+      display: inline-block;
+      opacity: 0.6; 
+    }
+  }
+}
