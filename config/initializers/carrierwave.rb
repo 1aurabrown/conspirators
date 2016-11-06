@@ -1,10 +1,16 @@
-# config.aws_region        = "eu-central-1"
-# config.aws_access_key_id = ENV['CONSPIRATORS_AWS_ID']
-# config.aws_secret_key    = ENV['CONSPIRATORS_AWS_KEY']
+CarrierWave.configure do |config|
+  if Rails.env.production?
+    config.fog_credentials = {
+      provider:              'AWS',
+      aws_access_key_id:     ENV['CONSPIRATORS_AWS_ID'],
+      aws_secret_access_key: ENV['CONSPIRATORS_AWS_KEY'],
+      region:                'eu-central-1',
+      endpoint:              'https://eu-central-1.amazonaws.com'
+    }
 
-# if Rails.env.production?
-#   config.media_storage = :s3
-#   config.s3_bucket = 'my-s3-bucket'
-# else
-#   config.media_storage = :file
-# end
+    config.storage        = :fog
+    config.fog_directory  = 'conspirators-berlin'
+    config.fog_public     = true
+    config.fog_attributes = {'Cache-Control' => 'max-age = 315576000'}
+  end
+end
