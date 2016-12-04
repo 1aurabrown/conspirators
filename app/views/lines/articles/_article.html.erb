@@ -26,14 +26,14 @@
     <% end %>
   </div>
 
-  <% unless article.gplus_url.blank? %>
-    <div class="article_googleplus">
-      <a href="<%= article.gplus_url %>">Discuss this article at Google+</a>
-    </div>
-  <% end %>
+  <%# <% unless article.gplus_url.blank? %1> %>
+  <%#   <div class="article_googleplus"> %>
+  <%#     <a href="<%= article.gplus_url %1>">Discuss this article at Google+</a> %>
+  <%#   </div> %>
+  <%# <% end %1> %>
   <hr>
 
-  <div class="article_footer">
-    Written on <span class="published_at"><%= article.published_at.to_date %></span> by <%= display_article_authors(article, true) %>
-  </div>
+  <%# <div class="article_footer"> %>
+  <%#   Written on <span class="published_at"><%= article.published_at.to_date %1></span> by <%= display_article_authors(article, true) %1> %>
+  <%# </div> %>
 </div>

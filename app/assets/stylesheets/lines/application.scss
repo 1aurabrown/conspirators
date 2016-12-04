@@ -22,4 +22,21 @@
 body.lines-articles.index {
   background-color: #100719;
   html, .page-content { background-color: #100719 }
+
+  .article {
+    min-width: 520px;
+    max-height: 495px;
+    // min-height: 340px;
+
+    img {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    .card-content h1 {
+      // display: none;
+      font-size: 3.0vmax !important;
+      padding-bottom: 15%;
+    }
+  }
 }
