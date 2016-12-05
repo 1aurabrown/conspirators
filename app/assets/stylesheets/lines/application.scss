@@ -39,4 +39,15 @@ body.lines-articles.index {
       padding-bottom: 15%;
     }
   }
+
+}
+
+.article_content {
+  position: relative;
+
+  iframe, object, embed {
+    padding: 0;
+    width: 100vw !important;
+    height: 46vw !important;
+  }
 }
