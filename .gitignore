@@ -16,5 +16,7 @@
 !/log/.keep
 /tmp
 /.sass_cache
+public
+**/.DS_Store
 vendor/bundle
 public/uploads

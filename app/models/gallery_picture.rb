@@ -5,7 +5,7 @@ class GalleryPicture < ActiveRecord::Base
   validates :talent, presence: true
   validates :image, presence: true
   enum position: [:col1_1, :col1_2, :col2_1, :col2_2, :col3_1, :col3_2]
-  default_scope { order(:position) } 
+  default_scope { order(:position) }
 
   def name
     if self.talent
@@ -21,5 +21,5 @@ class GalleryPicture < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Talents'
-  end 
+  end
 end

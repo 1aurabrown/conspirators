@@ -2,7 +2,7 @@ class app.components.Navigation extends Backbone.View
   constructor: ->
     super
     @savedBadge = @$('.saved-talents')
-    app.events.on 'savedtalents:change', (result) => 
+    app.events.on 'savedtalents:change', (result) =>
       @updateFaves(result.totalSaved, result.saved)
 
   el: '#navigation'
@@ -20,8 +20,5 @@ class app.components.Navigation extends Backbone.View
 
       $('#no-faves-modal').modal('show')
 
-
-
-  events: {
+  events:
     'click .faves a': 'favesClick'
-  }

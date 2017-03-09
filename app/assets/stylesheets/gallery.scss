@@ -14,14 +14,8 @@ html body.overlaid {
   .page-title {
 
   }
-} 
+}
 
-.overlaid #navigation {
-  opacity: 0;
-}
-.overlaid .save-button {
-  opacity: 0;
-}
 .close-gallery {
   position: absolute;
   display: none;
@@ -32,25 +26,28 @@ html body.overlaid {
 }
 
 #gallery-overlay {
-
   position: fixed;
-  display: block;
   left: 0;
   right: 0;
   transition: all 1s;
   background-color: black;
   margin: 0;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
   top: 0;
   opacity: 0;
+  z-index: 10000;
+  display: none;
   .overlaid & {
     opacity: 1;
-    z-index: 10000;
   }
   .arrow {
-    width: 50vw;
-    height: 90vw;
+    width: 50%;
+    height: 100%;
     cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
     position: absolute;
     top: 0;
     z-index: 4;
@@ -73,7 +70,7 @@ html body.overlaid {
       }
     }
     &.fwd {
-      right:0;   
+      right:0;
       &:before {
         right: 0;
         content: '⟩'
@@ -121,13 +118,11 @@ html body.overlaid {
     width: 100%;
     position: relative;
 
-    background-position: center center; 
+    background-position: center center;
     background-size: cover;
     background-color: black;
     background-repeat: no-repeat;
     display: block;
-
-
   }
 
   .gallery-main {
@@ -140,7 +135,7 @@ html body.overlaid {
     overflow: hidden;
     float: left;
 
-    .gallery-img-container { 
+    .gallery-img-container {
       height: 100%;
 
     }

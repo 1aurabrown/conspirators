@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require tether
 //= require lightbox-bootstrap
 //= require holderjs
@@ -27,6 +26,4 @@
 //= require gsap
 //= require fastclick
 //= require keymaster
-//= require ./app.coffee
 //= require_tree ./
-

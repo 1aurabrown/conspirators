@@ -17,12 +17,17 @@
 
   </header>
 
-  <div class="page-content">
-    <div id="gallery-overlay">
-      <div class="arrow back" data-direction="prev"></div>
-      <div class="arrow fwd" data-direction="next"></div>
-    </div>
+  <div id="gallery-overlay">
+    <div class="arrow back" data-direction="prev"></div>
+    <div class="arrow fwd" data-direction="next"></div>
+    <% @columns.flatten.each do |pic| %>
+      <%= render partial: 'overlay_pic', locals: {
+        image: pic.image
+      } %>
+    <% end %>
+  </div>
 
+  <div class="page-content">
     <section class="section">
       <div class="talent-atts">
         <div class="talent-att">
@@ -58,19 +63,24 @@
             </h2>
         </a>
       </div>
-    </section> 
+    </section>
     <section class="fullpage-section talent-gallery">
       <div class="gallery-main">
-        <%= render partial: 'gallery_pic', locals: {image: @talent.avatar} %>
+        <%= render partial: 'gallery_pic', locals: {
+          size: :medium,
+          image_class: "gallery-img-container",
+          image: @talent.avatar
+        } %>
+
       </div>
-      <% col = 0 %>
-      <% @talent.gallery_pictures.group_by{|pic| pic.col}.each do |col, pics| %>
-        <div class="gallery-col col-<%= col %>">
-          <% if pics.first %>
-          <%= render partial: 'gallery_pic', locals: {image: pics.first.image} %>
-          <% end %>
-          <%if pics.second %>
-          <%= render partial: 'gallery_pic', locals: {image: pics.second.image} %>
+      <% @columns.each_with_index do |pics, index| %>
+        <div class="gallery-col col-<%= index + 1 %>">
+          <% pics.each do |pic| %>
+            <%= render partial: 'gallery_pic', locals: {
+              size: :medium,
+              image_class: "gallery-img-container",
+              image: pic.image
+            } %>
           <% end %>
         </div>
       <% end %>
@@ -88,9 +98,9 @@
                  <%= project.project_type.titleize %> | <%= project.date.year %><br/>
               </h2>
               <% if project.director %>
-                <h2> 
+                <h2>
                 <%= "Directed by #{project.director.strip}" %>
-                </h2> 
+                </h2>
               <% end %>
 
               </h3>
@@ -100,7 +110,7 @@
             <h1><%= project.display_title %></h1>
             <p><%= project.description %>
                 <%= (project.link.nil? || project.link.empty?) ? "" : "(#{link_to("Visit website", project.link)})".html_safe %>
-                
+
                 </p>
             </div>
           </article>

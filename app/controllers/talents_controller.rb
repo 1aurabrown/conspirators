@@ -1,8 +1,14 @@
 class TalentsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:add_to_collection]
-  
+
   def show
     @talent = Talent.find_by slug: params[:slug]
+    @columns = @talent.gallery_pictures.reduce([[],[],[]]) do |columns, pic|
+      next if (col = columns[pic.col - 1]).length >= 2
+      col.push pic
+      columns
+    end
+
     @title = "#{@talent.name} / #{@talent.genders.join(' / ')} / #{@talent.skills.join(' / ')} "
     @og_image = @talent.avatar.url
   end

@@ -5,18 +5,58 @@
 
 app.controllerInitializers.talents_show = ->
   return unless $('body').hasClass 'talents'
+  return if not $('body').data('action') == 'show'
+  (new TalentsShowController).init()
 
-  if $('body').data('action') == 'show'
+class TalentsShowController
+  init: ->
+    @$overlay = $("#gallery-overlay")
+    @setupScroll()
+    @setupEvents()
+    $('.gallery-img-container').click (e) =>
+      e.preventDefault()
+      $('body').addClass('overlaid')
+      @$overlay.show();
+      @overlaid = true
+      @showOverlayImage $(".overlay-img-container[data-image-id=#{e.target.dataset.imageId}]")
+
+  setupEvents: ->
+    $('#gallery-overlay .arrow').click (e) =>
+      e.preventDefault()
+      @showImageByDirection e.target.dataset.direction
+
+    $('#gallery-overlay').hammer().on 'swipeleft', (e) =>
+      e.preventDefault()
+      @showImageByDirection('next')
+
+    $('#gallery-overlay').hammer().on 'swiperight', (e) =>
+      e.preventDefault()
+      @showImageByDirection('prev')
+
+    $('.close-gallery').click @close
+
+    key 'left', =>
+      @showImageByDirection('prev')
+      off
+
+    key 'right', =>
+      @showImageByDirection('next')
+      off
+
+    key 'esc', @close
+
+  setupScroll: ->
     new (ScrollMagic.Scene)(
         offset: 240
         reverse: true)
-      .setPin('#page-cover')
+      .setPin('#page-cover', pushFollowers: false)
       .addTo(app.scroll)
 
     new (ScrollMagic.Scene)(
         offset: 240
         reverse: true)
-      .setPin('#page-header')
+      .setClassToggle('#page-header', "pinned")
+      .setPin('#page-header', pushFollowers: false)
       .addTo(app.scroll)
 
     new (ScrollMagic.Scene)(
@@ -60,68 +100,51 @@ app.controllerInitializers.talents_show = ->
         TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
       .addTo(app.scroll)
 
-  showImageByDirection = (direction) ->
-    showOverlayImage prevOrNextSelector direction
+  showImageByDirection: (direction) ->
+    @showOverlayImage @$prevOrNext direction
 
-  prevOrNextSelector = (direction) -> 
-    ".overlay-img-container.#{direction}"
+  $prevOrNext: (direction) ->
+    $ ".overlay-img-container.#{direction}"
 
-
-  showOverlayImage =  (selector)->
-    return if app.state.galleryTransitionActive
-
-    app.state.galleryTransitionActive = true
+  close: =>
+    @galleryTransitionActive = true
+    $('body').on('transitionend', ({ target }) =>
+      return if @$overlay is not target
+      @$overlay.hide()
+      @galleryTransitionActive = false
+      @overlaid = false
+      $('body').off 'transitionend'
+    )
+    $('body').removeClass('overlaid')
     $('.overlay-img-container').removeClass('active')
-    $('body').addClass('overlaid')
-
-    $(selector).one 'transitionend', ->
-      app.state.galleryTransitionActive = false
-    $(selector).addClass('active')
-
     $('.overlay-img-container').removeClass('next')
     $('.overlay-img-container').removeClass('prev')
 
-    $next = $('.overlay-img-container.active').next('.overlay-img-container')
-    if $next.length
-      $next.addClass 'next'
+  showOverlayImage: ($el) =>
+
+    return if @galleryTransitionActive
+
+    @galleryTransitionActive = true
+    $('.overlay-img-container').removeClass('active')
+    $('.overlay-img-container').removeClass('next')
+    $('.overlay-img-container').removeClass('prev')
+    setTimeout =>
+      @galleryTransitionActive = false
+    , 400
+    $el.addClass('active')
+
+    $next = if ($e = $el.next('.overlay-img-container')).length
+      $e
     else
-      $('.overlay-img-container:first').addClass 'next'
-    $prev = $('.overlay-img-container.active').prev('.overlay-img-container')
-    if $prev.length
-      $prev.addClass 'prev'
+      $('.overlay-img-container:first')
+    $next.addClass 'next'
+
+    $prev = if ($e = $el.prev('.overlay-img-container')).length
+      $e
     else
-      $('.overlay-img-container:last').addClass 'prev'
+      $('.overlay-img-container:last')
+    $prev.addClass 'prev'
 
-  
-  galleryPictures = $('.gallery-img-container').clone()
-    .removeClass('gallery-img-container').addClass('overlay-img-container')
-    .appendTo('#gallery-overlay')
 
-  $('.gallery-img-container').click (e) ->
-    e.preventDefault()
-    window.targ = e.target
-    currentPicture = e.target.dataset.imageId
-    showOverlayImage ".overlay-img-container[data-image-id=#{currentPicture}]"
 
-  $('.overlay-img-container').click (e) ->
-    e.preventDefault()
 
-  $('#gallery-overlay .arrow').click (e) ->
-    e.preventDefault()
-    showOverlayImage prevOrNextSelector e.target.dataset.direction
-
-  $('#gallery-overlay').hammer().on 'swipeleft', (e) ->
-    e.preventDefault()
-    showImageByDirection('next')
-  $('#gallery-overlay').hammer().on 'swiperight', (e) ->
-    e.preventDefault()
-    showImageByDirection('prev')
-
-  key 'left', -> 
-    showImageByDirection('prev')
-    off
-  key 'right', -> 
-    showImageByDirection('next')
-    off
-  key 'esc', -> $('body').removeClass('overlaid')
-  $('.close-gallery').click -> $('body').removeClass('overlaid')
