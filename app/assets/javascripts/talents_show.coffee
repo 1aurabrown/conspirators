@@ -12,13 +12,22 @@ class TalentsShowController
   init: ->
     @$overlay = $("#gallery-overlay")
     @setupScroll()
-    @setupEvents()
+
     $('.gallery-img-container').click (e) =>
       e.preventDefault()
-      $('body').addClass('overlaid')
-      @$overlay.show();
-      @overlaid = true
+      @openOverlay()
       @showOverlayImage $(".overlay-img-container[data-image-id=#{e.target.dataset.imageId}]")
+
+  openOverlay: ->
+    return if @overlaid
+    @overlaid = true
+
+    $('body').on 'transitionend', ({ target }) =>
+      return if @$overlay is not target
+      $('body').off 'transitionend'
+      @setupEvents()
+
+    @$overlay.show 0, -> $('body').addClass 'overlaid'
 
   setupEvents: ->
     $('#gallery-overlay .arrow').click (e) =>
@@ -27,78 +36,72 @@ class TalentsShowController
 
     $('#gallery-overlay').hammer().on 'swipeleft', (e) =>
       e.preventDefault()
-      @showImageByDirection('next')
+      @showImageByDirection 'next'
 
     $('#gallery-overlay').hammer().on 'swiperight', (e) =>
       e.preventDefault()
-      @showImageByDirection('prev')
+      @showImageByDirection 'prev'
 
-    $('.close-gallery').click @close
+    $('.gallery-close').click @close
 
     key 'left', =>
-      @showImageByDirection('prev')
+      @showImageByDirection 'prev'
       off
 
     key 'right', =>
-      @showImageByDirection('next')
+      @showImageByDirection 'next'
       off
 
     key 'esc', @close
 
   setupScroll: ->
-    new (ScrollMagic.Scene)(
-        offset: 240
-        reverse: true)
-      .setPin('#page-cover', pushFollowers: false)
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: 240
+      reverse: true
+    .setPin '#page-cover', pushFollowers: false
+    .addTo app.scroll
 
-    new (ScrollMagic.Scene)(
-        offset: 240
-        reverse: true)
-      .setClassToggle('#page-header', "pinned")
-      .setPin('#page-header', pushFollowers: false)
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: 240
+      reverse: true
+    .setClassToggle '#page-header', "pinned"
+    .setPin '#page-header', pushFollowers: false
+    .addTo app.scroll
 
-    new (ScrollMagic.Scene)(
-        offset: 0
-        duration: 300
-        )
-      .setTween(
-        TweenLite.to($('#cover-image')[0], 2, {className: '+=conspiring'}))
-      .addTo(app.scroll)
-    new (ScrollMagic.Scene)(
-        offset: -10
-        duration: 290
-        reverse: true
-        )
-      .setTween(
-        TweenLite.to($('#cover-image')[0], 2, {className: '-=conspiring'}))
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: 0
+      duration: 300
+    .setTween TweenLite.to $('#cover-image')[0], 2, { className: '+=conspiring' }
+    .addTo app.scroll
 
-    new (ScrollMagic.Scene)(
-        offset: 240
-        duration: 200
-        reverse: true)
-      .setTween(
-        TweenLite.to($('.icon-logo')[0], 2, {color: 'white'}))
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: -10
+      duration: 290
+      reverse: true
+    .setTween TweenLite.to $('#cover-image')[0], 2, { className: '-=conspiring' }
+    .addTo app.scroll
 
-    new (ScrollMagic.Scene)(
-        offset: 260
-        duration: 180
-        reverse: true)
-      .setTween(
-        TweenLite.to($('.talent-atts')[0], 2, {opacity: 0;}))
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: 240
+      duration: 200
+      reverse: true
+    .setTween TweenLite.to $('.icon-logo')[0], 2, { color: 'white' }
+    .addTo app.scroll
+
+    new ScrollMagic.Scene
+      offset: 260
+      duration: 180
+      reverse: true
+    .setTween TweenLite.to $('.talent-atts')[0], 2, { opacity: 0 }
+    .addTo app.scroll
 
 
-    new (ScrollMagic.Scene)(
-        offset: 300
-        duration: 180
-        reverse: true)
-      .setTween(
-        TweenLite.to($('#cover-image')[0], 2, {opacity: 0;}))
-      .addTo(app.scroll)
+    new ScrollMagic.Scene
+      offset: 300
+      duration: 180
+      reverse: true
+    .setTween TweenLite.to $('#cover-image')[0], 2, { opacity: 0 }
+    .addTo app.scroll
 
   showImageByDirection: (direction) ->
     @showOverlayImage @$prevOrNext direction
@@ -108,6 +111,9 @@ class TalentsShowController
 
   close: =>
     @galleryTransitionActive = true
+    $('.overlay-img-container').removeClass 'active'
+    $('.overlay-img-container').removeClass 'next'
+    $('.overlay-img-container').removeClass 'prev'
     $('body').on('transitionend', ({ target }) =>
       return if @$overlay is not target
       @$overlay.hide()
@@ -116,18 +122,15 @@ class TalentsShowController
       $('body').off 'transitionend'
     )
     $('body').removeClass('overlaid')
-    $('.overlay-img-container').removeClass('active')
-    $('.overlay-img-container').removeClass('next')
-    $('.overlay-img-container').removeClass('prev')
 
   showOverlayImage: ($el) =>
-
     return if @galleryTransitionActive
-
     @galleryTransitionActive = true
-    $('.overlay-img-container').removeClass('active')
-    $('.overlay-img-container').removeClass('next')
-    $('.overlay-img-container').removeClass('prev')
+
+    $('.overlay-img-container').removeClass 'active'
+    $('.overlay-img-container').removeClass 'next'
+    $('.overlay-img-container').removeClass 'prev'
+
     setTimeout =>
       @galleryTransitionActive = false
     , 400
@@ -144,7 +147,3 @@ class TalentsShowController
     else
       $('.overlay-img-container:last')
     $prev.addClass 'prev'
-
-
-
-

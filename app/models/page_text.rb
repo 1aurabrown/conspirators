@@ -13,15 +13,14 @@ class PageText < ActiveRecord::Base
 
     edit do
       field :page
-      field :text do 
-
+      field :text do
         partial 'markdown_partial'
       end
     end
     show do
       field :page
       field :text do
-        formatted_value do 
+        formatted_value do
           bindings[:object].formatted_text
         end
       end

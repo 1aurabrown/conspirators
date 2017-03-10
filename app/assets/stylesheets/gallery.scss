@@ -5,31 +5,16 @@ html body.overlaid {
   bottom: 0;
   left: 0;
   right: 0;
-  #page-cover {
-    opacity: 0;
-  }
   .close-gallery {
     display: block;
   }
-  .page-title {
-
-  }
-}
-
-.close-gallery {
-  position: absolute;
-  display: none;
-  left: 0;
-  top: 0;
-  margin-top: -0.3rem;
-  margin-left: -1.3rem;
 }
 
 #gallery-overlay {
   position: fixed;
   left: 0;
   right: 0;
-  transition: all 1s;
+  transition: all 1s ease-in-out;
   background-color: black;
   margin: 0;
   height: 100vh;
@@ -38,6 +23,24 @@ html body.overlaid {
   opacity: 0;
   z-index: 10000;
   display: none;
+  .gallery-header {
+    text-shadow: 0 0 15px rgba(0, 0, 0, .3);
+    cursor: default;
+    color: white;
+    z-index: 4;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    @media (max-width: map-get($grid-breakpoints, md)) {
+      left: 40px;
+    }
+    .gallery-close {
+      position: absolute;
+      transform: translateX(-100%);
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
   .overlaid & {
     opacity: 1;
   }
@@ -45,9 +48,6 @@ html body.overlaid {
     width: 50%;
     height: 100%;
     cursor: pointer;
-    &:hover {
-      cursor: pointer;
-    }
     position: absolute;
     top: 0;
     z-index: 4;
@@ -88,24 +88,19 @@ html body.overlaid {
     background-repeat: no-repeat;
     opacity: 0;
     cursor: default;
+    transition: all 1s ease-in-out;
     &.active {
       transform: translate3d(0, 0, 0);
       opacity: 1;
       z-index: 3;
-      transition: transform 1s;
 
     }
     &.next {
-      transition: all 1s;
       transform: translate3d(100vw, 0, 0);
-      opacity: 0.6;
 
     }
     &.prev {
-      transition: all 1s;
       transform: translate3d(-100vw, 0, 0);
-      opacity: 0.6;
-
     }
   }
 }

@@ -9,7 +9,7 @@ class Talent < ActiveRecord::Base
   has_attached_file :resume
   validates_attachment_content_type :resume, content_type: "application/pdf"
   has_attached_file :cover, styles: { large: "x600" }
-  validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ] 
+  validates_attachment_content_type :cover, content_type: ["image/jpg", "image/jpeg", "image/png" ]
   has_many :gallery_pictures, :dependent => :destroy, :inverse_of => :talent
   accepts_nested_attributes_for :gallery_pictures, :allow_destroy => true
   has_many :spoken_languages, inverse_of: :talent
@@ -49,7 +49,7 @@ class Talent < ActiveRecord::Base
   end
 
   def appearance
-    [ 
+    [
       self.genders.pluck(:name).to_sentence,
       "#{self.height_in}"
     ].join(' / ')
@@ -64,7 +64,7 @@ class Talent < ActiveRecord::Base
     [:skills, :genders, :types].each do |context|
       g = GraphWeight.new taggable_class: "Talent", context: context
       g.refresh!
-    end   
+    end
   end
 
   def height_in(unit=:cm)
@@ -93,7 +93,7 @@ class Talent < ActiveRecord::Base
           label "Country"
         end
         field :slug do
-          help "Allows you to change the URL for a talent. Not good for SEO, so use judiciously."          
+          help "Allows you to change the URL for a talent. Not good for SEO, so use judiciously."
         end
 
         field :email
@@ -138,9 +138,9 @@ class Talent < ActiveRecord::Base
         end
       end
       field :popularity
-      field :published do 
+      field :published do
         pretty_value do
-          bindings[:object].published.blank? ? "No" : "Yes" 
+          bindings[:object].published.blank? ? "No" : "Yes"
         end
       end
       field :featured_projects do
@@ -148,22 +148,22 @@ class Talent < ActiveRecord::Base
           bindings[:object].featured_projects.length
         end
       end
-      field :pictures do 
+      field :pictures do
         pretty_value do
-          "cover: 
-          #{(bindings[:object].cover.url == "/covers/original/missing.png") ? "No" : "Yes"} 
-          <br/> 
+          "cover:
+          #{(bindings[:object].cover.url == "/covers/original/missing.png") ? "No" : "Yes"}
+          <br/>
           gallery: #{bindings[:object].gallery_pictures.count}  of 6".html_safe
 
         end
       end
       field :tags do
         pretty_value do
-          "gender: 
-            #{bindings[:object].gender_list } 
-            <br/> 
+          "gender:
+            #{bindings[:object].gender_list }
+            <br/>
             skills: #{bindings[:object].skill_list.count}
-            <br/> 
+            <br/>
             types: #{bindings[:object].type_list.count}
             ".html_safe
           end

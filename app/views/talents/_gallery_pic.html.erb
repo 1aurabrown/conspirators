@@ -1,7 +1,6 @@
-<a
-  class="<%=image_class %>"
-  href="<%=image_url image.url(size) %>"
+<div
+  class="gallery-img-container"
   data-gallery="talent"
   data-image-id="<%= image.name == :avatar ? 10 : image.instance.position %>"
-  style="background-image: url('<%= image_url image.url(:large)%>')">
-</a>
+  style="background-image: url('<%= image_url image.url(image.name == :avatar ? :large : :medium)%>')">
+</div>

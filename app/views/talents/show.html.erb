@@ -10,7 +10,6 @@
 
       <h1 id="page-title"><%= @talent.name %>
       <%= render partial: 'shared/save_button', locals: {talent: @talent} %>
-      <a href="#" class="action-button close-gallery">&#215;</a>
       </h1>
 
     </div>
@@ -20,6 +19,13 @@
   <div id="gallery-overlay">
     <div class="arrow back" data-direction="prev"></div>
     <div class="arrow fwd" data-direction="next"></div>
+    <h1 class="gallery-header">
+      <span class="gallery-close"> &#215; </span>
+      <%= @talent.name %>
+    </h1>
+    <%= render partial: 'overlay_pic', locals: {
+      image: @talent.avatar
+    } %>
     <% @columns.flatten.each do |pic| %>
       <%= render partial: 'overlay_pic', locals: {
         image: pic.image
@@ -68,7 +74,6 @@
       <div class="gallery-main">
         <%= render partial: 'gallery_pic', locals: {
           size: :medium,
-          image_class: "gallery-img-container",
           image: @talent.avatar
         } %>
 
@@ -78,7 +83,6 @@
           <% pics.each do |pic| %>
             <%= render partial: 'gallery_pic', locals: {
               size: :medium,
-              image_class: "gallery-img-container",
               image: pic.image
             } %>
           <% end %>

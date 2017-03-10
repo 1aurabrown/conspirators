@@ -63,6 +63,10 @@ body.new {
   #page-title {
     color: white;
     margin-bottom: 0;
+
+    @include media-breakpoint-down(xs) {
+      font-size: 24px
+    }
   }
 }
 .page-content {
@@ -74,16 +78,16 @@ body.new {
   min-height: 100vh;
 
   .section {
-    @extend .container; 
+    @extend .container;
     padding: 1rem 0 1rem 0;
     .section-header {
       @extend .display-4;
-      font-size: 30px;    
+      font-size: 30px;
     }
   }
   .fullpage-section {
 
-    @extend .container-fluid; 
+    @extend .container-fluid;
     padding: 0;
     margin-top: 1em;
     .section-header {
