@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105215636) do
+ActiveRecord::Schema.define(version: 20170311141009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,32 @@ ActiveRecord::Schema.define(version: 20161105215636) do
   end
 
   add_index "agents", ["organization_id"], name: "index_agents_on_organization_id", using: :btree
+
+  create_table "article_images", force: :cascade do |t|
+    t.integer  "article_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "featured",           default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "article_images", ["article_id"], name: "index_article_images_on_article_id", using: :btree
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "slug"
+    t.boolean  "featured",     default: false
+    t.boolean  "published",    default: false
+    t.datetime "published_at"
+    t.string   "video_url"
+    t.integer  "media_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "talent_id"
@@ -289,6 +315,7 @@ ActiveRecord::Schema.define(version: 20161105215636) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "agents", "organizations"
+  add_foreign_key "article_images", "articles"
   add_foreign_key "featured_projects", "projects"
   add_foreign_key "featured_projects", "talents"
   add_foreign_key "saved_talents", "talents"
