@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170311141009) do
+ActiveRecord::Schema.define(version: 20170311182011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20170311141009) do
     t.text     "content"
     t.string   "slug"
     t.boolean  "featured",     default: false
-    t.boolean  "published",    default: false
     t.datetime "published_at"
     t.string   "video_url"
     t.integer  "media_type"

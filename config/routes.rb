@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/favourites', to: "talents#favourites"
   scope 'api/v1' do
-    resources :talents do 
+    resources :talents do
       member do
         post :edit_collection
       end
-    end 
-    resources :inquiries do 
+    end
+    resources :inquiries do
       member do
         post :create
       end

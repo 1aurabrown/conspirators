@@ -4,6 +4,5 @@ class FeaturedProject < ActiveRecord::Base
   validates_presence_of :talent, :project
   rails_admin do
     hide
-
   end
 end

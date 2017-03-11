@@ -12,7 +12,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 
 # Fixes ajax upload
-gem 'rails_admin', :github => 'sferik/rails_admin', :ref => 'c860b2f'
+gem 'rails_admin', '1.1.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,6 +57,7 @@ group :development do
   gem 'pry-rails'
 end
 
+gem 'font-awesome-rails', '~> 4.7.0.1'
 gem 'devise', '3.5.6'
 gem 'cancancan', '1.13.1'
 gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'

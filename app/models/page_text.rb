@@ -9,7 +9,7 @@ class PageText < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Admin'
-    navigation_icon "fa-edit"
+    navigation_icon "fa fa-edit"
 
     edit do
       field :page
