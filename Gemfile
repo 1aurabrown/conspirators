@@ -75,6 +75,7 @@ gem 'lightbox-bootstrap-rails'
 gem 'compass', '1.0.3'
 gem 'compass-rails', '3.0.2'
 gem 'rails_admin_toggleable', '0.6.0'
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'gon', '6.0.1'
 gem 'lines-engine'

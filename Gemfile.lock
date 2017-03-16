@@ -68,6 +68,8 @@ GEM
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (8.2.4)
     cancancan (1.13.1)
@@ -411,6 +413,7 @@ DEPENDENCIES
   acts-as-taggable-on (= 3.5.0)
   aws-sdk (= 2.2.27)
   bootstrap (~> 4.0.0.alpha3)
+  bootstrap-wysihtml5-rails
   byebug
   cancancan (= 1.13.1)
   carrierwave

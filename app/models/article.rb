@@ -1,20 +1,30 @@
 class MediaValidator < ActiveModel::Validator
   def validate(record)
-    if (!record.article_images.any? && record.video_url.length)
-      record.errors[:base] << "Please provide either at least one Image or a Video URL"
-    elsif (record.article_images.any? && !record.video_url.length && record.media_type.nil?)
-      record.errors[:base] << "Images and Video Link were provided. You must indicate which to use with Media Type."
+    debugger
+    if (record.video? && record.article_video.nil?)
+      record.errors[:base] << "Video media type was selected, but no video was provided."
+    elsif (record.images? && !record.article_images.any?)
+      record.errors[:base] << "Images media type was selected, but no images were provided."
     end
   end
 end
 
 class Article < ActiveRecord::Base
-  has_many :article_images, dependent: :destroy, inverse_of: :article
   validates_uniqueness_of :featured, if: :featured
-  accepts_nested_attributes_for :article_images, allow_destroy: true
-  validates_presence_of :title, :content
+  validates_presence_of :title, :content, :media_type
+
   validates_with MediaValidator
-  enum media_type: [:video, :images]
+
+  has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
+  accepts_nested_attributes_for :article_video
+
+  has_many :article_images, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
+  accepts_nested_attributes_for :article_images
+
+  scope :featured, -> { where(featured: true) }
+  scope :published, -> { where.not(published_at: nil) }
+
+  enum media_type: [ :video, :images ]
 
   rails_admin do
     navigation_label 'News'
@@ -23,11 +33,34 @@ class Article < ActiveRecord::Base
       hide
     end
 
+    show do
+      field :media_type
+      field :featured
+      field :published
+      field :title
+      field :subtitle
+      field :content
+    end
+
     edit do
+      group :media do
+        help 'Provide either a Video or Images to be displayed at the top of the article.'
+        field :media_type, :enum
+        field :article_video do
+          help 'Provide a video and optional cover image'
+        end
+        field :article_images do
+          help 'Provide one or more images'
+        end
+      end
+
       group :copy do
         label 'Article Copy'
         field :title
-        field :content
+        field :subtitle
+        field :content, :wysihtml5 do
+          config_options toolbar: { fa: true }
+        end
       end
 
       group :settings do
@@ -39,37 +72,36 @@ class Article < ActiveRecord::Base
         end
         field :published, :toggle
       end
-
-      group :media do
-        help 'Provide either a Video URL or Images to be displayed at the top of the article.'
-
-        field :media_type do
-          help 'Indicate whether to use Photos or Video in the header if both have been included.'
-        end
-        field :video_url do
-        end
-        field :article_images do
-          label 'Images'
-          visible true
-          active true
-        end
-      end
     end
 
     list do
       field :title
-      field :media_type
+      field :content do
+        pretty_value do
+          sanitizer = Rails::Html::WhiteListSanitizer.new
+          sanitizer.sanitize(value).html_safe
+        end
+      end
       field :published
       field :featured
     end
   end
 
   def published=(value)
-    if value == true && published_at.nil?
-      published_at = Time.now
+    if(value == "1")
+      if(published_at.nil?)
+        published_at = Time.now
+      end
     else
       published_at = nil
     end
+  end
+
+  def featured=(value)
+    if (value == '1')
+      self.class.base_class.where('id != ? and featured', self.id).update_all("featured = 'false'")
+    end
+    write_attribute(:featured, value)
   end
 
   def published
