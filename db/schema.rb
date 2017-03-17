@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316151806) do
+ActiveRecord::Schema.define(version: 20170317003004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20170316151806) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.boolean  "featured"
     t.integer  "article_id"
   end
 
@@ -65,13 +64,16 @@ ActiveRecord::Schema.define(version: 20170316151806) do
     t.string   "title"
     t.text     "content"
     t.string   "slug"
-    t.boolean  "featured",     default: false
+    t.boolean  "featured",          default: false
     t.datetime "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subtitle"
     t.integer  "media_type"
+    t.integer  "featured_image_id"
   end
+
+  add_index "articles", ["featured_image_id"], name: "index_articles_on_featured_image_id", using: :btree
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "talent_id"

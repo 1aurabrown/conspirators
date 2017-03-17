@@ -1,6 +1,5 @@
 class MediaValidator < ActiveModel::Validator
   def validate(record)
-    debugger
     if (record.video? && record.article_video.nil?)
       record.errors[:base] << "Video media type was selected, but no video was provided."
     elsif (record.images? && !record.article_images.any?)
@@ -16,10 +15,13 @@ class Article < ActiveRecord::Base
   validates_with MediaValidator
 
   has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
-  accepts_nested_attributes_for :article_video
+  has_one :featured_image, class_name: 'ArticleImage'
+
+  accepts_nested_attributes_for :article_video, allow_destroy: true
 
   has_many :article_images, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
-  accepts_nested_attributes_for :article_images
+  accepts_nested_attributes_for :article_images, allow_destroy: true
+  validates_associated :article_images
 
   scope :featured, -> { where(featured: true) }
   scope :published, -> { where.not(published_at: nil) }
@@ -47,9 +49,13 @@ class Article < ActiveRecord::Base
         help 'Provide either a Video or Images to be displayed at the top of the article.'
         field :media_type, :enum
         field :article_video do
+          visible true
+          active true
           help 'Provide a video and optional cover image'
         end
         field :article_images do
+          visible true
+          active true
           help 'Provide one or more images'
         end
       end

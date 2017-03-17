@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Lines::Engine => "/news"
 
   get 'contact', to: "contact#index"
   root to: 'home#index'

@@ -20,3 +20,6 @@ public
 **/.DS_Store
 vendor/bundle
 public/uploads
+
+# Ignore application configuration
+/config/application.yml

@@ -24,8 +24,7 @@ module Conspirators
 
     Rails.application.config.assets.precompile += %w(
      fontawesome-webfont.ttf fontawesome-webfont.svg
-     fontawesome-webfont.scss lines/application.css lines/application.js
-     ic_rss.png
+     fontawesome-webfont.scss ic_rss.png
     )
   end
 end
