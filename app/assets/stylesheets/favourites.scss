@@ -1,24 +1,19 @@
 body.talents.favourites {
+  @include static-footer();
   nav#navigation {
     position: fixed;
-    background-color: white;
   }
   @include media-breakpoint-up(md) {
-
     .section-content h2 {
       padding-top: 1rem;
     }
-    form.form {
-
-      height:100vh;
-    }
   }
-  
+
   #page-header {
     #header-content {
       #page-title {
       color: black;
-      } 
+      }
 
       h1 {
 

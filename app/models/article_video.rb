@@ -1,14 +1,14 @@
 class VideoValidator < ActiveModel::Validator
   def validate(record)
-    video = VideoInfo.new(record.video_url)
-    if (!['Youtube', 'Vimeo'].include? video.provider)
+    if (!['Youtube', 'Vimeo'].include? record.info.provider)
       record.errors[:base] << "Only Youtube and Vimeo are supported."
     end
-    if (!video.available?)
+    if (!record.info.available?)
       record.errors[:base] << "Video is not available or URL is incorrect."
     end
   end
 end
+
 class ArticleVideo < ActiveRecord::Base
   has_attached_file :image, {
     styles: { large: "600>", medium: "300>", thumb: "100x100#" },
@@ -20,5 +20,19 @@ class ArticleVideo < ActiveRecord::Base
   validates_with VideoValidator
   rails_admin do
     hide
+  end
+
+  def cover_image_url
+    if (image?)
+      image.url(:large)
+    # elsif (video_info.provider == 'Vimeo' and (pictures = video_info.data['pictures']))
+    #   pictures['sizes'].last['link']
+    else
+      video_info.thumbnail_large
+    end
+  end
+
+  def video_info
+    @video_info ||= VideoInfo.new(video_url)
   end
 end

@@ -2,16 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body.home {
-  nav#navigation {
-    background-color:white;
-    .nav-item a {
-      color: $gray;
-    }
-    .nav-item a:hover {
-      color: black;
-      opacity: 1;
-    }
-  }
   #page-header {
     background-color: white;
     z-index: 3000;
@@ -19,7 +9,7 @@ body.home {
     margin-top: 80px;
 
     #header-content {
-      padding-top: 0;    
+      padding-top: 0;
       @include media-breakpoint-up(lg) {
         padding-left: 3rem;
         padding-right: 3rem;
@@ -62,7 +52,7 @@ body.home {
       }
     }
   }
- 
+
 }
 article.home {
   .page-content {

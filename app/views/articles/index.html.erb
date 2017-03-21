@@ -1,0 +1,12 @@
+<article class="articles">
+  <div class="page-content">
+    <div class="articles-container">
+      <% if @featured %>
+        <%= render partial: 'article_card', locals: { article: @featured } %>
+      <% end %>
+      <% @articles.each do |article| %>
+        <%= render partial: 'article_card', locals: { article: article } %>
+      <% end %>
+    </div>
+  </div>
+</article>

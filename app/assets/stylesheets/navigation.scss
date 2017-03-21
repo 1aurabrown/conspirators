@@ -1,37 +1,28 @@
-.home #navigation .nav-item.home,
-.contact #navigation .nav-item.contact,
-.favourites #navigation .nav-item.faves {
-  a {
-    color: black;
-    opacity: 1;
-
-  }
-  a:after {
-    content: '';
-    border-top: 1px solid $gray;
-    display:block;
-    margin-bottom: -0.3rem;
-  }
-}
-
-
-
 #navigation {
   @extend .navbar;
   @extend .navbar-fixed-top;
-  transition: all 0.5s; 
+  transition: all 0.5s;
   padding-bottom: 0;
-  .logo {
-    h1 {
-      position: relative;
-      float:left;
-      span.icon-logo {
-        font-size: 4rem;
-        margin-top: -0.5rem;
-        margin-left: -0.6rem;
+
+  &.white{
+    background-color: white;
+    .nav-item {
+      &.current a:after {
+        border-color: black;
       }
+      a { color: black; }
     }
   }
+  &.black {
+    background-color: black;
+    .nav-item {
+      &.current a:after {
+        border-color: $gray-lighter;
+      }
+      a { color: $gray-lighter; }
+    }
+  }
+
   .nav {
     float:right;
     .nav-item {
@@ -39,30 +30,33 @@
       position:relative;
       font-family: 'Julius Sans One', sans-serif;
       font-size: 0.8rem;
-      opacity: 0.96;
-      color: black;
-      .nav-link {
-        font-weight: bold;
+      opacity: .6;
+      &.current, &:hover {
+        opacity: 1;
+      }
+      &.current a:after {
+        content: '';
+        border-top: 1px solid;
+        display:block;
+        margin-bottom: -0.3rem;
       }
       &.faves {
         &.pop {
           opacity: 1;
         }
         &.present {
-
+          margin-right: 0.4rem;
           .saved-talents {
-            opacity: 1;
             transform: translateY(0);
           }
         }
+        &:not(.present) {
+          .saved-talents { opacity: 0 }
+        }
         .saved-talents {
-          opacity: 0;
           position: absolute;
           right: -1.3em;
           top:0.3em;
-          font-weight: normal;
-          width: 1em;
-          height: 1em;
           font-weight: normal;
           width: 1.2em;
           height: 1.2em;
@@ -79,7 +73,21 @@
           &:after {
             content: "]";
           }
-        }        
+        }
+      }
+      .nav-link {
+        font-weight: bold;
+      }
+    }
+  }
+  .logo {
+    h1 {
+      position: relative;
+      float:left;
+      span.icon-logo {
+        font-size: 4rem;
+        margin-top: -0.5rem;
+        margin-left: -0.6rem;
       }
     }
   }

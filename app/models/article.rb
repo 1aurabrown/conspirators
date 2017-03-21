@@ -96,10 +96,32 @@ class Article < ActiveRecord::Base
   def published=(value)
     if(value == "1")
       if(published_at.nil?)
-        published_at = Time.now
+        publish!
       end
     else
-      published_at = nil
+      unpublish!
+    end
+  end
+
+  def publish!
+    return if published
+    update_attribute('published_at', Time.now)
+  end
+
+  def unpublish!
+    return if !published
+    update_attribute('published_at', nil)
+  end
+
+  def published
+    !published_at.nil?
+  end
+
+  def cover_image_url
+    if video?
+      article_video.cover_image_url
+    else
+      article_images.first.image.url(:large)
     end
   end
 
@@ -107,11 +129,7 @@ class Article < ActiveRecord::Base
     if (value == '1')
       self.class.base_class.where('id != ? and featured', self.id).update_all("featured = 'false'")
     end
-    write_attribute(:featured, value)
-  end
-
-  def published
-    !published_at.nil?
+    update_attribute(:featured, value)
   end
 end
 

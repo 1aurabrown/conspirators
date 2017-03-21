@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body.contact {
+  @include static-footer();
   nav#navigation {
     position: static;
   }
@@ -13,7 +14,7 @@ body.contact {
         font-family: 'Julius Sans One', sans-serif;
         padding-bottom: 0;
         color: black;
-      } 
+      }
       padding-top: 0;
       padding-bottom: 1rem;
 
@@ -38,8 +39,5 @@ body.contact {
     }
     margin-top: 1.5rem;
     margin-bottom: 2rem;
-  }
-  footer {
-    position: static;
   }
 }

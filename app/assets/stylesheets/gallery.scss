@@ -108,6 +108,9 @@ html body.overlaid {
 .talent-gallery {
   position: relative;
   height: 44vw;
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    height: 140vw;
+  }
 
   .gallery-img-container {
     width: 100%;
@@ -125,7 +128,7 @@ html body.overlaid {
     height: 100%;
     @media (max-width: map-get($grid-breakpoints, md)) {
       width: 65%;
-      height: 160%
+      height: 50%
     }
     overflow: hidden;
     float: left;
@@ -168,7 +171,7 @@ html body.overlaid {
     }
     @media (max-width: map-get($grid-breakpoints, md)) {
       width: 50%;
-      height: 160%;
+      height: 50%;
       &.col-1 {
         width: 35%;
       }
