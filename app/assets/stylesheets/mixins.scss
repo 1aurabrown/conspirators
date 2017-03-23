@@ -1,5 +1,18 @@
 @mixin static-footer() {
   footer {
     position: static;
+    margin-top: 0;
+    z-index: -1
   }
+  .page-content {
+    margin-bottom: 0;
+    min-height: 0;
+  }
+}
+
+@mixin scale-and-fade() {
+  -webkit-filter: brightness(70%);
+  filter: brightness(70%);
+  -webkit-transform: scale3d(1.1,1.1,1);
+  transform: scale3d(1.1,1.1,1);
 }

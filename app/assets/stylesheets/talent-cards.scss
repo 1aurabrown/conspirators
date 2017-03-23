@@ -33,20 +33,19 @@ figure.talent-card {
   }
   &:hover {
     img {
-      -webkit-filter: brightness(60%);
-      filter: brightness(20%);
-      -webkit-transform: scale3d(1.1,1.1,1);
-      transform: scale3d(1.1,1.1,1);
+      @include scale-and-fade()
     }
-    figcaption {
-        -webkit-transform: translate3d(0,-1rem,0);
-        transform: translate3d(0,-1rem,0);
-        div.traits-container{
-          transition-delay: 0.2s;
-                  border-color: $gray-lighter;
+    @include media-breakpoint-up(md) {
+      figcaption {
+          -webkit-transform: translate3d(0,-1rem,0);
+          transform: translate3d(0,-1rem,0);
+          div.traits-container{
+            transition-delay: 0.2s;
+                    border-color: $gray-lighter;
 
-          p {opacity: 1;}
-        }
+            p {opacity: 1;}
+          }
+      }
     }
     .save-button {
       opacity: 1;
