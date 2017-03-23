@@ -27,6 +27,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
   gem 'rails-assets-gsap'
+  gem 'rails-assets-flickity'
   gem 'rails-assets-holderjs'
   gem 'rails-assets-keymaster'
   gem 'rails-assets-imagesloaded'
@@ -57,6 +58,7 @@ group :development do
   gem 'pry-rails'
 end
 
+gem 'slugify'
 gem 'figaro'
 gem 'video_info', '~> 2.7.0'
 gem 'font-awesome-rails', '~> 4.7.0.1'

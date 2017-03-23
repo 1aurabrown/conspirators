@@ -49,10 +49,8 @@ body.new {
   position: relative;
   z-index: 4;
   #header-content {
-    padding-top: 54px;
     @extend .container;
     h1 {
-      padding-top:3rem;
       padding-bottom: 1rem;
       position: relative;
       .save-button {
@@ -70,12 +68,11 @@ body.new {
   }
 }
 .page-content {
+  padding-bottom: 15px;
   width: 100%;
-  margin-bottom: 320px;
-  position: absolute;
+  margin-bottom: $footer-height;
   z-index: 3;
   background-color: white;
-  min-height: 100vh;
 
   .section {
     @extend .container;
@@ -96,6 +93,9 @@ body.new {
   }
 }
 
+article {
+  margin-top: $header-height;
+}
 
 .grid {
   &:after {

@@ -1,5 +1,4 @@
 <article class="talent">
-
   <div id="page-cover">
     <div id="cover-image-container">
       <img id="cover-image" src="<%=image_url @talent.cover.url(:large) %>" />
@@ -7,13 +6,10 @@
   </div>
   <header id="page-header">
     <div id="header-content">
-
       <h1 id="page-title"><%= @talent.name %>
       <%= render partial: 'shared/save_button', locals: {talent: @talent} %>
       </h1>
-
     </div>
-
   </header>
 
   <div id="gallery-overlay">

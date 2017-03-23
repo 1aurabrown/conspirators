@@ -14,6 +14,8 @@ class Article < ActiveRecord::Base
 
   validates_with MediaValidator
 
+  before_save :set_slug
+
   has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
   has_one :featured_image, class_name: 'ArticleImage'
 
@@ -73,10 +75,8 @@ class Article < ActiveRecord::Base
         field :slug do
           help 'Provide a custom slug if desired, otherwise post title will be used.'
         end
-        field :featured do
-          help 'Only one article is featured at a time. Featuring this article will unfeature the current featured article.'
-        end
-        field :published, :toggle
+        field :featured
+        field :published, :boolean
       end
     end
 
@@ -88,7 +88,7 @@ class Article < ActiveRecord::Base
           sanitizer.sanitize(value).html_safe
         end
       end
-      field :published
+      field :published, :boolean
       field :featured
     end
   end
@@ -125,11 +125,25 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def featured=(value)
-    if (value == '1')
-      self.class.base_class.where('id != ? and featured', self.id).update_all("featured = 'false'")
+  def set_slug
+    if self.slug.blank?
+      self.slug = self.title.slugify
     end
-    update_attribute(:featured, value)
+  end
+
+  def featured=(value)
+    if value == '1' or value == true
+      Article.where('id != ? and featured', self.id).update_all(featured: false)
+    end
+    super value
+  end
+
+  def label
+    self.title
+  end
+
+  def to_param
+    slug
   end
 end
 

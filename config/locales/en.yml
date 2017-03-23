@@ -21,3 +21,14 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      feature:
+        menu: 'Feature'
+        title: 'Feature'
+        breadcrumb: 'Feature'
+
+      unfeature:
+        menu: 'Un-feature'
+        title: 'Un-feature'
+        breadcrumb: 'Un-feature'

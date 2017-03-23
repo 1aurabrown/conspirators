@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'contact', to: "contact#index"
-  resources :articles, path: '/news', only: [:show, :index], param: :id
+  resources :articles, path: '/news', only: [:show, :index], param: :slug
   # get 'news/:slug', to: 'articles#show'
   root to: 'home#index'
   devise_for :users

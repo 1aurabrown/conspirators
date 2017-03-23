@@ -1,6 +1,6 @@
 <div class="card-container" data-talent="<%=talent.id%>" data-tags="<%= talent.acceptable_tags %>">
   <figure class="talent-card">
-    <a class="card-link" href="<%= "/#{talent.slug}" %>">
+    <a class="card-link" href="<%= talent_url(talent) %>">
     </a>
     <img class="card-img-bottom" src="<%= talent.avatar.url(:large)%>">
 

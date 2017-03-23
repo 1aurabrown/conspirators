@@ -1,3 +1,6 @@
+$header-height: 83px;
+$footer-height: 320px;
+$header-and-footer-height: $header-height + $footer-height;
 @mixin static-footer() {
   footer {
     position: static;
@@ -6,7 +9,23 @@
   }
   .page-content {
     margin-bottom: 0;
-    min-height: 0;
+    min-height: 0px;
+  }
+  article {
+    // contain collapsed margins
+    padding-top: 1px;
+    padding-bottom: 1px;
+    min-height: calc(100vh - #{$header-and-footer-height})
+  }
+}
+
+@mixin static-header-and-footer() {
+  @include static-footer();
+  nav#navigation {
+    position: static;
+  }
+  article {
+    margin-top: 0;
   }
 }
 

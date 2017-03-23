@@ -49,8 +49,12 @@ class Talent < ActiveRecord::Base
 
   def set_slug
     if self.slug.blank?
-      self.slug = self.name.parameterize
+      self.slug = self.name.slugify
     end
+  end
+
+  def to_param
+    slug
   end
 
   def set_country_info

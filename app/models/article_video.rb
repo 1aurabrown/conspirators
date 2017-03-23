@@ -1,9 +1,9 @@
 class VideoValidator < ActiveModel::Validator
   def validate(record)
-    if (!['Youtube', 'Vimeo'].include? record.info.provider)
+    if (!['Youtube', 'Vimeo'].include? record.video_info.provider)
       record.errors[:base] << "Only Youtube and Vimeo are supported."
     end
-    if (!record.info.available?)
+    if (!record.video_info.available?)
       record.errors[:base] << "Video is not available or URL is incorrect."
     end
   end

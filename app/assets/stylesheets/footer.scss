@@ -1,7 +1,8 @@
 footer {
+  z-index: -1;
   color: white;
   margin-top: 10rem;
-  height: 320px;
+  height: $footer-height;
   padding-top: 15px;
   position: fixed;
   width: 100%;
@@ -47,7 +48,6 @@ footer {
       i {
         font-size: 2rem;
       }
-      z-index: 2;
     }
   }
 }

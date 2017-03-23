@@ -1,4 +1,8 @@
+#nav-container {
+  margin-top: $header-height;
+}
 #navigation {
+  height: $header-height;
   @extend .navbar;
   @extend .navbar-fixed-top;
   transition: all 0.5s;
