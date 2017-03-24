@@ -1,31 +1,13 @@
 #nav-container {
   margin-top: $header-height;
 }
+@include white-nav();
 #navigation {
   height: $header-height;
   @extend .navbar;
   @extend .navbar-fixed-top;
   transition: all 0.5s;
   padding-bottom: 0;
-
-  &.white{
-    background-color: white;
-    .nav-item {
-      &.current a:after {
-        border-color: black;
-      }
-      a { color: black; }
-    }
-  }
-  &.black {
-    background-color: black;
-    .nav-item {
-      &.current a:after {
-        border-color: $gray-lighter;
-      }
-      a { color: $gray-lighter; }
-    }
-  }
 
   .nav {
     float:right;

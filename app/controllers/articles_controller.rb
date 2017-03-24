@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   def index
     @articles = ( articles = Article.published.order('published_at DESC') ).to_a
     @featured = @articles.delete articles.featured.first
-    @nav_class = 'black'
   end
 
   def show

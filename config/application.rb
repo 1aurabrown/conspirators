@@ -22,9 +22,5 @@ module Conspirators
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    Rails.application.config.assets.precompile += %w(
-     fontawesome-webfont.ttf fontawesome-webfont.svg
-     fontawesome-webfont.scss ic_rss.png
-    )
   end
 end

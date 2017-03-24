@@ -1,3 +1,7 @@
 app.controllerInitializers.articles_show = ->
-  $('.article-cell').flickity({})
+  $('.article-slideshow').flickity({
+    wrapAround: true;
+    setGallerySize: false;
+    lazyLoad: 1;
+  })
 

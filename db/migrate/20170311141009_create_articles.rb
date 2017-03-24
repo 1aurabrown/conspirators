@@ -1,18 +1,6 @@
 class CreateArticles < ActiveRecord::Migration
   def change
-    create_table :article_images, do |t|
-      t.attachment :image
-      t.boolean  :featured
-      t.references  :article, index: true, foreign_key: true
-    end
-
-    create_table    :article_videos, do |t|
-      t.string      :video_url
-      t.attachment  :image
-      t.references  :article, index: true, foreign_key: true
-    end
-
-    create_table :articles, do |t|
+    create_table :articles do |t|
       t.string   :title
       t.text     :content
       t.string   :slug
@@ -22,6 +10,18 @@ class CreateArticles < ActiveRecord::Migration
       t.datetime :updated_at
       t.string   :subtitle
       t.integer  :media_type
+    end
+
+    create_table :article_images do |t|
+      t.attachment :image
+      t.boolean  :featured
+      t.references  :article, index: true, foreign_key: true
+    end
+
+    create_table    :article_videos do |t|
+      t.string      :video_url
+      t.attachment  :image
+      t.references  :article, index: true, foreign_key: true
     end
   end
 end

@@ -1,6 +1,31 @@
 $header-height: 83px;
 $footer-height: 320px;
 $header-and-footer-height: $header-height + $footer-height;
+
+@mixin white-nav() {
+  #navigation {
+    background-color: white;
+    .nav-item {
+      &.current a:after {
+        border-color: black;
+      }
+      a { color: black; }
+    }
+  }
+}
+
+@mixin black-nav(){
+  #navigation {
+    background-color: black;
+    .nav-item {
+      &.current a:after {
+        border-color: $gray-lighter;
+      }
+      a { color: $gray-lighter; }
+    }
+  }
+}
+
 @mixin static-footer() {
   footer {
     position: static;

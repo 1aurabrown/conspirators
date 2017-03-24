@@ -2,14 +2,13 @@
   padding-left: 0.5rem;
 }
 
-body.talents.show, .blog-page {
+body.talents.show {
+  @include black-nav();
   #navigation {
-    @include background-image(linear-gradient(black, transparent));
+    background-image: linear-gradient(black, transparent);
     background-color: transparent;
   }
-}
-
-body.talents.show {
+  background-color: black;
   .talent-atts {
     display: flex;
     margin: auto;

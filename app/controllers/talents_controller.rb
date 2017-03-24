@@ -11,7 +11,6 @@ class TalentsController < ApplicationController
 
     @title = "#{@talent.name} / #{@talent.genders.join(' / ')} / #{@talent.skills.join(' / ')} "
     @og_image = @talent.avatar.url
-    @nav_class = 'black'
   end
 
   def favourites
