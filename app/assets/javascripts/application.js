@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require tether
-//= require lightbox-bootstrap
 //= require holderjs
 //= require bootstrap
 //= require scrollmagic

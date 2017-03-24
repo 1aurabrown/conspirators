@@ -4,18 +4,13 @@
       <div class="article">
         <div class="article-hero">
           <% if @article.video? %>
-            <% info = @article.article_video.video_info %>
-            <% aspect_ratio = (info.width && info.height) ? (info.height.to_f/info.width.to_f * 100).to_s + "%" : "75%"%>
+            <% oembed = @article.article_video.oembed %>
+            <% aspect_ratio = (oembed.width && oembed.height) ? (oembed.height.to_f/oembed.width.to_f * 100).to_s + "%" : "56%"%>
             <div class="article-video" style="padding-bottom:<%= aspect_ratio %>">
-              <%= @article.article_video.video_info.embed_code.html_safe %>
+              <%= oembed.html.html_safe %>
             </div>
           <% elsif @article.images? %>
-            <div class="article-slideshow">
-            <% @article.article_images.all.each do |a|%>
-              <div class="article-image" style="background-image:url(<%= a.image.url(:large) %>)">
-              </div>
-            <% end %>
-            </div>
+            <%= render partial: 'article_carousel', locals: {images: @article.article_images} %>
           <% end %>
         </div>
         <div class="article-header">
@@ -28,7 +23,7 @@
         </div>
         <div class="article-content">
           <p>
-            <%= @article.sanitized_content_html %>
+            <%= @article.sanitized_content %>
           </p>
         </div>
         <div class="logo">

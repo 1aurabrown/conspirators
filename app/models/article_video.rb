@@ -1,9 +1,10 @@
 class VideoValidator < ActiveModel::Validator
   def validate(record)
-    if (!['Youtube', 'Vimeo'].include? record.video_info.provider)
-      record.errors[:base] << "Only Youtube and Vimeo are supported."
-    end
-    if (!record.video_info.available?)
+    begin
+      if (!['YouTube', 'Vimeo'].include? record.oembed.provider_name)
+        record.errors[:base] << "Only Youtube and Vimeo are supported."
+      end
+    rescue
       record.errors[:base] << "Video is not available or URL is incorrect."
     end
   end
@@ -25,14 +26,12 @@ class ArticleVideo < ActiveRecord::Base
   def cover_image_url
     if (image?)
       image.url(:large)
-    # elsif (video_info.provider == 'Vimeo' and (pictures = video_info.data['pictures']))
-    #   pictures['sizes'].last['link']
     else
-      video_info.thumbnail_large
+      oembed.thumbnail_url
     end
   end
 
-  def video_info
-    @video_info ||= VideoInfo.new(video_url)
+  def oembed
+    @oembed ||= OEmbed::Providers.get(video_url)
   end
 end

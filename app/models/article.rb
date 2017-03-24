@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
 
   has_many :article_images, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
   accepts_nested_attributes_for :article_images, allow_destroy: true
-  validates_associated :article_images
+  validates_associated :article_images, :article_video
 
   scope :featured, -> { where(featured: true) }
   scope :published, -> { where.not(published_at: nil) }
@@ -43,7 +43,11 @@ class Article < ActiveRecord::Base
       field :published
       field :title
       field :subtitle
-      field :content
+      field :content do
+        formatted_value do
+          bindings[:object].sanitized_content
+        end
+      end
     end
 
     edit do
@@ -82,9 +86,11 @@ class Article < ActiveRecord::Base
 
     list do
       field :title
+      field :content
       field :content do
         pretty_value do
-          bindings[:object].sanitized_content_html
+          sanitizer = Rails::Html::FullSanitizer.new
+          sanitizer.sanitize(bindings[:object].content).html_safe.truncate(100)
         end
       end
       field :published, :boolean
@@ -130,7 +136,7 @@ class Article < ActiveRecord::Base
     end
   end
 
-  def sanitized_content_html
+  def sanitized_content
     sanitizer = Rails::Html::WhiteListSanitizer.new
     sanitizer.sanitize(self.content).html_safe
   end

@@ -27,7 +27,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether'
   gem 'rails-assets-scrollmagic'
   gem 'rails-assets-gsap'
-  gem 'rails-assets-flickity'
   gem 'rails-assets-holderjs'
   gem 'rails-assets-keymaster'
   gem 'rails-assets-imagesloaded'
@@ -58,9 +57,11 @@ group :development do
   gem 'pry-rails'
 end
 
+gem 'json'
+gem 'ruby-oembed'
+
 gem 'slugify'
 gem 'figaro'
-gem 'video_info', '~> 2.7.0'
 gem 'font-awesome-rails', '~> 4.7.0.1'
 gem 'devise', '3.5.6'
 gem 'cancancan', '1.13.1'
@@ -74,10 +75,7 @@ gem 'countries', :require => 'countries/global'
 
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
-gem 'lightbox-bootstrap-rails'
 
-gem 'compass', '1.0.3'
-gem 'compass-rails', '3.0.2'
 gem 'rails_admin_toggleable', '0.6.0'
 gem 'bootstrap-wysihtml5-rails'
 

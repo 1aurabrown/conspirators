@@ -4,12 +4,14 @@
 
 body.talents.show, .blog-page {
   #navigation {
-    @include background-image(linear-gradient(black, transparent));
+    background-image: linear-gradient(black, transparent);
     background-color: transparent;
   }
 }
 
 body.talents.show {
+  @include black-nav();
+  background-color: black;
   .talent-atts {
     display: flex;
     margin: auto;

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170317003004) do
+ActiveRecord::Schema.define(version: 20170324202859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,17 +85,6 @@ ActiveRecord::Schema.define(version: 20170317003004) do
   add_index "featured_projects", ["project_id"], name: "index_featured_projects_on_project_id", using: :btree
   add_index "featured_projects", ["talent_id"], name: "index_featured_projects_on_talent_id", using: :btree
 
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string   "slug",                      null: false
-    t.integer  "sluggable_id",              null: false
-    t.string   "sluggable_type", limit: 40
-    t.datetime "created_at"
-  end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
-
   create_table "gallery_pictures", force: :cascade do |t|
     t.integer  "talent_id"
     t.string   "image_file_name"
@@ -127,63 +116,6 @@ ActiveRecord::Schema.define(version: 20170317003004) do
     t.boolean  "answered"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "lines_articles", force: :cascade do |t|
-    t.string   "title"
-    t.string   "sub_title"
-    t.text     "content"
-    t.boolean  "published",        default: false
-    t.datetime "published_at"
-    t.string   "hero_image"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "slug"
-    t.string   "gplus_url"
-    t.boolean  "featured",         default: false
-    t.string   "document"
-    t.string   "short_hero_image"
-    t.text     "teaser"
-  end
-
-  add_index "lines_articles", ["slug"], name: "index_lines_articles_on_slug", unique: true, using: :btree
-
-  create_table "lines_authorables", force: :cascade do |t|
-    t.integer  "author_id"
-    t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "lines_authorables", ["article_id"], name: "index_lines_authorables_on_article_id", using: :btree
-  add_index "lines_authorables", ["author_id"], name: "index_lines_authorables_on_author_id", using: :btree
-
-  create_table "lines_authors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.text     "description"
-    t.string   "gplus_profile"
-  end
-
-  create_table "lines_pictures", force: :cascade do |t|
-    t.string   "image"
-    t.string   "name"
-    t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "lines_pictures", ["article_id"], name: "index_lines_pictures_on_article_id", using: :btree
-
-  create_table "lines_users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "reset_digest"
-    t.datetime "reset_sent_at"
   end
 
   create_table "notes", force: :cascade do |t|
