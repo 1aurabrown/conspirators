@@ -17,8 +17,7 @@ body.articles {
       &.featured {
         flex-basis: 100%;
         @include media-breakpoint-up(md) {
-          max-height: 60vh;
-          max-height: 40vh;
+          height: calc(75vh - #{$header-height});
           h2 {
             font-size: 30px;
           }
@@ -55,10 +54,40 @@ body.articles {
     }
   }
   &.show {
-    .news-article-slideshow {
+    .logo {
+      text-align: center;
+      margin-top: 1.1em;
+    }
+    .article-video {
+      position: relative;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .article-header {
+      text-align: center;
+      > * {
+        margin: 1.1em 0;
+      }
+      h1 {
+        font-size: 2.2em;
+        font-weight: 900;
+      }
+      h2{
+
+      }
+    }
+    .article-content{
+      line-height: 1.9em;
+    }
+    .article-slideshow {
 
     }
-    .news-article-image {
+    .article-image {
       width: 100%;
       background-position: center;
       background-size: cover;

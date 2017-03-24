@@ -84,8 +84,7 @@ class Article < ActiveRecord::Base
       field :title
       field :content do
         pretty_value do
-          sanitizer = Rails::Html::WhiteListSanitizer.new
-          sanitizer.sanitize(value).html_safe
+          bindings[:object].sanitized_content_html
         end
       end
       field :published, :boolean
@@ -129,6 +128,11 @@ class Article < ActiveRecord::Base
     if self.slug.blank?
       self.slug = self.title.slugify
     end
+  end
+
+  def sanitized_content_html
+    sanitizer = Rails::Html::WhiteListSanitizer.new
+    sanitizer.sanitize(self.content).html_safe
   end
 
   def featured=(value)

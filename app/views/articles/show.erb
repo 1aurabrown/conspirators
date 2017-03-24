@@ -1,20 +1,40 @@
 <article class="article">
   <div class="page-content">
     <section class="section">
-     <div class="news-article">
-      <% if @article.video? %>
-        <div class="news-article-video">
-          <%= @article.article_video.video_info.embed_code.html_safe %>
+      <div class="article">
+        <div class="article-hero">
+          <% if @article.video? %>
+            <% info = @article.article_video.video_info %>
+            <% aspect_ratio = (info.width && info.height) ? (info.height.to_f/info.width.to_f * 100).to_s + "%" : "75%"%>
+            <div class="article-video" style="padding-bottom:<%= aspect_ratio %>">
+              <%= @article.article_video.video_info.embed_code.html_safe %>
+            </div>
+          <% elsif @article.images? %>
+            <div class="article-slideshow">
+            <% @article.article_images.all.each do |a|%>
+              <div class="article-image" style="background-image:url(<%= a.image.url(:large) %>)">
+              </div>
+            <% end %>
+            </div>
+          <% end %>
         </div>
-      <% elsif @article.images? %>
-        <div class="news-article-slideshow">
-        <% @article.article_images.all.each do |a|%>
-          <div class="news-article-image" style="background-image:url(<%= a.image.url(:large) %>)">
-          </div>
-        <% end %>
+        <div class="article-header">
+          <h1 class="article-title">
+            <%= @article.title %>
+          </h1>
+          <h2 class="article-subtitle">
+            <%= @article.subtitle %>
+          </h2>
         </div>
-      <% end %>
-     </div>
+        <div class="article-content">
+          <p>
+            <%= @article.sanitized_content_html %>
+          </p>
+        </div>
+        <div class="logo">
+          <span class="icon-logo"></span>
+        </div>
+      </div>
     </section>
   </div>
 </article>

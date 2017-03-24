@@ -19,6 +19,7 @@
 //= require scrollmagic
 //= require underscore
 //= require backbone
+//= require flickity
 //= require isotope
 //= require isotope-fit-columns
 //= require hammerjs
