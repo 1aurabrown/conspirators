@@ -7,10 +7,9 @@
   @extend .navbar;
   @extend .navbar-fixed-top;
   transition: all 0.5s;
-  padding-bottom: 0;
+  padding: 1rem 0 0 0;
 
   .nav {
-    float:right;
     .nav-item {
       margin-left: 0.4rem;
       position:relative;
@@ -42,7 +41,7 @@
         .saved-talents {
           position: absolute;
           right: -1.3em;
-          top:0.3em;
+          top:0;
           font-weight: normal;
           width: 1.2em;
           height: 1.2em;
@@ -66,10 +65,24 @@
       }
     }
   }
-  .logo {
-    h1 {
-      position: relative;
-      float:left;
-    }
+  .icon-logo {
+    font-size: 4rem;
+  }
+
+  // override bootstrap. possible remove when mobile menu is made.
+  .navbar-nav {
+    text-align: right;
+  }
+
+  .nav-outer {
+    display: flex;
+    justify-content: space-between;
+  }
+  .nav-item {
+    display: inline-block;
+    float: none;
+  }
+  .nav-link {
+    padding: 0;
   }
 }

@@ -1,5 +1,10 @@
 body.collaborators {
   @include static-footer();
+  #header-content {
+    h2 {
+      text-align: center;
+    }
+  }
   .collaborator-cards {
     @include media-breakpoint-up(lg) {
       max-width: 95%;
