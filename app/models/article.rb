@@ -93,13 +93,15 @@ class Article < ActiveRecord::Base
           sanitizer.sanitize(bindings[:object].content).html_safe.truncate(100)
         end
       end
-      field :published, :boolean
-      field :featured
+      field :published, :toggle
+      field :featured, :toggle do
+        ajax false
+      end
     end
   end
 
   def published=(value)
-    if(value == "1")
+    if(value == "1" || value == true)
       if(published_at.nil?)
         publish!
       end

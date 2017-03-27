@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/1aurabrown/rails_admin_toggleable
+  revision: aad8183d9eca70f8f1c9e41bc15a4d540393ef09
+  ref: aad8183d9eca70f8f1c9e41bc15a4d540393ef09
+  specs:
+    rails_admin_toggleable (0.7.1)
+      rails_admin
+
+GIT
   remote: https://github.com/thoughtbot/paperclip
   revision: 523bd46c768226893f23889079a7aa9c73b57d68
   ref: 523bd46c768226893f23889079a7aa9c73b57d68
@@ -281,8 +289,6 @@ GEM
       sass-rails (>= 4.0, < 6)
     rails_admin_tag_list (0.2.0)
       rails_admin (>= 0.6)
-    rails_admin_toggleable (0.6.0)
-      rails_admin
     rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.5)
     railties (4.2.5.2)
@@ -384,7 +390,7 @@ DEPENDENCIES
   rails_12factor
   rails_admin (= 1.1.1)
   rails_admin_tag_list (= 0.2.0)
-  rails_admin_toggleable (= 0.6.0)
+  rails_admin_toggleable!
   redcarpet (= 3.3.4)
   ruby-oembed
   ruby-units (= 2.0.0)

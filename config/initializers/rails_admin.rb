@@ -1,4 +1,3 @@
-require Rails.root.join('lib', 'rails_admin', 'feature.rb').to_s
 RailsAdmin.config do |config|
 
   config.authorize_with :cancan
@@ -9,13 +8,7 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new do
-      except ['AddressBookEntry']
-    end
-    feature do
-      only ['Article', 'ArticleImage']
-    end
-    unfeature do
-      only ['Article', 'ArticleImage']
+      except [AddressBookEntry]
     end
     export
     bulk_delete

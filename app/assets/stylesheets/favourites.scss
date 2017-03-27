@@ -9,24 +9,9 @@ body.talents.favourites {
     }
   }
 
-  #page-header {
-    #header-content {
-      #page-title {
-      color: black;
-      }
-    }
-  }
-  .page-content {
-    position: static;
-  }
-  footer {
-    position: static;
-  }
   #page-title {
-    font-family: 'Julius Sans One', sans-serif;
     padding-top: 0;
     padding-bottom: 1rem;
-    text-align: center;
     .saved-talent-link {
       font-weight: bold;
       color: black;

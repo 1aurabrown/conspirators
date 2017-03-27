@@ -76,7 +76,7 @@ gem 'countries', :require => 'countries/global'
 gem 'redcarpet', '3.3.4'
 gem 'publishable', '1.0.4'
 
-gem 'rails_admin_toggleable', '0.6.0'
+gem 'rails_admin_toggleable', git: 'https://github.com/1aurabrown/rails_admin_toggleable', ref: 'aad8183d9eca70f8f1c9e41bc15a4d540393ef09'
 gem 'bootstrap-wysihtml5-rails'
 
 gem 'gon', '6.0.1'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324202859) do
+ActiveRecord::Schema.define(version: 20170327174435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 20170324202859) do
   end
 
   add_index "articles", ["featured_image_id"], name: "index_articles_on_featured_image_id", using: :btree
+
+  create_table "collaborators", force: :cascade do |t|
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "name",              null: false
+    t.string   "url",               null: false
+  end
 
   create_table "featured_projects", force: :cascade do |t|
     t.integer  "talent_id"

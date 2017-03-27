@@ -1,0 +1,50 @@
+body.collaborators {
+  @include static-footer();
+  .collaborator-cards {
+    @include media-breakpoint-up(lg) {
+      max-width: 95%;
+    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .collaborator-card {
+    text-align: center;
+    padding: 0 1%;
+    flex: 25% 0 0;
+    margin: 3% 0;
+    @include media-breakpoint-down(sm) {
+      flex: 33.33% 0 0;
+      margin: 4% 0;
+    }
+    @include media-breakpoint-down(xs) {
+      flex: 50% 0 0;
+      margin: 6% 0;
+    }
+  }
+  .collaborator-image-outer {
+    max-width: 80%;
+  }
+  .collaborator-image {
+    position: relative;
+    padding-top: 45%;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+  }
+
+  .collaborator-name {
+    @include media-breakpoint-down(md) {
+      font-size: 1rem;
+    }
+    font-size: 1.15rem;
+    color: black;
+    margin-top: 9%;
+  }
+}

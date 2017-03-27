@@ -4,8 +4,8 @@ class ArticleImage < ActiveRecord::Base
     default_url: "/images/:style/missing.png"
   }
   belongs_to :article, inverse_of: :article_images
-  validates_attachment_content_type :image,  :content_type => ["image/jpg", "image/jpeg", "image/png" ]
-  validates_presence_of :article, :image
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png" ]
+  validates_attachment_presence :image
 
   rails_admin do
     hide
