@@ -7,8 +7,19 @@ module ApplicationHelper
     current_user.saved_talents.to_ary.length
   end
 
-  def impressum
-    PageText.footer.first.formatted_text
+  def footers
+    {
+      default: (d = PageText.footer.first) ? d.formatted_text: nil,
+      small: (s = PageText.small_footer.first) ? s.formatted_text : nil
+    }
+  end
+
+  def has_collaborators
+    Collaborator.any?
+  end
+
+  def has_articles
+    Article.published.any?
   end
 
   def seo_description

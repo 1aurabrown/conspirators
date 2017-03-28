@@ -23,17 +23,21 @@
             </a>
           </li>
 
-          <li class="nav-item collaborators <%= controller_name == 'collaborators' ? 'current' : '' %>">
-            <a class="nav-link" href="/collaborators">
-              Collaborators
-            </a>
-          </li>
+          <% if has_collaborators %>
+            <li class="nav-item collaborators <%= controller_name == 'collaborators' ? 'current' : '' %>">
+              <a class="nav-link" href="/collaborators">
+                Collaborators
+              </a>
+            </li>
+          <% end %>
 
-          <li class="nav-item news <%= controller_name == 'articles' ? 'current' : '' %>">
-            <a class="nav-link" href="/news">
-              News
-            </a>
-          </li>
+          <% if has_articles %>
+            <li class="nav-item news <%= controller_name == 'articles' ? 'current' : '' %>">
+              <a class="nav-link" href="/news">
+                News
+              </a>
+            </li>
+          <% end %>
 
         </ul>
       </div>

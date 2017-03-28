@@ -1,9 +1,17 @@
 <footer>
   <div id="footer-content">
-    <div id="impressum">
-    <h2>Impressum</h2>
-    <%= impressum %>
+    <div id="footer-inner">
+      <% footer = @use_small_footer ? footers[:small] : footers[:default] %>
+      <% if !footer.nil? %>
+        <div id="impressum">
+          <%= @use_small_footer ? footers[:small] : footers[:default] %>
+        </div>
+      <% end %>
+      <div id='impressum-social'>
+        <a href="https://www.instagram.com/conspiratorsberlin"><icon class="fa fa-instagram"></icon>
+        </a>
+        <a href="https://facebook.com/conspirators.berlin"><icon class="fa fa-facebook-official"></icon></a>
+      </div>
     </div>
-
   </div>
 </footer>

@@ -1,53 +1,76 @@
+body.small-footer {
+  footer {
+    height: $small-footer-height-mobile;
+  }
+  @include media-breakpoint-up(sm) {
+    footer {
+      height: $small-footer-height-desktop;
+      #footer-content {
+        height: 100%;
+      }
+      #footer-inner {
+        display: flex;
+        align-items: center;
+      }
+      #impressum {
+        margin-bottom: 0;
+      }
+      #impressum-social {
+        margin-left: 20px;
+      }
+    }
+  }
+}
 footer {
   z-index: -1;
   color: white;
   margin-top: 10rem;
   height: $footer-height;
   padding-top: 15px;
+  padding-bottom: 15px;
   position: fixed;
   width: 100%;
   bottom: 0;
   background-color: black;
+
   #footer-content {
     @extend .container;
-    display: flex;
-    justify-content: flex-end;
-    @media (max-width: map-get($grid-breakpoints, md)) {
-      justify-content: center;
+    @include media-breakpoint-down(xs) {
+      text-align: center;
+      align-items: center;
     }
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
     h2, h3 {
       margin-bottom: 0.3rem;
       margin-top: 1rem;
-      @media (max-width: map-get($grid-breakpoints, sm)) {
-        text-align: center;
-      }
     }
     p {
       margin-bottom: 0rem;
     }
-    #conspirators {
-      @include make-col();
-      @include make-col-span(1);
-      @media (min-width: map-get($grid-breakpoints, sm)) {
-        @include make-col-span(6);
-      }
-      @media (min-width: map-get($grid-breakpoints, md)) {
-        @include make-col-span(8);
-      }
+  }
+  #impressum {
+    margin-bottom: 10px;
+    h2 {
+      font-size: 1.1rem;
     }
-    #impressum {
-      h2 {
-        font-size: 1.1rem;
-      }
-      h3 {
-        font-size: 1rem;
-      }
-      p {
-        font-size: 0.8rem;
-      }
-      i {
-        font-size: 2rem;
-      }
+    h3 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+    i {
+      font-size: 2rem;
+    }
+  }
+  #impressum-social {
+    font-size: 2rem;
+    a:not(:first-child) {
+      margin-left: 5px;
     }
   }
 }

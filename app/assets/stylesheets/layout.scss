@@ -45,6 +45,17 @@ body.new {
   }
 }
 
+body.small-footer {
+  .page-content {
+    margin-bottom: $small-footer-height-desktop;
+  }
+  @include media-breakpoint-down(xs) {
+    .page-content {
+      margin-bottom: $small-footer-height-mobile;
+    }
+  }
+}
+
 #page-header {
   position: relative;
   z-index: 4;

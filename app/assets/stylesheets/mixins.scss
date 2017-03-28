@@ -1,5 +1,7 @@
 $header-height: 83px;
 $footer-height: 320px;
+$small-footer-height-mobile: 120px;
+$small-footer-height-desktop: 70px;
 $header-and-footer-height: $header-height + $footer-height;
 
 @mixin white-nav() {
@@ -41,16 +43,6 @@ $header-and-footer-height: $header-height + $footer-height;
     padding-top: 1px;
     padding-bottom: 1px;
     min-height: calc(100vh - #{$header-and-footer-height})
-  }
-}
-
-@mixin static-header-and-footer() {
-  @include static-footer();
-  nav#navigation {
-    position: static;
-  }
-  article {
-    margin-top: 0;
   }
 }
 
