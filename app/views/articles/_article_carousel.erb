@@ -1,5 +1,5 @@
 <div class="article-slideshow">
   <% images.all.each do |a|%>
-    <img class="article-slideshow-cell" data-flickity-lazyload="<%= a.image.url(:large) %>"/>
+    <img class="article-slideshow-cell" src="<%= a.image.url(:large) %>"/>
   <% end %>
   </div>

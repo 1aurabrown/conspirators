@@ -4,7 +4,7 @@
   <%= render 'head' %>
 </head>
 
-<body class="<%=params[:controller]%> <%= params[:action]%> <%=(@use_small_footer ? 'small-footer' : '')%>" data-controller="<%=params[:controller]%>">
+<body class="<%=params[:controller]%> <%= params[:action]%> <%=(@use_small_footer ? 'small-footer' : '')%>" data-controller="<%=params[:controller]%>" data-action="<%=params[:action]%>">
   <%= include_gon(:init => true) %>
   <%= render partial: 'navigation' %>
   <%= content_for?(:content) ? yield(:content) : yield %>
