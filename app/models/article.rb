@@ -10,14 +10,14 @@ end
 
 class Article < ActiveRecord::Base
   validates_uniqueness_of :featured, if: :featured
-  validates_presence_of :title, :content, :media_type
+  # validates_presence_of :title, :content, :media_type
 
-  validates_with MediaValidator
+  # validates_with MediaValidator
 
-  before_save :set_slug
+  before_save :before_save
 
   has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
-  has_one :featured_image, class_name: 'ArticleImage'
+  belongs_to :featured_image, class_name: 'ArticleImage', inverse_of: :article
 
   accepts_nested_attributes_for :article_video, allow_destroy: true
 
@@ -33,14 +33,11 @@ class Article < ActiveRecord::Base
   rails_admin do
     navigation_label 'News'
 
-    configure :published_at do
-      hide
-    end
-
     show do
-      field :media_type
+      field :media_type, :enum
       field :featured
       field :published
+      field :published_at
       field :title
       field :subtitle
       field :content do
@@ -86,7 +83,7 @@ class Article < ActiveRecord::Base
 
     list do
       field :title
-      field :content
+      field :media_type, :enum
       field :content do
         pretty_value do
           sanitizer = Rails::Html::FullSanitizer.new
@@ -97,6 +94,7 @@ class Article < ActiveRecord::Base
       field :featured, :toggle do
         ajax false
       end
+      field :published_at
     end
   end
 
@@ -127,8 +125,24 @@ class Article < ActiveRecord::Base
   def cover_image_url
     if video?
       article_video.cover_image_url
+    elsif featured_image
+      featured_image.image.url(:large)
     else
       article_images.first.image.url(:large)
+    end
+  end
+
+  def before_save
+    set_slug
+    update_featured_image
+  end
+
+  def update_featured_image
+    featured_images = self.article_images.select{|i| i.temp_featured }
+    if featured_images.length
+      self.featured_image = featured_images.first
+    else
+      self.featured_image = nil
     end
   end
 

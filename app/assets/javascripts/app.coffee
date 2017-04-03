@@ -19,7 +19,6 @@ $ ->
   new FastClick(document.body)
   $("a[href='/blog/logout']").attr('data-method': 'delete', href: '/users/sign_out')
 
-
 $(document).on 'ready page:load', ->
   app.init()
   _.each app.componentViews.saveButtons, (saveBtn) ->

@@ -7,5 +7,6 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.published.find_by_slug(params[:slug])
     @use_small_footer = true
+    @logo_link = '/news'
   end
 end

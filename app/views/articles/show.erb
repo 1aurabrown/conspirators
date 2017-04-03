@@ -10,7 +10,7 @@
               <%= oembed.html.html_safe %>
             </div>
           <% elsif @article.images? %>
-            <%= render partial: 'article_carousel', locals: {images: @article.article_images} %>
+            <%= render partial: 'article_carousel', locals: { images: @article.article_images } %>
           <% end %>
         </div>
         <div class="article-header">

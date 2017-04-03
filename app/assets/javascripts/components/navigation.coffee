@@ -1,4 +1,5 @@
 class app.components.Navigation extends Backbone.View
+
   constructor: ->
     super
     @savedBadge = @$('.saved-talents')

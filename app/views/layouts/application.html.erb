@@ -6,7 +6,7 @@
 
 <body class="<%=params[:controller]%> <%= params[:action]%> <%=(@use_small_footer ? 'small-footer' : '')%>" data-controller="<%=params[:controller]%>" data-action="<%=params[:action]%>">
   <%= include_gon(:init => true) %>
-  <%= render partial: 'navigation' %>
+  <%= render partial: 'navigation', locals: { logo_link: @logo_link } %>
   <%= content_for?(:content) ? yield(:content) : yield %>
   <%= render partial: 'footer' %>
   <%= render 'aside' %>

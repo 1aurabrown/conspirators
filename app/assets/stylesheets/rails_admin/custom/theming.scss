@@ -1,3 +1,17 @@
-td.last.links {
-  text-align: right
+#new_article, #edit_article {
+  .article_video_field, .article_images_field {
+    transition: opacity .5s;
+    opacity: 0;
+    &.initial {
+      display: none;
+    }
+    &.visible {
+      opacity: 1;
+    }
+  }
+  .article_images_field .nav.nav-tabs a.is-featured:after {
+    @extend .fa;
+    margin-left: 5px;
+    content: "\f005";
+  }
 }

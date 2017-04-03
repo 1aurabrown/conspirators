@@ -102,6 +102,15 @@ body.articles {
 // flickity
 .article-slideshow {
   padding-bottom: 56%;
+  .flickity-viewport {
+    opacity: 0;
+    transition: opacity, .5s;
+  }
+  &.images-loaded {
+    .flickity-viewport {
+      opacity: 1;
+    }
+  }
 
   .flickity-viewport {
     position: absolute;
@@ -109,7 +118,10 @@ body.articles {
   }
 
   .article-slideshow-cell {
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0;
     transition: opacity .5s;
     &.is-selected{
