@@ -2,7 +2,7 @@ class Collaborator < ActiveRecord::Base
   has_attached_file :logo, {
     styles: {
       small: "150x70>"
-    }
+    },
     default_url: "/images/:style/missing.png"
   }
 
