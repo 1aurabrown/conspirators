@@ -14,10 +14,6 @@
       position:relative;
       font-family: 'Julius Sans One', sans-serif;
       font-size: 0.8rem;
-      opacity: .6;
-      &.current, &:hover {
-        opacity: 1;
-      }
       &.current a:after {
         content: '';
         border-top: 1px solid;
@@ -60,7 +56,7 @@
         }
       }
       .nav-link {
-        font-weight: bold;
+        font-weight: bolder;
       }
     }
   }

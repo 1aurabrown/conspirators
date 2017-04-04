@@ -1,4 +1,4 @@
-<article class="talent">
+<article id="main" class="talent">
   <div id="page-cover">
     <div id="cover-image-container">
       <img id="cover-image" src="<%=image_url @talent.cover.url(:large) %>" />
@@ -92,7 +92,7 @@
       <div class="section-content">
         <% @talent.featured_projects.each do | f_p | %>
           <% project = f_p.project %>
-          <article class="project-card">
+          <div class="project-card">
             <div class="project-metadata">
               <h2>
                  <%= project.project_type.titleize %> | <%= project.date.year %><br/>
@@ -115,7 +115,7 @@
                 <% end %>
               </p>
             </div>
-          </article>
+          </div>
 
         <% end %>
       </div>

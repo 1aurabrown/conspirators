@@ -1,9 +1,9 @@
-<article class="collaborators">
+<article id="main" class="collaborators">
   <header id="page-header">
     <div id="header-content">
-      <h1 id="page-title">
+      <h1 id="page-title"><strong>
         Collaborators
-      </h1>
+      </strong></h1>
       <% if @page_text %>
         <h2>
           <%= @page_text %>
@@ -16,7 +16,7 @@
       <div class="center-block collaborator-cards">
         <% @collaborators.each do |collaborator| %>
           <div class='collaborator-card'>
-            <a href='<%= collaborator.url%>'>
+            <a href='<%= collaborator.url%>' target='_blank'>
               <div class='center-block collaborator-image-outer'>
                 <div class='collaborator-image'>
                   <img src='<%=collaborator.logo.url(:medium)%>'/>

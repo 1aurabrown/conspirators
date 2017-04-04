@@ -1,46 +1,44 @@
-<!-- <div id="nav-container"> -->
-  <nav id="navigation" >
-    <div class='container'>
-      <div class='nav-outer'>
-        <a class="logo" href="<%= logo_link || '/' %>">
-          <span class="icon-logo"></span>
-        </a>
-        <ul class="nav navbar-nav">
-          <li class="nav-item home <%= controller_name == 'home' ? 'current' : '' %>">
-            <a class="nav-link" href="/">Home</a>
-          </li>
+<nav id="navigation" >
+  <div class='container'>
+    <div class='nav-outer'>
+      <a class="logo" href="<%= logo_link || '/' %>">
+        <span class="icon-logo"></span>
+      </a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item home <%= controller_name == 'home' ? 'current' : '' %>">
+          <a class="nav-link" href="/">Home</a>
+        </li>
 
-          <li class="nav-item contact <%= controller_name == 'contact' ? 'current' : '' %>">
-            <a class="nav-link" href="/contact">
-              Contact
+        <li class="nav-item contact <%= controller_name == 'contact' ? 'current' : '' %>">
+          <a class="nav-link" href="/contact">
+            Contact
+          </a>
+        </li>
+
+        <li class="nav-item faves <%= (saved_talents_num.to_i > 0) ? 'present' : '' %> <%= (controller_name == 'talents' && action_name == 'favourites') ? 'current' : '' %>">
+          <a class="nav-link" href="/favourites" >
+            Favourites
+            <span class="saved-talents"><%= saved_talents_num %></span>
+          </a>
+        </li>
+
+        <% if has_collaborators %>
+          <!-- <li class="nav-item collaborators <%= controller_name == 'collaborators' ? 'current' : '' %>">
+            <a class="nav-link" href="/collaborators">
+              Collaborators
             </a>
-          </li>
+          </li> -->
+        <% end %>
 
-          <li class="nav-item faves <%= (saved_talents_num.to_i > 0) ? 'present' : '' %> <%= (controller_name == 'talents' && action_name == 'favourites') ? 'current' : '' %>">
-            <a class="nav-link" href="/favourites" >
-              Favourites
-              <span class="saved-talents"><%= saved_talents_num %></span>
+        <% if has_articles %>
+          <!-- <li class="nav-item news <%= controller_name == 'articles' ? 'current' : '' %>">
+            <a class="nav-link" href="/news">
+              News
             </a>
-          </li>
+          </li> -->
+        <% end %>
 
-          <% if has_collaborators %>
-            <li class="nav-item collaborators <%= controller_name == 'collaborators' ? 'current' : '' %>">
-              <a class="nav-link" href="/collaborators">
-                Collaborators
-              </a>
-            </li>
-          <% end %>
-
-          <% if has_articles %>
-            <li class="nav-item news <%= controller_name == 'articles' ? 'current' : '' %>">
-              <a class="nav-link" href="/news">
-                News
-              </a>
-            </li>
-          <% end %>
-
-        </ul>
-      </div>
+      </ul>
     </div>
-  </nav>
-<!-- </div> -->
+  </div>
+</nav>
