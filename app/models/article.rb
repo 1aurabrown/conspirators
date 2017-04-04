@@ -131,10 +131,12 @@ class Article < ActiveRecord::Base
   def cover_image_url
     if video?
       article_video.cover_image_url
-    elsif featured_image
-      featured_image.image.url(:xlarge)
-    else
-      article_images.first.image.url(:xlarge)
+    elsif article_images.length # although there is a validation for this, it is not enforced on the database level.
+      if featured_image
+        featured_image.image.url(:xlarge)
+      else
+        article_images.first.image.url(:xlarge)
+      end
     end
   end
 
