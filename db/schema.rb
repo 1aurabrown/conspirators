@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327174435) do
+ActiveRecord::Schema.define(version: 20170404183840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170327174435) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "article_id"
+    t.integer  "article_id",         null: false
   end
 
   add_index "article_images", ["article_id"], name: "index_article_images_on_article_id", using: :btree
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170327174435) do
   add_index "featured_projects", ["talent_id"], name: "index_featured_projects_on_talent_id", using: :btree
 
   create_table "gallery_pictures", force: :cascade do |t|
-    t.integer  "talent_id"
+    t.integer  "talent_id",          null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -266,8 +266,8 @@ ActiveRecord::Schema.define(version: 20170327174435) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "agents", "organizations"
-  add_foreign_key "article_images", "articles"
-  add_foreign_key "article_videos", "articles"
+  add_foreign_key "article_images", "articles", on_delete: :cascade
+  add_foreign_key "article_videos", "articles", on_delete: :cascade
   add_foreign_key "featured_projects", "projects"
   add_foreign_key "featured_projects", "talents"
   add_foreign_key "saved_talents", "talents"

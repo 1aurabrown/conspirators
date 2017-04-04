@@ -1,5 +1,11 @@
-class MediaValidator < ActiveModel::Validator
+class ArticleValidator < ActiveModel::Validator
   def validate(record)
+    if record.featured_image
+      if record.featured_image.article != record
+        record.errors[:base] << "Image must first be associated with this article before featuring."
+      end
+    end
+
     if (record.video? && record.article_video.nil?)
       record.errors[:base] << "Video media type was selected, but no video was provided."
     elsif (record.images? && !record.article_images.any?)
@@ -10,14 +16,14 @@ end
 
 class Article < ActiveRecord::Base
   validates_uniqueness_of :featured, if: :featured
-  # validates_presence_of :title, :content, :media_type
+  validates_presence_of :title, :content, :media_type
 
-  # validates_with MediaValidator
+  validates_with ArticleValidator
 
   before_save :before_save
 
   has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
-  belongs_to :featured_image, class_name: 'ArticleImage', inverse_of: :article
+  belongs_to :featured_image, class_name: 'ArticleImage', inverse_of: :article_where_featured
 
   accepts_nested_attributes_for :article_video, allow_destroy: true
 
@@ -126,9 +132,9 @@ class Article < ActiveRecord::Base
     if video?
       article_video.cover_image_url
     elsif featured_image
-      featured_image.image.url(:large)
+      featured_image.image.url(:xlarge)
     else
-      article_images.first.image.url(:large)
+      article_images.first.image.url(:xlarge)
     end
   end
 
