@@ -62,13 +62,6 @@ class TalentsShowController
     .addTo app.scroll
 
     new ScrollMagic.Scene
-      offset: 240
-      reverse: true
-    .setClassToggle '#page-header', "pinned"
-    .setPin '#page-header', pushFollowers: false
-    .addTo app.scroll
-
-    new ScrollMagic.Scene
       offset: 0
       duration: 300
     .setTween TweenLite.to $('#cover-image')[0], 2, { className: '+=conspiring' }
