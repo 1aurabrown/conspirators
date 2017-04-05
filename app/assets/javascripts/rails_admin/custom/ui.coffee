@@ -1,5 +1,4 @@
 class ArticleSettings
-
   toggleMedia: =>
     @options ?= @$mediaDropdown.find('option')
       .map -> this.text
@@ -50,8 +49,9 @@ class ArticleSettings
 
 $ ->
   setup = ->
-    $form = $('form#edit_article') or $('form#new_article')
-    new ArticleSettings { $form } if $form.length
+    $form = $('form#edit_article') if $('form#edit_article').length
+    $form ?= $('form#new_article') if $('form#new_article').length
+    new ArticleSettings { $form } if $form
 
   # Called only on non-pjax load
   setup()
