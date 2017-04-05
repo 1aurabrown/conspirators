@@ -3,10 +3,11 @@ class TalentsController < ApplicationController
 
   def show
     @talent = Talent.find_by!(slug: params[:slug])
-    @columns = @talent.gallery_pictures.reduce([[],[],[]]) do |columns, pic|
-      next if (col = columns[pic.col - 1]).length >= 2
-      col.push pic
-      columns
+
+    @columns = [[],[],[]]
+    @talent.gallery_pictures.each do |pic|
+      next if @columns[pic.col - 1].length >= 2
+      @columns[pic.col - 1] << pic
     end
 
     @title = "#{@talent.name} / #{@talent.genders.join(' / ')} / #{@talent.skills.join(' / ')} "
