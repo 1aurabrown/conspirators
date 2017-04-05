@@ -20,7 +20,7 @@ public
 **/.DS_Store
 vendor/bundle
 public/uploads
-/.byebug_history
+.byebug_history
 
 # Ignore application configuration
 /config/application.yml
