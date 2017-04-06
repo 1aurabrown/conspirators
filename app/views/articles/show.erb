@@ -2,17 +2,19 @@
   <div class="page-content">
     <section class="section">
       <div class="article">
-        <div class="article-hero">
-          <% if @article.video? && @article.article_video %>
-            <% oembed = @article.article_video.oembed %>
-            <% aspect_ratio = (oembed.width && oembed.height) ? (oembed.height.to_f/oembed.width.to_f * 100).to_s + "%" : "56%"%>
-            <div class="article-video" style="padding-bottom:<%= aspect_ratio %>">
-              <%= oembed.html.html_safe %>
-            </div>
-          <% elsif @article.images? && @article.article_images.length %>
-            <%= render partial: 'article_carousel', locals: { images: @article.article_images } %>
-          <% end %>
-        </div>
+        <% if @article.has_media %>
+          <div class="article-hero">
+            <% if has_video %>
+              <% oembed = @article.article_video.oembed %>
+              <% aspect_ratio = (oembed.width && oembed.height) ? (oembed.height.to_f/oembed.width.to_f * 100).to_s + "%" : "56%"%>
+              <div class="article-video" style="padding-bottom:<%= aspect_ratio %>">
+                <%= oembed.html.html_safe %>
+              </div>
+            <% elsif has_images %>
+              <%= render partial: 'article_carousel', locals: { images: @article.article_images } %>
+            <% end %>
+          </div>
+        <% end %>
         <div class="article-header">
           <h1 class="article-title">
             <%= @article.title %>

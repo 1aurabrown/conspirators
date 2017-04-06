@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :featured, if: :featured
   validates_presence_of :title, :content, :media_type
 
-  validate :has_images, :has_featured_image
+  validate :validate_has_images, :validate_has_featured_image
 
   before_save :before_save
 
@@ -21,18 +21,6 @@ class Article < ActiveRecord::Base
   scope :published, -> { where.not(published_at: nil) }
 
   enum media_type: [ :video, :images ]
-
-  def has_images
-    if article_images.blank? && images?
-      errors.add(:base, 'Images media type was selected, but no images were provided.')
-    end
-  end
-
-  def has_featured_image
-    if featured_image && featured_image.article != self
-      errors.add(:base, "Image must first be associated with this article before featuring.")
-    end
-  end
 
   rails_admin do
     navigation_label 'News'
@@ -102,6 +90,22 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def validate_has_images
+    if !has_images && images?
+      errors.add(:base, 'Images media type was selected, but no images were provided.')
+    end
+  end
+
+  def validate_has_featured_image
+    if featured_image && featured_image.article != self
+      errors.add(:base, "Image must first be associated with this article before featuring.")
+    end
+  end
+
+  def has_media
+    has_images or has_video
+  end
+
   def published=(value)
     if(value == "1" || value == true)
       if(published_at.nil?)
@@ -127,9 +131,9 @@ class Article < ActiveRecord::Base
   end
 
   def cover_image_url
-    if video? && article_video
+    if video? && has_video
       article_video.cover_image_url
-    elsif article_images.length > 0
+    elsif has_images
       if featured_image
         featured_image.image.url(:xlarge)
       else
@@ -144,11 +148,19 @@ class Article < ActiveRecord::Base
     update_featured_image
   end
 
+  def has_video
+    !article_video.nil?
+  end
+
+  def has_images
+    article_images.any?
+  end
+
   def delete_unnecessary_media
     if media_type_changed?
-      if video? && article_video
+      if video? && has_video
         article_images.delete_all
-      elsif images? && article_images.length >0
+      elsif images? && has_images
         article_video.delete
       end
     end
