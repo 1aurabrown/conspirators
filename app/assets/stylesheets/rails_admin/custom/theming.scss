@@ -15,3 +15,23 @@
     content: "\f005";
   }
 }
+
+.modal.fade .modal-dialog {
+  transition: all 0.3s ease-out;
+  transform: translate3d(-50%, -100%, 0);
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+.modal.in .modal-dialog {
+  transform: translate3d(-50%, -50%, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.modal .modal-dialog {
+  .form-group{
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

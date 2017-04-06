@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/1aurabrown/bootstrap-wysihtml5-rails
+  revision: 1883d3af6465c4efec9dd6fe978046ad9d9db5ab
+  ref: 1883d3af6465c4efec9dd6fe978046ad9d9db5ab
+  specs:
+    bootstrap-wysihtml5-rails (0.3.3.8)
+      railties (>= 3.0)
+
+GIT
   remote: https://github.com/1aurabrown/rails_admin_toggleable
   revision: aad8183d9eca70f8f1c9e41bc15a4d540393ef09
   ref: aad8183d9eca70f8f1c9e41bc15a4d540393ef09
@@ -74,8 +82,6 @@ GEM
     bootstrap (4.0.0.alpha3)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
-    bootstrap-wysihtml5-rails (0.3.3.8)
-      railties (>= 3.0)
     builder (3.2.3)
     byebug (8.2.4)
     cancancan (1.13.1)
@@ -354,7 +360,7 @@ DEPENDENCIES
   acts-as-taggable-on (= 3.5.0)
   aws-sdk (= 2.2.27)
   bootstrap (~> 4.0.0.alpha3)
-  bootstrap-wysihtml5-rails
+  bootstrap-wysihtml5-rails!
   byebug
   cancancan (= 1.13.1)
   carrierwave
