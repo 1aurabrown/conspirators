@@ -1,26 +1,12 @@
-class ArticleValidator < ActiveModel::Validator
-  def validate(record)
-    if record.featured_image
-      if record.featured_image.article != record
-        record.errors[:base] << "Image must first be associated with this article before featuring."
-      end
-    end
-
-    if (record.video? && record.article_video.nil?)
-      record.errors[:base] << "Video media type was selected, but no video was provided."
-    elsif (record.images? && !record.article_images.any?)
-      record.errors[:base] << "Images media type was selected, but no images were provided."
-    end
-  end
-end
-
 class Article < ActiveRecord::Base
   validates_uniqueness_of :featured, if: :featured
   validates_presence_of :title, :content, :media_type
 
-  validates_with ArticleValidator
+  validate :has_images, :has_featured_image
 
   before_save :before_save
+
+  validates_presence_of :article_video, unless: :images?
 
   has_one :article_video, inverse_of: :article, foreign_key: :article_id, dependent: :destroy
   belongs_to :featured_image, class_name: 'ArticleImage', inverse_of: :article_where_featured
@@ -35,6 +21,18 @@ class Article < ActiveRecord::Base
   scope :published, -> { where.not(published_at: nil) }
 
   enum media_type: [ :video, :images ]
+
+  def has_images
+    if article_images.blank? && images?
+      errors.add(:base, 'Images media type was selected, but no images were provided.')
+    end
+  end
+
+  def has_featured_image
+    if featured_image && featured_image.article != self
+      errors.add(:base, "Image must first be associated with this article before featuring.")
+    end
+  end
 
   rails_admin do
     navigation_label 'News'
@@ -129,9 +127,9 @@ class Article < ActiveRecord::Base
   end
 
   def cover_image_url
-    if video?
+    if video? && article_video
       article_video.cover_image_url
-    elsif article_images.length > 0 # although there is a validation for this, it is not enforced on the database level.
+    elsif article_images.length > 0
       if featured_image
         featured_image.image.url(:xlarge)
       else
@@ -142,7 +140,18 @@ class Article < ActiveRecord::Base
 
   def before_save
     set_slug
+    delete_unnecessary_media
     update_featured_image
+  end
+
+  def delete_unnecessary_media
+    if media_type_changed?
+      if video? && article_video
+        article_images.delete_all
+      elsif images? && article_images.length >0
+        article_video.delete
+      end
+    end
   end
 
   def update_featured_image

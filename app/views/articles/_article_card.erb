@@ -1,7 +1,11 @@
 <div class='<%= "article-card" + (article.featured ? ' featured' : '')%>'>
   <a href= "<%= article_url(article) %>">
-    <div class='article-card-image' style="background-image: url('<%= image_url article.cover_image_url %>')">
-    </div>
+    <% if article.cover_image_url %>
+      <div class='article-card-image' style="background-image: url('<%= image_url article.cover_image_url %>')">
+      </div>
+    <% else %>
+      <div class='article-card-image missing'></div>
+    <% end %>
     <h2><%= article.title %></h2>
   </a>
 </div>

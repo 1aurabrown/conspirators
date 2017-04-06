@@ -37,6 +37,9 @@ body.articles {
         &:hover {
           @include scale-and-fade();
         }
+        &.missing {
+          background-color: $gray
+        }
       }
       h2 {
         font-size: 24px;
