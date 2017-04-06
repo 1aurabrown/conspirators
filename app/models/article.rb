@@ -91,14 +91,18 @@ class Article < ActiveRecord::Base
   end
 
   def validate_has_images
-    if !has_images && images?
-      errors.add(:base, 'Images media type was selected, but no images were provided.')
+    if images?
+      if !has_images
+        errors.add(:article_images, 'Images media type was selected, but no images were provided.')
+      elsif article_images.all?(&:marked_for_destruction?)
+        errors.add(:article_images, 'Images media type was selected, but all images were marked for deletion.')
+      end
     end
   end
 
   def validate_has_featured_image
     if featured_image && featured_image.article != self
-      errors.add(:base, "Image must first be associated with this article before featuring.")
+      errors.add(:featured_image, "Image must first be associated with this article before featuring.")
     end
   end
 
