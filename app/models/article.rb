@@ -1,5 +1,4 @@
 class Article < ActiveRecord::Base
-  validates_uniqueness_of :featured, if: :featured
   validates_presence_of :title, :content, :media_type
 
   validate :validate_has_images, :validate_has_featured_image
@@ -150,6 +149,7 @@ class Article < ActiveRecord::Base
     set_slug
     delete_unnecessary_media
     update_featured_image
+    set_featured
   end
 
   def has_video
@@ -190,9 +190,15 @@ class Article < ActiveRecord::Base
     sanitizer.sanitize(self.content).html_safe
   end
 
+  def set_featured
+    if featured
+      @unfeatured_articles.update_all(featured: false)
+    end
+  end
+
   def featured=(value)
     if value == '1' or value == true
-      Article.where('id != ? and featured', self.id).update_all(featured: false)
+      @unfeatured_articles = Article.where('id != ? and featured', self.id)
     end
     super value
   end
