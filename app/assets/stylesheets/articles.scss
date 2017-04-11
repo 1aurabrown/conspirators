@@ -144,6 +144,12 @@ body.articles {
   }
 
   /* arrow color */
+  &.no-arrow {
+    .flickity-prev-next-button {
+      display: none;
+    }
+  }
+
   .flickity-prev-next-button .arrow {
     fill: black;
   }

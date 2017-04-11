@@ -1,4 +1,4 @@
-<div class="article-slideshow">
+<div class="article-slideshow <%= images.length < 2 ? 'no-arrow' : '' %>">
   <% images.all.each do |i|%>
     <img class="<%='article-slideshow-cell' + (@article.featured_image == i ? ' featured' : '')%>" src="<%= i.image.url(:xlarge) %>"/>
   <% end %>

@@ -110,23 +110,19 @@ class Article < ActiveRecord::Base
   end
 
   def published=(value)
-    if(value == "1" || value == true)
-      if(published_at.nil?)
-        publish!
-      end
+    if value == '1' or value == true
+      @published = true
     else
-      unpublish!
+      @published = false
     end
   end
 
-  def publish!
-    return if published
-    update_attribute('published_at', Time.now)
-  end
-
-  def unpublish!
-    return if !published
-    update_attribute('published_at', nil)
+  def set_published
+    if @published
+      self.published_at = Time.now
+    else
+      self.published_at = nil
+    end
   end
 
   def published
@@ -150,6 +146,7 @@ class Article < ActiveRecord::Base
     delete_unnecessary_media
     update_featured_image
     set_featured
+    set_published
   end
 
   def has_video
@@ -161,10 +158,10 @@ class Article < ActiveRecord::Base
   end
 
   def delete_unnecessary_media
-    if media_type_changed?
-      if video? && has_video
+    if media_type_changed? && has_images && has_video
+      if video?
         article_images.delete_all
-      elsif images? && has_images
+      elsif images?
         article_video.delete
       end
     end
@@ -191,14 +188,14 @@ class Article < ActiveRecord::Base
   end
 
   def set_featured
-    if featured
+    if featured && @unfeatured_articles
       @unfeatured_articles.update_all(featured: false)
     end
   end
 
   def featured=(value)
     if value == '1' or value == true
-      @unfeatured_articles = Article.where('id != ? and featured', self.id)
+      @unfeatured_articles = Article.featured.where.not(id: self.id)
     end
     super value
   end
