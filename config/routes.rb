@@ -3,11 +3,10 @@ Rails.application.routes.draw do
 
   get 'contact', to: "contact#index"
 
-  # get 'news/:slug', to: 'articles#show'
   root to: 'home#index'
   devise_for :users
 
-  resources :articles, path: '/news', only: [:show, :index], param: :slug
+  resources :articles, path: '/work', only: [:show, :index], param: :slug
   resources :collaborators, only: [:index]
 
   get '/favourites', to: "talents#favourites"

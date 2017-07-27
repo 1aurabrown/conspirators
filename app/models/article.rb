@@ -22,7 +22,7 @@ class Article < ActiveRecord::Base
   enum media_type: [ :video, :images ]
 
   rails_admin do
-    navigation_label 'News'
+    navigation_label 'Work'
 
     show do
       field :media_type, :enum
